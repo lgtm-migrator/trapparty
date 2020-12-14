@@ -9,7 +9,7 @@ CREATE TABLE trapparty.event (
   "name"                 TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
   "start"                TIMESTAMP WITH TIME ZONE NOT NULL,
   "end"                  TIMESTAMP WITH TIME ZONE,
-  discord_invite_code    TEXT CHECK (discord_invite_code ~ '^[a-zA-Z0-9]{8}$'),
+  discord_invite_code    TEXT CHECK (discord_invite_code ~ '^[a-zA-Z0-9]{10}$'),
   stream_url             TEXT CHECK (char_length(stream_url) < 100 AND stream_url ~ '^https://.+$'),
   common_donation_url    TEXT CHECK (char_length(common_donation_url) < 100 AND common_donation_url ~ '^https://.+$')
 );
