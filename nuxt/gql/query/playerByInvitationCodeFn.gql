@@ -1,0 +1,21 @@
+query($invitationCode: UUID!) {
+  playerByInvitationCodeFn(invitationCode: $invitationCode) {
+    nodes {
+      eventByEventId {
+        name
+        start
+        end
+        discordInviteCode
+        streamUrl
+        commonDonationUrl
+      }
+      teamByTeamId {
+        name
+        emoji
+        charityOrganizationId
+        donationUrl
+      }
+      name
+    }
+  }
+}

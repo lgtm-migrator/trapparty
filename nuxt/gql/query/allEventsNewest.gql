@@ -1,0 +1,27 @@
+{
+  allEvents(orderBy: START_DESC, first: 1) {
+    nodes {
+      name
+      start
+      end
+      discordInviteCode
+      streamUrl
+      commonDonationUrl
+      charityOrganizationsByEventId {
+        nodes {
+          id
+          name
+          url
+        }
+      }
+      teamsByEventId {
+        nodes {
+          name
+          emoji
+          charityOrganizationId
+          donationUrl
+        }
+      }
+    }
+  }
+}
