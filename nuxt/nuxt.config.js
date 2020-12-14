@@ -191,11 +191,15 @@ export default {
           messages: {
             de: {
               globalLoading: 'Lade...',
+              globalOgImageAlt: 'TrapPartys Logo.',
+              globalOgSeoDescription: 'TrapPartys Online-Version.',
               globalValidationFormatIncorrect: 'Falsches Format.',
               globalValidationRequired: 'Pflichtfeld.',
             },
             en: {
               globalLoading: 'Loading...',
+              globalOgImageAlt: "TrapParty's logo.",
+              globalOgSeoDescription: "TrapParty's online version.",
               globalValidationFormatIncorrect: 'Incorrect format.',
               globalValidationRequired: 'Required.',
             },
