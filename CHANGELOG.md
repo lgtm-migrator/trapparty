@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/dargmuesli/trapparty/compare/1.0.2...1.0.3) (2020-12-14)
+
+
+### Bug Fixes
+
+* **sqitch/event:** correct discord invite code length ([98f9898](https://github.com/dargmuesli/trapparty/commit/98f9898276df69be899fadbfd6bc7b27a6651a74))
+
 ## [1.0.2](https://github.com/dargmuesli/trapparty/compare/1.0.1...1.0.2) (2020-12-14)
 
 
