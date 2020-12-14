@@ -1,6 +1,5 @@
 -- Deploy trapparty:table_charity_organization to pg
 -- requires: schema_public
--- requires: table_event
 -- requires: role_anonymous
 
 BEGIN;

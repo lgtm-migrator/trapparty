@@ -1,6 +1,6 @@
 -- Deploy trapparty:table_player to pg
 -- requires: schema_public
--- requires: table_event
+-- requires: table_team
 -- requires: extension_uuid-ossp
 
 BEGIN;
