@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/dargmuesli/trapparty/compare/1.0.3...1.0.4) (2020-12-14)
+
+
+### Bug Fixes
+
+* **sqitch:** rework tables ([376f540](https://github.com/dargmuesli/trapparty/commit/376f540fc534b532fe8b793a496f1f45d08e58ae))
+* **sqitch/team:** remove not null constraint on charity organization id ([3f07fb7](https://github.com/dargmuesli/trapparty/commit/3f07fb7bbb96f7996b19d4d3e845fde8bd2f72ff))
+
 ## [1.0.3](https://github.com/dargmuesli/trapparty/compare/1.0.2...1.0.3) (2020-12-14)
 
 
