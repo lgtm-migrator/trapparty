@@ -49,7 +49,7 @@ HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/healthcheck || exit
 # `node-zopfli-es` requires non-slim.
 FROM node:14.15.1-buster@sha256:cdcaa9b01406f15a702e5806d33967247f3bcf83c7e1c3a586ef2731a2cdda52 AS build
 
-ARG NUXT_ENV_STACK_DOMAIN=trapparty.jonas-thelemann.de
+ARG NUXT_ENV_STACK_DOMAIN=jonas-thelemann.de
 ENV NUXT_ENV_STACK_DOMAIN=${NUXT_ENV_STACK_DOMAIN}
 ENV NODE_ENV=production
 

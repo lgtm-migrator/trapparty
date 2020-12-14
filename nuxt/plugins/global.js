@@ -8,10 +8,6 @@ export const ITEMS_PER_PAGE = 8
 export const PASSWORD_LENGTH_MINIMUM = 8
 export const REGEX_SLUG = /^[-A-Za-z0-9]+$/
 export const REGEX_UUID = /^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/
-export const TUSD_FILES_URL =
-  'https://tusd.' +
-  (process.env.NUXT_ENV_STACK_DOMAIN || 'trapparty.jonas-thelemann.test') +
-  '/files/'
 export const VERIFICATION_FORMAT_SLUG = helpers.regex('slug', REGEX_SLUG)
 export const VERIFICATION_FORMAT_UUID = helpers.regex('uuid', REGEX_UUID)
 
@@ -67,7 +63,6 @@ export default (_ctx, inject) => {
     PASSWORD_LENGTH_MINIMUM,
     REGEX_SLUG,
     REGEX_UUID,
-    TUSD_FILES_URL,
     VERIFICATION_FORMAT_SLUG,
     VERIFICATION_FORMAT_UUID,
     capitalizeFirstLetter,
