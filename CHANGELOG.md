@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/dargmuesli/trapparty/compare/1.1.0...1.1.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* **apollo:** correct service address ([bfd60db](https://github.com/dargmuesli/trapparty/commit/bfd60db00533338febe6102db71938df4b2afafd))
+
 # [1.1.0](https://github.com/dargmuesli/trapparty/compare/1.0.4...1.1.0) (2020-12-14)
 
 
