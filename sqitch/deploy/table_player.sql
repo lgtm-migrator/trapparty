@@ -7,9 +7,10 @@ BEGIN;
 
 CREATE TABLE trapparty.player (
   id                 BIGSERIAL PRIMARY KEY,
-  team_id            BIGINT REFERENCES trapparty.team(id),
-  name               TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
-  invitation_code    UUID NOT NULL UNIQUE DEFAULT trapparty.uuid_generate_v1mc()
+  team_id            BIGINT NOT NULL REFERENCES trapparty.team(id),
+  name               TEXT NOT NULL CHECK (char_length(name) < 100),
+  invitation_code    UUID NOT NULL UNIQUE DEFAULT trapparty.uuid_generate_v1mc(),
+  UNIQUE (team_id, name)
 );
 
 COMMENT ON TABLE trapparty.player IS 'Players.';
