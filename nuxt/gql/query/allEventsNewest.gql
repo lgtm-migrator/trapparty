@@ -7,13 +7,6 @@
       discordInviteCode
       streamUrl
       commonDonationUrl
-      charityOrganizationsByEventId {
-        nodes {
-          id
-          name
-          url
-        }
-      }
       teamsByEventId {
         nodes {
           name

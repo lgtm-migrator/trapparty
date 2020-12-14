@@ -8,10 +8,10 @@ BEGIN;
 
 CREATE TABLE trapparty.team (
   id                         BIGSERIAL PRIMARY KEY,
-  event_id                   BIGSERIAL NOT NULL REFERENCES trapparty.event(id),
+  event_id                   BIGINT NOT NULL REFERENCES trapparty.event(id),
   name                       TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
   emoji                      TEXT NOT NULL UNIQUE CHECK (char_length(emoji) = 1),
-  charity_organization_id    BIGSERIAL REFERENCES trapparty.charity_organization(id),
+  charity_organization_id    BIGINT REFERENCES trapparty.charity_organization(id),
   donation_url               TEXT CHECK (char_length(donation_url) < 100 AND donation_url ~ '^https://.+$')
 );
 

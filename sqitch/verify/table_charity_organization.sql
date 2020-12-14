@@ -3,7 +3,6 @@
 BEGIN;
 
 SELECT id,
-       event_id,
        name,
        url
 FROM trapparty.charity_organization WHERE FALSE;

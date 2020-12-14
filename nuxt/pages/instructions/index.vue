@@ -91,13 +91,14 @@
               v-if="
                 $global.getNested(
                   participationData,
+                  'teamByTeamId',
                   'eventByEventId',
                   'discordInviteCode'
                 )
               "
               class="ml-4"
               :icon-id="['fas', 'sign-in-alt']"
-              :link="`https://discord.gg/${participationData.eventByEventId.discordInviteCode}`"
+              :link="`https://discord.gg/${participationData.teamByTeamId.eventByEventId.discordInviteCode}`"
             >
               {{ $t('discordJoin') }}
             </Button>
@@ -275,6 +276,7 @@ export default {
         case 'player':
           return this.$global.getNested(
             this.participationData,
+            'teamByTeamId',
             'eventByEventId'
           )
         case 'watcher':

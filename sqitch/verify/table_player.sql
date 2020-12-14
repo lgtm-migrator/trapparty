@@ -3,7 +3,6 @@
 BEGIN;
 
 SELECT id,
-       event_id,
        team_id,
        name,
        invitation_code
