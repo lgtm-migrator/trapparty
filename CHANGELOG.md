@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/dargmuesli/trapparty/compare/1.0.4...1.1.0) (2020-12-14)
+
+
+### Bug Fixes
+
+* **sqitch:** correct requires ([7722260](https://github.com/dargmuesli/trapparty/commit/772226087bc2fc2d9274bd51c62a874f842fb4fb))
+* **sqitch/player:** rework unique constraint ([31596f7](https://github.com/dargmuesli/trapparty/commit/31596f764736b29ea2274a5ae5decc2774bd7f73))
+
+
+### Features
+
+* **sqitch:** add table leader ([928805e](https://github.com/dargmuesli/trapparty/commit/928805efae3ca44feae374101f794437faa13b77))
+
 ## [1.0.4](https://github.com/dargmuesli/trapparty/compare/1.0.3...1.0.4) (2020-12-14)
 
 
