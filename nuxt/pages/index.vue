@@ -165,7 +165,7 @@ export default {
   methods: {
     anonymous(e) {
       e.preventDefault()
-      this.$store.commit('setParticipationData', { role: 'watcher' })
+      this.$store.commit('setParticipationData', { role: 'anonymous' })
       this.$router.push({
         path: this.localePath(`/instructions`),
       })

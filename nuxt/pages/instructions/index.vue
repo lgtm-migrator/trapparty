@@ -157,7 +157,7 @@
         </section>
       </section>
       <section
-        v-if="$store.state.participationData.role === 'watcher'"
+        v-if="$store.state.participationData.role === 'anonymous'"
         class="prose"
       >
         <h2>{{ $t('donationTitle') }}</h2>
@@ -249,7 +249,7 @@ export default {
               this.graphqlErrorMessage = error.message
             },
           }
-        case 'watcher':
+        case 'anonymous':
           return {
             query: ALL_EVENTS_NEWEST,
             update: (data) =>
@@ -308,7 +308,7 @@ export default {
             'teamByTeamId',
             'eventByEventId'
           )
-        case 'watcher':
+        case 'anonymous':
           return this.participationData
         default:
           alert(this.$t('errorUnexpectedParticipationRole'))
@@ -320,7 +320,7 @@ export default {
       switch (this.$store.state.participationData.role) {
         case 'player':
           return this.$t('intentionRolePlayer')
-        case 'watcher':
+        case 'anonymous':
           return this.$t('intentionRoleAnonymous')
         default:
           alert(this.$t('errorUnexpectedParticipationRole'))
