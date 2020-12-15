@@ -29,7 +29,7 @@ export default {
       '@nuxtjs/fontawesome',
       {
         icons: {
-          brands: ['faGithub'],
+          brands: ['faGithub', 'faYoutube'],
           solid: [
             'faBalanceScale',
             'faBug',

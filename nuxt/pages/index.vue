@@ -206,7 +206,7 @@ de:
   participate: 'Mitmachen'
   participateDescription: 'Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀'
   redeemSuccess: 'Einladungscode erfolgreich gespeichert.'
-  save: 'Speichern'
+  save: 'Zu meiner Übersichtsseite'
   disclaimer: 'Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.'
   title: 'Willkommen!'
   titleAuthorLink: 'Jonas Website'

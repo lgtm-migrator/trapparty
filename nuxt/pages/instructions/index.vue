@@ -30,10 +30,14 @@
         class="prose"
       >
         <h2>{{ $t('teamTitle') }}</h2>
-        <p v-if="$global.getNested(participationData, 'teamByTeamId')">
-          <Card>
+        <section>
+          <h3>{{ $t('teamCommunicationTitle') }}</h3>
+          <p>
+            {{ $t('teamCommunicationDescription1') }}
             <i18n
-              v-if="participationData.teamByTeamId.name"
+              v-if="
+                $global.getNested(participationData, 'teamByTeamId', 'name')
+              "
               path="teamDataName"
             >
               <span class="font-bold">{{
@@ -43,41 +47,6 @@
             <span v-else class="inline-block unready">
               {{ $t('teamDataNameDataless') }}
             </span>
-            <i18n
-              v-if="
-                $global.getNested(
-                  participationData,
-                  'teamByTeamId',
-                  'charityOrganization',
-                  'name'
-                )
-              "
-              path="teamDataCharityOrganisation"
-            >
-              <span class="font-bold">
-                <a
-                  v-if="participationData.teamByTeamId.charityOrganization.url"
-                  :href="participationData.teamByTeamId.charityOrganization.url"
-                >
-                  {{ participationData.teamByTeamId.charityOrganization.name }}
-                </a>
-                <span v-else class="inline-block">
-                  {{ participationData.teamByTeamId.charityOrganization.name }}
-                </span>
-              </span>
-            </i18n>
-            <span v-else class="inline-block unready">
-              {{ $t('teamDataCharityOrganisationDataless') }}
-            </span>
-          </Card>
-        </p>
-        <p v-else class="alert">
-          {{ $t('teamDataless') }}
-        </p>
-        <section>
-          <h3>{{ $t('teamCommunicationTitle') }}</h3>
-          <p>
-            {{ $t('teamCommunicationDescription1') }}
           </p>
           <p>
             <Button
@@ -107,14 +76,53 @@
             </span>
           </p>
           <p>
-            {{ $t('teamCommunicationDescription2') }}
+            {{
+              $t('teamCommunicationDescription2', {
+                emojiPrefix: participationData.teamByTeamId.emoji
+                  ? participationData.teamByTeamId.emoji + '-'
+                  : '',
+              })
+            }}
           </p>
+          <Button
+            class="ml-4"
+            :icon-id="['fab', 'youtube']"
+            link="https://youtu.be/NJijHNL4yEo"
+          >
+            {{ $t('discordTutorial') }}
+          </Button>
         </section>
         <section>
           <h3>{{ $t('donationTitle') }}</h3>
           <p>
             {{ $t('donationDescription') }}
             {{ $t('donationDescriptionTeam') }}
+          </p>
+          <i18n
+            v-if="
+              $global.getNested(
+                participationData,
+                'teamByTeamId',
+                'charityOrganization',
+                'name'
+              )
+            "
+            path="teamDataCharityOrganisation"
+          >
+            <span class="font-bold">
+              <a
+                v-if="participationData.teamByTeamId.charityOrganization.url"
+                :href="participationData.teamByTeamId.charityOrganization.url"
+              >
+                {{ participationData.teamByTeamId.charityOrganization.name }}
+              </a>
+              <span v-else class="inline-block">
+                {{ participationData.teamByTeamId.charityOrganization.name }}
+              </span>
+            </span>
+          </i18n>
+          <p v-else class="unready">
+            {{ $t('teamDataCharityOrganisationDataless') }}
           </p>
           <p>
             <Button
@@ -162,6 +170,9 @@
         <h2>{{ $t('streamTitle') }}</h2>
         <p>
           {{ $t('streamDescription') }}
+          <span v-if="$store.state.participationData.role === 'player'">
+            {{ $t('streamDescriptionPlayer') }}
+          </span>
         </p>
         <p>
           <span v-if="$global.getNested(event, 'streamUrl')">
@@ -315,15 +326,16 @@ export default {
 <i18n lang="yml">
 de:
   change: 'Ändern'
-  dataless: '{what} ist noch nicht verfügbar. Lade die Seite neu, wenn du denkst, dass sich das geändert haben sollte.'
+  dataless: '{what} ist noch nicht verfügbar.'
   datalessDiscordCode: 'Der Einladungscode für den Discord-Server'
   datalessDonationCommon: 'Der Link zur Spendenseite für Zuschauer ohne Team'
   datalessDonationTeam: 'Der Link zur Spendenseite deines Teams'
   datalessStream: 'Der Link zum Stream'
   discordInstall: 'Discord installieren'
   discordJoin: 'Server beitreten'
+  discordTutorial: 'Videoanleitung vom Weihnachtsmann'
   donationButtonCommon: 'Für alle Organisationen spenden'
-  donationButtonTeam: 'Für dein Team spenden'
+  donationButtonTeam: 'Zum Spendenkonto deines Teams'
   donationTitle: 'Gutes Tun ❤️'
   donationDescription: 'In diesem Jahr spenden wir gemeinsam für mehrere Organisationen.'
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
@@ -335,17 +347,18 @@ de:
   participationDataless: 'Konnte keine Veranstaltungsdaten laden. Wenn du einen Einladungscode angegeben hast, könnte dieser invalide sein.'
   streamTitle: 'Zuschauen 📺'
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'
+  streamDescriptionPlayer: 'Als Spieler schaust du den Stream während du gleichzeitig mit deinen Teammitgliedern auf Discord bist.'
   streamDescriptionStart: 'Geplanter Start: {0}'
   streamGoto: 'Zum Stream'
   teamCommunicationTitle: 'Kommunikation 📞'
   teamCommunicationDescription1: 'Für diese Veranstaltung wurde ein Discord-Server eingerichtet, über den alle Gäste mit ihren Teammitgliedern und anderen Teilnehmenden kommunizieren können.'
-  teamCommunicationDescription2: 'Wenn du dem Server beigetreten bist, musst du im Textkanal "wähle-eine-gruppe" unter der einzigen Nachricht dort auf das Emoji deines Teams klicken, um Zugriff auf die Kommunikationskanäle deines Teams zu erhalten. Dann kannst du dich dort in Text, Sprache und Video mit deinem Team austauschen.'
+  teamCommunicationDescription2: 'Wenn du dem Server beigetreten bist, musst du im Textkanal "wähle-eine-gruppe" unter der einzigen Nachricht dort auf das {emojiPrefix}Emoji deines Teams klicken. Damit erhältst du Zugriff auf den Text- & Sprachkanal deines Teams, in denen du dich mit deinem Team austauschen kannst.'
   teamTitle: 'Dein Team 👪'
   teamDataless: 'Fehler: Teamdaten konnten nicht geladen werden!'
-  teamDataName: 'Du bist im Team {0}.'
-  teamDataNameDataless: 'Ihr müsst euch noch für einen Teamnamen entscheiden.'
+  teamDataName: 'Du bist im Team "{0}"!'
+  teamDataNameDataless: 'Ihr müsst euch noch auf einen eigenen Teamnamen einigen.'
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
-  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch entscheiden, für welche Wohltätigkeitsorganisation ihr gemeinsam spenden mögt.'
+  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr gemeinsam spenden mögt.'
   teamDataTitle: 'Daten'
   title: "So funktioniert's"
 </i18n>
