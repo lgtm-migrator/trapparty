@@ -212,8 +212,11 @@
 </template>
 
 <script>
+import __TYPENAME from '~/gql/query/__typename'
 import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn'
+
+const consola = require('consola')
 
 export default {
   apollo: {
@@ -246,7 +249,10 @@ export default {
             },
           }
         default:
-          alert(this.$t('errorUnexpectedParticipationRole'))
+          consola.error(this.$t('errorUnexpectedParticipationRole'))
+          return {
+            query: __TYPENAME,
+          }
       }
     },
   },

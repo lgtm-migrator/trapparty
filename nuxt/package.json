@@ -37,6 +37,7 @@
     "apollo-client": "2.6.10",
     "apollo-link": "1.2.14",
     "body-parser": "1.19.0",
+    "consola": "^2.15.0",
     "cookie": "0.4.1",
     "core-js": "3.8.1",
     "graphql": "15.4.0",
