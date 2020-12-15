@@ -8,6 +8,7 @@ SELECT id,
        emoji,
        charity_organization_id,
        donation_url,
+       donation_amount,
        version_timestamp
 FROM trapparty.team WHERE FALSE;
 
