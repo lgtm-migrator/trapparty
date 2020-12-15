@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/dargmuesli/trapparty/compare/1.2.0...1.2.1) (2020-12-15)
+
+
+### Bug Fixes
+
+* **instructions:** correct unready block style ([262dc36](https://github.com/dargmuesli/trapparty/commit/262dc360af304f4475b96399ab2c7cbbb377794d))
+
 # [1.2.0](https://github.com/dargmuesli/trapparty/compare/1.1.1...1.2.0) (2020-12-15)
 
 
