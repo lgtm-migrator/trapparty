@@ -21,8 +21,8 @@
         <i18n path="intentionDescription">
           <span class="font-bold">{{ intention }}</span>
         </i18n>
-        <Button :icon-id="['fas', 'sync']" :link="localePath('/')">
-          {{ $t('change') }}
+        <Button :icon-id="['fas', 'home']" :link="localePath('/')">
+          {{ $t('home') }}
         </Button>
       </section>
       <section
@@ -96,7 +96,17 @@
           <h3>{{ $t('donationTitle') }}</h3>
           <p>
             {{ $t('donationDescription') }}
-            {{ $t('donationDescriptionTeam') }}
+            <span
+              v-if="
+                $global.getNested(
+                  participationData,
+                  'teamByTeamId',
+                  'donationUrl'
+                )
+              "
+            >
+              {{ $t('donationDescriptionTeam') }}
+            </span>
           </p>
           <i18n
             v-if="
@@ -204,8 +214,8 @@
     </div>
     <div v-else class="alert">
       {{ $t('participationDataless') }}
-      <Button :icon-id="['fas', 'sync']" :link="localePath('/')">
-        {{ $t('change') }}
+      <Button :icon-id="['fas', 'home']" :link="localePath('/')">
+        {{ $t('home') }}
       </Button>
     </div>
   </Loader>
@@ -311,7 +321,7 @@ export default {
         case 'player':
           return this.$t('intentionRolePlayer')
         case 'watcher':
-          return this.$t('intentionRoleWatcher')
+          return this.$t('intentionRoleAnonymous')
         default:
           alert(this.$t('errorUnexpectedParticipationRole'))
       }
@@ -333,7 +343,6 @@ export default {
 
 <i18n lang="yml">
 de:
-  change: 'Ändern'
   dataless: '{what} ist noch nicht verfügbar.'
   datalessDiscordCode: 'Der Einladungscode für den Discord-Server'
   datalessDonationCommon: 'Der Link zur Spendenseite für Zuschauer ohne Team'
@@ -349,10 +358,11 @@ de:
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
   donationDescriptionTeam: 'Mit einem Klick auf den folgenden Button kannst du dich an der Spende deines Teams beteiligen.'
   errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
+  home: 'Zurück zur Startseite'
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
+  intentionRoleAnonymous: 'anonym teilzunehmen'
   intentionRolePlayer: 'mitzumachen'
-  intentionRoleWatcher: 'nur zuzuschauen'
-  participationDataless: 'Konnte keine Veranstaltungsdaten laden. Wenn du einen Einladungscode angegeben hast, könnte dieser invalide sein.'
+  participationDataless: 'Konnte keine Veranstaltungsdaten laden.'
   streamTitle: 'Zuschauen 📺'
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'
   streamDescriptionPlayer: 'Als Spieler schaust du den Stream während du gleichzeitig mit deinen Teammitgliedern auf Discord bist.'
@@ -366,7 +376,7 @@ de:
   teamDataName: 'Du bist im Team "{0}"!'
   teamDataNameDataless: 'Ihr müsst euch noch auf einen eigenen Teamnamen einigen.'
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
-  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr gemeinsam spenden mögt.'
+  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, an die eure Spenden gehen sollen.'
   teamDataTitle: 'Daten'
   title: "So funktioniert's"
 </i18n>

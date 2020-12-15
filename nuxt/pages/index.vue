@@ -80,16 +80,16 @@
         <div class="self-stretch lg:w-1/12 px-8 py-8">
           <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
         </div>
-        <Form class="lg:w-2/12" @submit="watch">
+        <Form class="lg:w-2/12" @submit="anonymous">
           <h2>
-            {{ $t('watchTitle') }}
+            {{ $t('anonymousTitle') }}
           </h2>
           <p>
-            {{ $t('watchDescription') }}
+            {{ $t('anonymousDescription') }}
           </p>
           <div class="flex flex-col items-center justify-between">
             <Button class="m-4" :icon="false" type="submit">
-              {{ $t('watch') }}
+              {{ $t('anonymous') }}
             </Button>
           </div>
         </Form>
@@ -163,6 +163,13 @@ export default {
     }
   },
   methods: {
+    anonymous(e) {
+      e.preventDefault()
+      this.$store.commit('setParticipationData', { role: 'watcher' })
+      this.$router.push({
+        path: this.localePath(`/instructions`),
+      })
+    },
     saveCode(e) {
       e.preventDefault()
       this.$v.form.$reset()
@@ -170,13 +177,6 @@ export default {
         role: 'player',
         invitationCode: this.form['invitation-code'],
       })
-      this.$router.push({
-        path: this.localePath(`/instructions`),
-      })
-    },
-    watch(e) {
-      e.preventDefault()
-      this.$store.commit('setParticipationData', { role: 'watcher' })
       this.$router.push({
         path: this.localePath(`/instructions`),
       })
@@ -198,6 +198,9 @@ export default {
 <i18n lang="yml">
 de:
   2020: '2020'
+  anonymous: 'Anonym teilnehmen'
+  anonymousDescription: 'Du bist in keinem Team?'
+  anonymousTitle: '👻'
   datalessEvent: 'Aktuell sind keine Daten für eine kommende TrapParty vorhanden.'
   description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {0} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
   formIncomplete: 'Formular unvollständig.'
@@ -210,7 +213,4 @@ de:
   disclaimer: 'Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.'
   title: 'Willkommen!'
   titleAuthorLink: 'Jonas Website'
-  watch: 'Nur zuschauen'
-  watchDescription: 'Du willst nur mal kurz vorbeischauen, hast aber eigentlich andere Prioritäten? Dann hier klicken!'
-  watchTitle: '📺'
 </i18n>

@@ -37,7 +37,6 @@ export default {
             'faHeart',
             'faHome',
             'faSignInAlt',
-            'faSync',
             'faTv',
           ],
         },
