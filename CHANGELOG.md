@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/dargmuesli/trapparty/compare/1.1.1...1.2.0) (2020-12-15)
+
+
+### Features
+
+* implement UX feedback ([54c2937](https://github.com/dargmuesli/trapparty/commit/54c29376c0613118f99d85eee7e6bf885062d658))
+
 ## [1.1.1](https://github.com/dargmuesli/trapparty/compare/1.1.0...1.1.1) (2020-12-14)
 
 
