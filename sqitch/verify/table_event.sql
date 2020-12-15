@@ -8,7 +8,8 @@ SELECT id,
        "end",
        discord_invite_code,
        stream_url,
-       common_donation_url
+       common_donation_url,
+       common_donation_is_live
 FROM trapparty.event WHERE FALSE;
 
 DO $$
