@@ -121,8 +121,10 @@
               </span>
             </span>
           </i18n>
-          <p v-else class="unready">
-            {{ $t('teamDataCharityOrganisationDataless') }}
+          <p v-else>
+            <span class="inline-block unready">
+              {{ $t('teamDataCharityOrganisationDataless') }}
+            </span>
           </p>
           <p>
             <Button
