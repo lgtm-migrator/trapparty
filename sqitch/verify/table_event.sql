@@ -1,4 +1,4 @@
--- Verify maevsi:table_event on pg
+-- Verify trapparty:table_event on pg
 
 BEGIN;
 

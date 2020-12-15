@@ -1,4 +1,4 @@
--- Verify maevsi:table_team on pg
+-- Verify trapparty:table_team on pg
 
 BEGIN;
 

@@ -1,4 +1,4 @@
--- Verify maevsi:table_charity_organization on pg
+-- Verify trapparty:table_charity_organization on pg
 
 BEGIN;
 
