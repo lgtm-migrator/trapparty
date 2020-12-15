@@ -4,10 +4,11 @@ BEGIN;
 
 SELECT id,
        event_id,
-       name,
+       "name",
        emoji,
        charity_organization_id,
-       donation_url
+       donation_url,
+       version_timestamp
 FROM trapparty.team WHERE FALSE;
 
 DO $$
