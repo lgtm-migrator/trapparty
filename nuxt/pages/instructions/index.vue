@@ -230,8 +230,8 @@ export default {
           return {
             query: PLAYER_BY_INVITATION_CODE_FN,
             variables: {
-              invitationCode: this.$store.state.participationData
-                .invitationCode,
+              participationCode: this.$store.state.participationData
+                .participationCode,
             },
             update: (data) =>
               this.$global.getNested(
@@ -338,7 +338,7 @@ export default {
 <i18n lang="yml">
 de:
   dataless: '{what} ist noch nicht verfügbar.'
-  datalessDiscordCode: 'Der Einladungscode für den Discord-Server'
+  datalessDiscordCode: 'Der Teilnahmecode für den Discord-Server'
   datalessDonationCommon: 'Der Link zur Spendenseite für Zuschauer ohne Team'
   datalessDonationTeam: 'Der Link zur Spendenseite deines Teams'
   datalessStream: 'Der Link zum Stream'
