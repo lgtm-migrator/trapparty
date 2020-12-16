@@ -13,3 +13,4 @@ table_team [schema_public table_event table_charity_organization role_anonymous]
 table_player [schema_public table_team extension_uuid-ossp] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table player.
 function_player_by_invitation_code [privilege_execute_revoke schema_public extension_uuid-ossp table_player role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add a function that retrieves player data by invitation code.
 table_leader [schema_public table_team table_player] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table leader.
+table_kv 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # A key value store.
