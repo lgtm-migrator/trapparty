@@ -1,3 +1,21 @@
+# [1.3.0](https://github.com/dargmuesli/trapparty/compare/1.2.1...1.3.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **sqitch:** correct schema name ([cf333e9](https://github.com/dargmuesli/trapparty/commit/cf333e9154070547a854b54b3c26bad9bf7f12d9))
+* ux improvements ([dd54d20](https://github.com/dargmuesli/trapparty/commit/dd54d205da9537b9bce4cec00b8c7863fecf06e3))
+* **instructions:** tolerate unexpected participation data ([470d714](https://github.com/dargmuesli/trapparty/commit/470d7145b1a0ed54511a02653e39590a141b6e16))
+
+
+### Features
+
+* **instruction:** add more detailed donation description ([b880e59](https://github.com/dargmuesli/trapparty/commit/b880e59833b9368106dc01a6c73578c5539ea218))
+* **instructions:** add donation share buttons ([17ed3f6](https://github.com/dargmuesli/trapparty/commit/17ed3f6b77b3398c5d1f10aa6af6ee98bf8a9252))
+* **sqitch/event:** indicate live donation url ([3e10544](https://github.com/dargmuesli/trapparty/commit/3e10544bc1f84a03b4a517912a15d65403e91bfc))
+* **sqitch/team:** add donation amount ([346c82a](https://github.com/dargmuesli/trapparty/commit/346c82a2b03bb36f1f87aeb4afa2ef2437380025))
+* **sqitch/team:** add version timestamp ([cd8f776](https://github.com/dargmuesli/trapparty/commit/cd8f77627da352da7b6916f95e126a4e7a4dd4de))
+
 ## [1.2.1](https://github.com/dargmuesli/trapparty/compare/1.2.0...1.2.1) (2020-12-15)
 
 
