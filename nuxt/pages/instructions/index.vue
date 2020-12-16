@@ -126,23 +126,26 @@
               {{ $t('teamDataCharityOrganisationDataless') }}
             </span>
           </p>
-          <p>
-            <Button
-              v-if="
-                $global.getNested(
-                  participationData,
-                  'teamByTeamId',
-                  'donationUrl'
-                )
-              "
-              :icon-id="['fas', 'heart']"
-              :link="participationData.teamByTeamId.donationUrl"
-            >
-              {{ $t('donationButtonTeam') }}
-            </Button>
-            <span v-else class="inline-block unready">
-              {{ $t('dataless', { what: $t('datalessDonationTeam') }) }}
-            </span>
+          <p
+            v-if="
+              $global.getNested(
+                participationData,
+                'teamByTeamId',
+                'donationUrl'
+              )
+            "
+          >
+            <ButtonShare :url="participationData.teamByTeamId.donationUrl">
+              <Button
+                :icon-id="['fas', 'heart']"
+                :link="participationData.teamByTeamId.donationUrl"
+              >
+                {{ $t('donationButtonTeam') }}
+              </Button>
+              <template slot="unready">
+                {{ $t('dataless', { what: $t('datalessDonationTeam') }) }}
+              </template>
+            </ButtonShare>
           </p>
         </section>
       </section>
@@ -155,17 +158,18 @@
           {{ $t('donationDescription') }}
           {{ $t('donationDescriptionCommon') }}
         </p>
-        <p>
-          <Button
-            v-if="$global.getNested(participationData, 'commonDonationUrl')"
-            :icon-id="['fas', 'heart']"
-            :link="participationData.commonDonationUrl"
-          >
-            {{ $t('donationButtonCommon') }}
-          </Button>
-          <span v-else class="inline-block unready">
-            {{ $t('dataless', { what: $t('datalessDonationCommon') }) }}
-          </span>
+        <p v-if="$global.getNested(participationData, 'commonDonationUrl')">
+          <ButtonShare :url="participationData.commonDonationUrl">
+            <Button
+              :icon-id="['fas', 'heart']"
+              :link="participationData.commonDonationUrl"
+            >
+              {{ $t('donationButtonCommon') }}
+            </Button>
+            <template slot="unready">
+              {{ $t('dataless', { what: $t('datalessDonationCommon') }) }}
+            </template>
+          </ButtonShare>
         </p>
       </section>
       <section class="prose">
