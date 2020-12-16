@@ -96,17 +96,7 @@
           <h3>{{ $t('donationTitle') }}</h3>
           <p>
             {{ $t('donationDescription') }}
-            <span
-              v-if="
-                $global.getNested(
-                  participationData,
-                  'teamByTeamId',
-                  'donationUrl'
-                )
-              "
-            >
-              {{ $t('donationDescriptionTeam') }}
-            </span>
+            {{ $t('donationDescriptionTeam') }}
           </p>
           <i18n
             v-if="
@@ -356,7 +346,7 @@ de:
   donationTitle: 'Gutes Tun ❤️'
   donationDescription: 'In diesem Jahr spenden wir gemeinsam für mehrere Organisationen.'
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
-  donationDescriptionTeam: 'Mit einem Klick auf den folgenden Button kannst du dich an der Spende deines Teams beteiligen.'
+  donationDescriptionTeam: 'Im Stream könnt ihr mehr Spenden für die von euch gewählte wohltätige Organisation sammeln und müsst den von euch gesammelten Spendenbetrag verteidigen. Der von euch gesammelte Betrag kann also auch zu Teilen wohltätigen Organisationen zugutekommen, die anderen Teams am Herzen liegen.'
   errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
   home: 'Zurück zur Startseite'
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
@@ -376,7 +366,7 @@ de:
   teamDataName: 'Du bist im Team "{0}"!'
   teamDataNameDataless: 'Ihr müsst euch noch auf einen eigenen Teamnamen einigen.'
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
-  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, an die eure Spenden gehen sollen.'
+  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr Spenden sammeln wollt.'
   teamDataTitle: 'Daten'
   title: "So funktioniert's"
 </i18n>
