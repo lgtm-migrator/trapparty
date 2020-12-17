@@ -96,17 +96,7 @@
           <h3>{{ $t('donationTitle') }}</h3>
           <p>
             {{ $t('donationDescription') }}
-            <span
-              v-if="
-                $global.getNested(
-                  participationData,
-                  'teamByTeamId',
-                  'donationUrl'
-                )
-              "
-            >
-              {{ $t('donationDescriptionTeam') }}
-            </span>
+            {{ $t('donationDescriptionTeam') }}
           </p>
           <i18n
             v-if="
@@ -136,23 +126,26 @@
               {{ $t('teamDataCharityOrganisationDataless') }}
             </span>
           </p>
-          <p>
-            <Button
-              v-if="
-                $global.getNested(
-                  participationData,
-                  'teamByTeamId',
-                  'donationUrl'
-                )
-              "
-              :icon-id="['fas', 'heart']"
-              :link="participationData.teamByTeamId.donationUrl"
-            >
-              {{ $t('donationButtonTeam') }}
-            </Button>
-            <span v-else class="inline-block unready">
-              {{ $t('dataless', { what: $t('datalessDonationTeam') }) }}
-            </span>
+          <p
+            v-if="
+              $global.getNested(
+                participationData,
+                'teamByTeamId',
+                'donationUrl'
+              )
+            "
+          >
+            <ButtonShare :url="participationData.teamByTeamId.donationUrl">
+              <Button
+                :icon-id="['fas', 'heart']"
+                :link="participationData.teamByTeamId.donationUrl"
+              >
+                {{ $t('donationButtonTeam') }}
+              </Button>
+              <template slot="unready">
+                {{ $t('dataless', { what: $t('datalessDonationTeam') }) }}
+              </template>
+            </ButtonShare>
           </p>
         </section>
       </section>
@@ -165,17 +158,18 @@
           {{ $t('donationDescription') }}
           {{ $t('donationDescriptionCommon') }}
         </p>
-        <p>
-          <Button
-            v-if="$global.getNested(participationData, 'commonDonationUrl')"
-            :icon-id="['fas', 'heart']"
-            :link="participationData.commonDonationUrl"
-          >
-            {{ $t('donationButtonCommon') }}
-          </Button>
-          <span v-else class="inline-block unready">
-            {{ $t('dataless', { what: $t('datalessDonationCommon') }) }}
-          </span>
+        <p v-if="$global.getNested(participationData, 'commonDonationUrl')">
+          <ButtonShare :url="participationData.commonDonationUrl">
+            <Button
+              :icon-id="['fas', 'heart']"
+              :link="participationData.commonDonationUrl"
+            >
+              {{ $t('donationButtonCommon') }}
+            </Button>
+            <template slot="unready">
+              {{ $t('dataless', { what: $t('datalessDonationCommon') }) }}
+            </template>
+          </ButtonShare>
         </p>
       </section>
       <section class="prose">
@@ -236,8 +230,8 @@ export default {
           return {
             query: PLAYER_BY_INVITATION_CODE_FN,
             variables: {
-              invitationCode: this.$store.state.participationData
-                .invitationCode,
+              participationCode: this.$store.state.participationData
+                .participationCode,
             },
             update: (data) =>
               this.$global.getNested(
@@ -344,7 +338,7 @@ export default {
 <i18n lang="yml">
 de:
   dataless: '{what} ist noch nicht verfügbar.'
-  datalessDiscordCode: 'Der Einladungscode für den Discord-Server'
+  datalessDiscordCode: 'Der Teilnahmecode für den Discord-Server'
   datalessDonationCommon: 'Der Link zur Spendenseite für Zuschauer ohne Team'
   datalessDonationTeam: 'Der Link zur Spendenseite deines Teams'
   datalessStream: 'Der Link zum Stream'
@@ -356,7 +350,7 @@ de:
   donationTitle: 'Gutes Tun ❤️'
   donationDescription: 'In diesem Jahr spenden wir gemeinsam für mehrere Organisationen.'
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
-  donationDescriptionTeam: 'Mit einem Klick auf den folgenden Button kannst du dich an der Spende deines Teams beteiligen.'
+  donationDescriptionTeam: 'Im Stream könnt ihr mehr Spenden für die von euch gewählte wohltätige Organisation sammeln und müsst den von euch gesammelten Spendenbetrag verteidigen. Der von euch gesammelte Betrag kann also auch zu Teilen wohltätigen Organisationen zugutekommen, die anderen Teams am Herzen liegen.'
   errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
   home: 'Zurück zur Startseite'
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
@@ -376,7 +370,7 @@ de:
   teamDataName: 'Du bist im Team "{0}"!'
   teamDataNameDataless: 'Ihr müsst euch noch auf einen eigenen Teamnamen einigen.'
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
-  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, an die eure Spenden gehen sollen.'
+  teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr Spenden sammeln wollt.'
   teamDataTitle: 'Daten'
   title: "So funktioniert's"
 </i18n>

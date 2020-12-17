@@ -1,13 +1,15 @@
--- Verify maevsi:table_team on pg
+-- Verify trapparty:table_team on pg
 
 BEGIN;
 
 SELECT id,
        event_id,
-       name,
+       "name",
        emoji,
        charity_organization_id,
-       donation_url
+       donation_url,
+       donation_amount,
+       version_timestamp
 FROM trapparty.team WHERE FALSE;
 
 DO $$

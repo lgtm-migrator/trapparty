@@ -1,4 +1,4 @@
--- Verify maevsi:table_player on pg
+-- Verify trapparty:table_player on pg
 
 BEGIN;
 
