@@ -1,0 +1,6 @@
+mutation($participationCode: UUID) {
+  authenticate(input: { participationCode: $participationCode }) {
+    clientMutationId
+    jwt
+  }
+}

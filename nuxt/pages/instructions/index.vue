@@ -218,7 +218,6 @@
 <script>
 import __TYPENAME from '~/gql/query/__typename'
 import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn'
 
 const consola = require('consola')
 
@@ -227,21 +226,24 @@ export default {
     participationData() {
       switch (this.$store.state.participationData.role) {
         case 'player':
+          // return {
+          //   query: PLAYER_BY_INVITATION_CODE_FN,
+          //   variables: {
+          //     participationCode: this.$store.state.participationData
+          //       .participationCode,
+          //   },
+          //   update: (data) =>
+          //     this.$global.getNested(
+          //       data,
+          //       'playerByInvitationCodeFn',
+          //       'nodes'
+          //     )[0],
+          //   error(error, _vm, _key, _type, _options) {
+          //     this.graphqlErrorMessage = error.message
+          //   },
+          // }
           return {
-            query: PLAYER_BY_INVITATION_CODE_FN,
-            variables: {
-              participationCode: this.$store.state.participationData
-                .participationCode,
-            },
-            update: (data) =>
-              this.$global.getNested(
-                data,
-                'playerByInvitationCodeFn',
-                'nodes'
-              )[0],
-            error(error, _vm, _key, _type, _options) {
-              this.graphqlErrorMessage = error.message
-            },
+            query: __TYPENAME,
           }
         case 'anonymous':
           return {

@@ -5,11 +5,17 @@
 privilege_execute_revoke 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Revoke execute privilege from public.
 role_postgraphile 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add role postgraphile.
 role_anonymous [role_postgraphile] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add role anonymous.
-schema_public [role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add public schema.
+role_authenticated [role_postgraphile] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add role authenticated.
+schema_public [role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add public schema.
 extension_uuid-ossp [schema_public] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add extension uuid-ossp.
-table_event [schema_public role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table event.
-table_charity_organization [schema_public role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table charity organization.
-table_team [schema_public table_event table_charity_organization role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table team.
-table_player [schema_public table_team extension_uuid-ossp] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table player.
-function_player_by_invitation_code [privilege_execute_revoke schema_public extension_uuid-ossp table_player role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add a function that retrieves player data by invitation code.
+table_event [schema_public role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table event.
+table_charity_organization [schema_public role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table charity organization.
+table_team [schema_public table_event table_charity_organization role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table team.
+table_player [schema_public table_team role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table player.
+schema_private [role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add private schema.
+type_jwt [schema_public] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add type jwt.
+table_jwt [schema_private extension_uuid-ossp type_jwt] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table for JWTs.
+table_participation [schema_private schema_public table_player extension_uuid-ossp] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table participation.
+function_authenticate [privilege_execute_revoke schema_public extension_uuid-ossp type_jwt schema_private table_participation table_jwt table_player role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add a function to authenticate.
+function_jwt_refresh [privilege_execute_revoke schema_public extension_uuid-ossp type_jwt table_jwt role_anonymous role_authenticated] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add function that refreshes tokens.
 table_team_lead [schema_public table_team table_player] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Alter table team to add a lead player.

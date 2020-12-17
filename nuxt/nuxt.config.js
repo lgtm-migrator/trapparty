@@ -238,7 +238,6 @@ export default {
     '~/plugins/baseUrl.js',
     '~/plugins/global.js',
     '~/plugins/i18n.js',
-    '~/plugins/persistedState.js',
     '~/plugins/vuelidate.js',
   ],
 
@@ -265,5 +264,9 @@ export default {
     },
   },
 
-  serverMiddleware: [bodyParser.json(), '~/middleware/server/headers.ts'],
+  serverMiddleware: [
+    bodyParser.json(),
+    '~/middleware/server/headers.ts',
+    { path: '/auth', handler: '~/api/auth.ts' },
+  ],
 }

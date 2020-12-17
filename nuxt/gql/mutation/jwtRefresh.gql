@@ -1,0 +1,6 @@
+mutation($jwtId: UUID!) {
+  jwtRefresh(input: { jwtId: $jwtId }) {
+    clientMutationId
+    jwt
+  }
+}

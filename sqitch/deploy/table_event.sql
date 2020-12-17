@@ -1,6 +1,7 @@
 -- Deploy trapparty:table_event to pg
 -- requires: schema_public
 -- requires: role_anonymous
+-- requires: role_authenticated
 
 BEGIN;
 
@@ -24,6 +25,6 @@ COMMENT ON COLUMN trapparty.event.stream_url IS 'The event''s stream url.';
 COMMENT ON COLUMN trapparty.event.common_donation_url IS 'The event''s common donation url.';
 COMMENT ON COLUMN trapparty.event.common_donation_is_live IS 'Indicates whether the event''s common donations are featured in the stream.';
 
-GRANT SELECT ON TABLE trapparty.event TO trapparty_anonymous;
+GRANT SELECT ON TABLE trapparty.event TO trapparty_anonymous, trapparty_authenticated;
 
 COMMIT;

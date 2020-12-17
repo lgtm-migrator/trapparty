@@ -1,6 +1,7 @@
 -- Deploy trapparty:table_charity_organization to pg
 -- requires: schema_public
 -- requires: role_anonymous
+-- requires: role_authenticated
 
 BEGIN;
 
@@ -15,6 +16,6 @@ COMMENT ON COLUMN trapparty.charity_organization.id IS 'The charity organization
 COMMENT ON COLUMN trapparty.charity_organization.name IS 'The charity organization''s name.';
 COMMENT ON COLUMN trapparty.charity_organization.url IS 'The charity organization''s url.';
 
-GRANT SELECT ON TABLE trapparty.charity_organization TO trapparty_anonymous;
+GRANT SELECT ON TABLE trapparty.charity_organization TO trapparty_anonymous, trapparty_authenticated;
 
 COMMIT;

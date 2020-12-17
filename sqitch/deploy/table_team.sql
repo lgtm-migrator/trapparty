@@ -3,6 +3,7 @@
 -- requires: table_event
 -- requires: table_charity_organization
 -- requires: role_anonymous
+-- requires: role_authenticated
 
 BEGIN;
 
@@ -28,6 +29,6 @@ COMMENT ON COLUMN trapparty.team.donation_url IS 'The team''s donation url.';
 COMMENT ON COLUMN trapparty.team.donation_amount IS 'The team''s donation amount.';
 COMMENT ON COLUMN trapparty.team.version_timestamp IS 'The team''s version timestamp.';
 
-GRANT SELECT ON TABLE trapparty.team TO trapparty_anonymous;
+GRANT SELECT ON TABLE trapparty.team TO trapparty_anonymous, trapparty_authenticated;
 
 COMMIT;

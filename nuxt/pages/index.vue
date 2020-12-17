@@ -13,7 +13,11 @@
       <div
         class="items-center card flex flex-col lg:flex-row lg:flex-wrap my-8"
       >
-        <Form class="lg:w-8/12" :validation-object="$v.form" @submit="saveCode">
+        <Form
+          class="lg:w-8/12"
+          :validation-object="$v.form"
+          @submit="authenticate"
+        >
           <h2>
             {{ $t('participate') }}
           </h2>
@@ -86,7 +90,7 @@
         <div class="self-stretch lg:w-1/12 px-8 py-8">
           <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
         </div>
-        <Form class="lg:w-2/12" @submit="anonymous">
+        <div class="lg:w-2/12">
           <h2>
             {{ $t('anonymousTitle') }}
           </h2>
@@ -94,11 +98,16 @@
             {{ $t('anonymousDescription') }}
           </p>
           <div class="flex flex-col items-center justify-between">
-            <Button class="m-4" :icon="false" type="submit">
+            <Button
+              class="m-4"
+              :icon="false"
+              :link="localePath('/instructions')"
+              type="button"
+            >
               {{ $t('anonymous') }}
             </Button>
           </div>
-        </Form>
+        </div>
         <p class="opacity-50 text-center text-sm w-full">
           {{ $t('disclaimer') }}
         </p>
@@ -118,13 +127,16 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 
-import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
+import AUTHENTICATE_MUTATION from '~/gql/mutation/authenticate'
+import ALL_EVENTS_NEWEST_QUERY from '~/gql/query/allEventsNewest'
+
+const consola = require('consola')
 
 export default {
   apollo: {
     eventData() {
       return {
-        query: ALL_EVENTS_NEWEST,
+        query: ALL_EVENTS_NEWEST_QUERY,
         update: (data) => this.$global.getNested(data, 'allEvents', 'nodes')[0],
         error(error, _vm, _key, _type, _options) {
           this.graphqlErrorMessage = error.message
@@ -134,14 +146,11 @@ export default {
   },
   data() {
     return {
-      // eventUpcoming: {
-      //   name: 'Nächste Party',
-      //   start: 'bald',
-      // },
       form: {
         'participation-code':
           this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
       },
+      formSent: undefined,
       graphqlErrorMessage: undefined,
       title: this.$t('title'),
     }
@@ -169,23 +178,36 @@ export default {
     }
   },
   methods: {
-    anonymous(e) {
+    async authenticate(e) {
       e.preventDefault()
-      this.$store.commit('setParticipationData', { role: 'anonymous' })
-      this.$router.push({
-        path: this.localePath(`/instructions`),
-      })
-    },
-    saveCode(e) {
-      e.preventDefault()
+
+      this.formSent = true
+      this.graphqlErrorMessage = undefined
+
       this.$v.form.$reset()
-      this.$store.commit('setParticipationData', {
-        role: 'player',
-        participationCode: this.form['participation-code'],
-      })
-      this.$router.push({
-        path: this.localePath(`/instructions`),
-      })
+      const res = await this.$apollo
+        .mutate({
+          mutation: AUTHENTICATE_MUTATION,
+          variables: {
+            participationCode: this.form['participation-code'],
+          },
+        })
+        .then(({ data }) => this.$global.getNested(data, 'authenticate'))
+        .catch((error) => {
+          this.graphqlErrorMessage = error.message
+          consola.error(error)
+        })
+
+      if (!res) {
+        return
+      }
+
+      this.$global.storeJwt(
+        this.$apollo.getClient(),
+        this.$store,
+        undefined,
+        res.jwt
+      )
     },
   },
   validations() {

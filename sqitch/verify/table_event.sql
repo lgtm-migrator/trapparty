@@ -18,6 +18,10 @@ BEGIN
   ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.event', 'INSERT'));
   ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.event', 'UPDATE'));
   ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.event', 'DELETE'));
+  ASSERT (SELECT pg_catalog.has_table_privilege('trapparty_authenticated', 'trapparty.event', 'SELECT'));
+  ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_authenticated', 'trapparty.event', 'INSERT'));
+  ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_authenticated', 'trapparty.event', 'UPDATE'));
+  ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_authenticated', 'trapparty.event', 'DELETE'));
 END $$;
 
 ROLLBACK;

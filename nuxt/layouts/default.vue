@@ -67,7 +67,7 @@ export default {
     },
     signedInUsername() {
       return this.$store.state.jwtDecoded &&
-        this.$store.state.jwtDecoded.role === 'maevsi_account' &&
+        this.$store.state.jwtDecoded.role === 'maevsi_authenticated' &&
         this.$store.state.jwtDecoded.exp > Math.floor(Date.now() / 1000)
         ? this.$store.state.jwtDecoded.username
         : undefined
@@ -89,7 +89,7 @@ export default {
 
 <i18n lang="yml">
 de:
-  account: 'Konto'
+  authenticated: 'Konto'
   githubLinkTitle: 'TrapParty auf GitHub'
   home: 'Nach Hause'
   imprint: 'Impressum'
@@ -97,7 +97,7 @@ de:
   session: 'Sitzung'
   settings: 'Einstellungen'
 en:
-  account: 'Account'
+  authenticated: 'Account'
   githubLinkTitle: 'TrapParty on GitHub'
   home: 'Head home'
   imprint: 'Imprint'
