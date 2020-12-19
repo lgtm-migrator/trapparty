@@ -4,7 +4,10 @@ query ($participationCode: UUID!) {
       teamByTeamId {
         name
         emoji
-        charityOrganizationId
+        charityOrganizationByCharityOrganizationId {
+          name
+          url
+        }
         donationUrl
         eventByEventId {
           name

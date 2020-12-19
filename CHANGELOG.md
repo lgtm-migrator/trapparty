@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/dargmuesli/trapparty/compare/1.3.0...1.3.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* **instructions:** correct charity organization retrieval ([f315979](https://github.com/dargmuesli/trapparty/commit/f3159793fc4d64ebbd3af8c978f586a488182502))
+* improve participation ux ([fd2fe3d](https://github.com/dargmuesli/trapparty/commit/fd2fe3d5652030224744e722cb7281bf1776c707))
+
 # [1.3.0](https://github.com/dargmuesli/trapparty/compare/1.2.1...1.3.0) (2020-12-16)
 
 

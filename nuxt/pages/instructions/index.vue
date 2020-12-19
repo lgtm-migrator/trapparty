@@ -103,21 +103,34 @@
               $global.getNested(
                 participationData,
                 'teamByTeamId',
-                'charityOrganization',
+                'charityOrganizationByCharityOrganizationId',
                 'name'
               )
             "
             path="teamDataCharityOrganisation"
+            tag="p"
           >
             <span class="font-bold">
               <a
-                v-if="participationData.teamByTeamId.charityOrganization.url"
-                :href="participationData.teamByTeamId.charityOrganization.url"
+                v-if="
+                  participationData.teamByTeamId
+                    .charityOrganizationByCharityOrganizationId.url
+                "
+                :href="
+                  participationData.teamByTeamId
+                    .charityOrganizationByCharityOrganizationId.url
+                "
               >
-                {{ participationData.teamByTeamId.charityOrganization.name }}
+                {{
+                  participationData.teamByTeamId
+                    .charityOrganizationByCharityOrganizationId.name
+                }}
               </a>
               <span v-else class="inline-block">
-                {{ participationData.teamByTeamId.charityOrganization.name }}
+                {{
+                  participationData.teamByTeamId
+                    .charityOrganizationByCharityOrganizationId.name
+                }}
               </span>
             </span>
           </i18n>
@@ -277,7 +290,7 @@ export default {
       //   name: 'Jonas',
       //   teamByTeamId: {
       //     name: 'Die Landratten',
-      //     charityOrganization: {
+      //     charityOrganizationByCharityOrganizationId: {
       //       name: 'DRK',
       //       url: 'https://example.com',
       //     },
