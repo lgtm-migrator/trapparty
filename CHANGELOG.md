@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/dargmuesli/trapparty/compare/1.3.1...1.4.0) (2020-12-19)
+
+
+### Bug Fixes
+
+* improve participation ux ([207304a](https://github.com/dargmuesli/trapparty/commit/207304a2784f69409ee8140d1a05b48d7c977584))
+
+
+### Features
+
+* stats ([66d7f83](https://github.com/dargmuesli/trapparty/commit/66d7f8392b70e4b811ec6993190d6b19d3484547))
+* **sqitch:** add kv table ([ed93828](https://github.com/dargmuesli/trapparty/commit/ed93828f0a9126e15ec633c66dc63270fcca1233))
+
 ## [1.3.1](https://github.com/dargmuesli/trapparty/compare/1.3.0...1.3.1) (2020-12-19)
 
 
