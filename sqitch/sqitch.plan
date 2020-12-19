@@ -14,3 +14,6 @@ table_player [schema_public table_team extension_uuid-ossp] 1970-01-01T00:00:00Z
 function_player_by_invitation_code [privilege_execute_revoke schema_public extension_uuid-ossp table_player role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add a function that retrieves player data by invitation code.
 table_leader [schema_public table_team table_player] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table leader.
 table_kv 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # A key value store.
+table_game [schema_public table_event role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table game.
+table_game_score [schema_public table_game table_team role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table game score.
+function_team_player_count [privilege_execute_revoke schema_public table_team table_player role_anonymous] 1970-01-01T00:00:00Z Jonas Thelemann <e-mail@jonas-thelemann.de> # Add table event.

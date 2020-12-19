@@ -1,0 +1,34 @@
+query ($eventId: BigInt!) {
+  teamPlayerCount(eventId: $eventId) {
+    nodes {
+      teamId
+      playerCount
+    }
+  }
+  allTeams(condition: {eventId: $eventId}, orderBy: ID_ASC) {
+    nodes {
+      name
+      emoji
+      charityOrganizationId
+      donationUrl
+      donationAmount
+      charityOrganizationByCharityOrganizationId {
+        name
+        url
+      }
+    }
+    totalCount
+  }
+  allGames(condition: {eventId: $eventId}) {
+    nodes {
+      id
+      name
+      gameScoresByGameId(orderBy: TEAM_ID_ASC) {
+        nodes {
+          score
+        }
+      }
+    }
+    totalCount
+  }
+}

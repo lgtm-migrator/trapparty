@@ -1,6 +1,7 @@
 {
   allEvents(orderBy: START_DESC, first: 1) {
     nodes {
+      id
       name
       start
       end

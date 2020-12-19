@@ -1,0 +1,110 @@
+<template>
+  <ChartBarStacked
+    v-if="data !== null"
+    :data="data"
+    :options-additional="optionsComputed"
+    :height="height"
+  />
+</template>
+
+<script>
+import merge from 'lodash.merge'
+
+import STATS_QUERY from '~/gql/query/stats'
+
+const Color = require('color')
+const consola = require('consola')
+const Rainbow = require('rainbowvis.js')
+
+export default {
+  props: {
+    event: {
+      type: Object,
+      default: undefined,
+    },
+    height: {
+      type: Number,
+      default: undefined,
+    },
+    options: {
+      type: Object,
+      default: undefined,
+    },
+    title: {
+      type: String,
+      default() {
+        return this.$t('title')
+      },
+    },
+  },
+  data() {
+    return {
+      data: null,
+      optionsDefault: {
+        title: {
+          text: this.$props.title,
+        },
+      },
+    }
+  },
+  computed: {
+    optionsComputed() {
+      return merge(this.optionsDefault, this.optionsAdditional)
+    },
+  },
+  mounted() {
+    this.$apollo
+      .query({
+        query: STATS_QUERY,
+        variables: {
+          eventId: this.event.id,
+        },
+      })
+      .then((data) => {
+        const rainbow = new Rainbow()
+        const allTeams = this.$global.getNested(data, 'data', 'allTeams')
+        const teamPlayerCount = this.$global.getNested(
+          data,
+          'data',
+          'teamPlayerCount'
+        )
+        const labels = []
+        const datasets = []
+        const donationsPerHead = []
+
+        for (let i = 0; i < allTeams.nodes.length; i++) {
+          const team = allTeams.nodes[i]
+          const teamPlayerCountObject = teamPlayerCount.nodes[i]
+
+          labels.push(`${team.name} ${team.emoji}`)
+          donationsPerHead.push(
+            team.donationAmount / teamPlayerCountObject.playerCount
+          )
+        }
+
+        datasets.push({
+          label: this.$t('title'),
+          data: donationsPerHead,
+          backgroundColor: Color(`#${rainbow.colorAt(0)}`)
+            .desaturate(0.5)
+            .darken(0.25)
+            .hex(),
+        })
+
+        this.data = {
+          labels,
+          datasets,
+        }
+      })
+      .catch((error) => {
+        this.graphqlErrorMessage = error.message
+        consola.error(error)
+      })
+  },
+}
+</script>
+
+<i18n lang="yml">
+de:
+  title: Spenden pro Kopf
+</i18n>

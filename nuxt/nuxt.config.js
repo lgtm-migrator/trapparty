@@ -259,7 +259,7 @@ export default {
           "'self'",
           'https://static.cloudflareinsights.com/beacon.min.js',
         ],
-        'style-src': ["'self'"], // Tailwind
+        'style-src': ["'self'", "'unsafe-inline'"], // Tailwind, ChartJS (TODO: https://www.chartjs.org/docs/latest/getting-started/integration.html#content-security-policy)
       },
       reportOnly: false,
     },

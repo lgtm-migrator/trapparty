@@ -12,8 +12,8 @@ COMMENT ON TABLE trapparty.kv IS 'A key value store.';
 COMMENT ON COLUMN trapparty.kv.key IS 'The key.';
 COMMENT ON COLUMN trapparty.kv.value IS 'A value.';
 
-ALTER TABLE trapparty.kv ENABLE ROW LEVEL SECURITY;
-
 GRANT SELECT ON TABLE trapparty.kv TO trapparty_anonymous;
+
+INSERT INTO trapparty.kv ("key", "value") VALUES ('GAME_CURRENT', NULL);
 
 COMMIT;
