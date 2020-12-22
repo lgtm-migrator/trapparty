@@ -7,7 +7,9 @@
     >
       <section class="mb-4">
         <h1>{{ $t('title') }}</h1>
-        <div class="gap-4 grid grid-cols-1 lg:grid-cols-2 place-content-center">
+        <div
+          class="text-white gap-4 grid grid-cols-1 lg:grid-cols-2 place-content-center"
+        >
           <div class="bg-gray-700 flex-col p-2 rounded">
             <div class="text-4xl">
               {{ numberFormat(donationAmountTeamSum) }}
@@ -42,7 +44,7 @@
                 <th
                   v-for="charityOrganization in charityOrganizations"
                   :key="`header-${charityOrganization.id}`"
-                  class="border p-2"
+                  class="border border-gray-700 p-2"
                 >
                   {{ $global.getNested(charityOrganization, 'name') }}
                 </th>
@@ -63,7 +65,7 @@
                 ]"
                 :key="team.id"
               >
-                <th class="border font-bold p-2">
+                <th class="border border-gray-700 font-bold p-2">
                   {{ `${team.name}${team.emoji ? ' ' + team.emoji : ''}` }}
                 </th>
                 <td
@@ -71,7 +73,7 @@
                     charityOrganization, charityOrganizationIndex
                   ) in charityOrganizations"
                   :key="`data-${charityOrganization.id}`"
-                  class="border p-2"
+                  class="border border-gray-700 p-2"
                   :class="{
                     'font-bold':
                       $global.getNested(
@@ -87,7 +89,7 @@
                     )
                   }}
                 </td>
-                <td class="border font-bold p-2">
+                <td class="border border-gray-700 font-bold p-2">
                   {{ numberFormat(team.donationAmount) }}
                 </td>
               </tr>
@@ -98,7 +100,7 @@
                     charityOrganization, charityOrganizationIndex
                   ) in charityOrganizations"
                   :key="`total-${charityOrganization.id}`"
-                  class="border font-bold p-2"
+                  class="border border-gray-700 font-bold p-2"
                 >
                   {{
                     numberFormat(
@@ -106,7 +108,7 @@
                     )
                   }}
                 </td>
-                <td class="border font-bold p-2">
+                <td class="border border-gray-700 font-bold p-2">
                   {{ numberFormat(donationAmountSum) }}
                 </td>
               </tr>

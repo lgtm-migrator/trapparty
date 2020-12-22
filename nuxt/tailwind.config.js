@@ -116,11 +116,11 @@ module.exports = {
         },
         h1: {
           fontSize: theme('fontSize.4xl[0]'),
-          lineHeight: theme('fontSize.4xl[1].lineHeight'),
+          lineHeight: '3rem',
           marginBottom: theme('margin.4'),
           // fontFamily: 'Montserrat',
           fontWeight: theme('fontWeight.bold'),
-          overflowX: 'hidden',
+          overflow: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
         },
