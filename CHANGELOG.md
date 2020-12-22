@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/dargmuesli/trapparty/compare/1.5.1...1.5.2) (2020-12-22)
+
+
+### Bug Fixes
+
+* **donation:** improve styling ([8b36006](https://github.com/dargmuesli/trapparty/commit/8b36006028566935b40ff5a83598b620e4431ac8))
+
 ## [1.5.1](https://github.com/dargmuesli/trapparty/compare/1.5.0...1.5.1) (2020-12-22)
 
 
