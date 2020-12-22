@@ -120,7 +120,7 @@ module.exports = {
           marginBottom: theme('margin.4'),
           // fontFamily: 'Montserrat',
           fontWeight: theme('fontWeight.bold'),
-          overflow: 'hidden',
+          overflowX: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
         },
