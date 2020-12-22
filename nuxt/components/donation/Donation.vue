@@ -7,20 +7,26 @@
     >
       <section class="mb-4">
         <h1>{{ $t('title') }}</h1>
-        <div class="gap-4 grid grid-cols-2 place-content-center">
+        <div class="gap-4 grid grid-cols-1 lg:grid-cols-2 place-content-center">
           <div class="bg-gray-700 flex-col p-2 rounded">
-            <div class="text-4xl">{{ `${donationAmountTeamSum}€` }}</div>
+            <div class="text-4xl">
+              {{ numberFormat(donationAmountTeamSum) }}
+            </div>
             <div class="font-bold">{{ $t('donationTeam') }}</div>
           </div>
           <div class="bg-gray-700 flex-col p-2 rounded">
             <div class="text-4xl">
-              {{ `${$global.getNested(event, 'commonDonationAmount') || 0}€` }}
+              {{
+                numberFormat(
+                  $global.getNested(event, 'commonDonationAmount') || 0
+                )
+              }}
             </div>
             <div class="font-bold">{{ $t('donationCommon') }}</div>
           </div>
-          <div class="bg-gray-700 col-span-2 flex-col p-4 rounded">
+          <div class="bg-gray-700 lg:col-span-2 flex-col p-4 rounded">
             <div class="text-6xl">
-              {{ `${donationAmountSum}€` }}
+              {{ numberFormat(donationAmountSum) }}
             </div>
             <div class="font-bold">{{ $t('donationTotal') }}</div>
           </div>
