@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/dargmuesli/trapparty/compare/1.5.0...1.5.1) (2020-12-22)
+
+
+### Bug Fixes
+
+* **donation:** use number formatting for general donation counts ([268bcd3](https://github.com/dargmuesli/trapparty/commit/268bcd32b84c5e6950473293d0d78bb00df75f5f))
+* **tailwind:** overflow heading only horizontally ([94f6bce](https://github.com/dargmuesli/trapparty/commit/94f6bce541f70ff2bb951a93758320b180d9dfa8))
+
 # [1.5.0](https://github.com/dargmuesli/trapparty/compare/1.4.0...1.5.0) (2020-12-22)
 
 
