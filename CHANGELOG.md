@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/dargmuesli/trapparty/compare/1.4.0...1.5.0) (2020-12-22)
+
+
+### Features
+
+* donation stats ([f1f57c3](https://github.com/dargmuesli/trapparty/commit/f1f57c30843266e3b71af1c8c3a24af9b9d50ad4))
+
 # [1.4.0](https://github.com/dargmuesli/trapparty/compare/1.3.1...1.4.0) (2020-12-19)
 
 
