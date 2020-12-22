@@ -13,6 +13,7 @@ query ($eventId: BigInt!) {
       donationUrl
       donationAmount
       charityOrganizationByCharityOrganizationId {
+        id
         name
         url
       }

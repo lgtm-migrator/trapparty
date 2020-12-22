@@ -40,14 +40,20 @@ export default {
                 display: false,
               },
               stacked: true,
+              ticks: {
+                fontSize: '17',
+              },
             },
           ],
           yAxes: [
             {
               gridLines: {
-                color: '#444',
+                color: '#666',
               },
               stacked: true,
+              ticks: {
+                fontSize: '17',
+              },
             },
           ],
         },

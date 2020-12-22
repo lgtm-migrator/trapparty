@@ -12,7 +12,10 @@ CREATE TABLE trapparty.event (
   discord_invite_code        TEXT CHECK (discord_invite_code ~ '^[a-zA-Z0-9]{10}$'),
   stream_url                 TEXT CHECK (char_length(stream_url) < 100 AND stream_url ~ '^https://.+$'),
   common_donation_url        TEXT CHECK (char_length(common_donation_url) < 100 AND common_donation_url ~ '^https://.+$'),
-  common_donation_is_live    BOOLEAN
+  common_donation_is_live    BOOLEAN,
+  common_donation_amount     MONEY CHECK (common_donation_amount >= 0::MONEY),
+  version_timestamp          TIMESTAMP NOT NULL DEFAULT NOW(),
+  UNIQUE (name, version_timestamp)
 );
 
 COMMENT ON TABLE trapparty.event IS 'Events.';
@@ -23,6 +26,7 @@ COMMENT ON COLUMN trapparty.event.discord_invite_code IS 'The event''s discord c
 COMMENT ON COLUMN trapparty.event.stream_url IS 'The event''s stream url.';
 COMMENT ON COLUMN trapparty.event.common_donation_url IS 'The event''s common donation url.';
 COMMENT ON COLUMN trapparty.event.common_donation_is_live IS 'Indicates whether the event''s common donations are featured in the stream.';
+COMMENT ON COLUMN trapparty.event.common_donation_amount IS 'The event''s common donation amount.';
 
 GRANT SELECT ON TABLE trapparty.event TO trapparty_anonymous;
 

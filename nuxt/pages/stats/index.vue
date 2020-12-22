@@ -6,10 +6,18 @@
     <h1>
       {{ title }}
     </h1>
-    <p>{{ JSON.stringify(allGames) }}</p>
-    <ChartScore :event="allEventsNewest" />
-    <ChartDonationAmount :event="allEventsNewest" />
-    <ChartScoreTotal :event="allEventsNewest" />
+    <div v-if="allEventsNewest">
+      <p>
+        {{
+          $t('eventName', { name: $global.getNested(allEventsNewest, 'name') })
+        }}
+      </p>
+      <Donation class="mb-8" :event="allEventsNewest" />
+      <ChartScoring class="mb-8" :event="allEventsNewest" />
+    </div>
+    <div v-else class="alert">
+      {{ $t('datalessEvent') }}
+    </div>
   </Loader>
 </template>
 
@@ -45,5 +53,8 @@ export default {
 
 <i18n lang="yml">
 de:
-  title: 'Stats'
+  datalessEvent: 'Kein Event gefunden!'
+  eventName: 'Für die Trapparty {name}.'
+  title: 'Statistiken'
+  titleScore: 'Teamwertung'
 </i18n>

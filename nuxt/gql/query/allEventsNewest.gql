@@ -8,6 +8,8 @@
       discordInviteCode
       streamUrl
       commonDonationUrl
+      commonDonationIsLive
+      commonDonationAmount
       teamsByEventId {
         nodes {
           name

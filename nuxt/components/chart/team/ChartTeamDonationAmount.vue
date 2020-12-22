@@ -1,5 +1,6 @@
 <template>
-  <ChartBarStacked
+  <component
+    :is="true ? chartBaseBarStacked : chartBaseBarStackedHorizontal"
     v-if="data !== null"
     :data="data"
     :options-additional="optionsComputed"
@@ -10,6 +11,8 @@
 <script>
 import merge from 'lodash.merge'
 
+import ChartBaseBarStacked from '~/components/chart/base/ChartBaseBarStacked'
+import ChartBaseBarStackedHorizontal from '~/components/chart/base/ChartBaseBarStackedHorizontal'
 import STATS_QUERY from '~/gql/query/stats'
 
 const Color = require('color')
@@ -39,6 +42,8 @@ export default {
   },
   data() {
     return {
+      chartBaseBarStacked: ChartBaseBarStacked,
+      chartBaseBarStackedHorizontal: ChartBaseBarStackedHorizontal,
       data: null,
       optionsDefault: {
         title: {
@@ -53,6 +58,10 @@ export default {
     },
   },
   mounted() {
+    if (!this.event) {
+      return
+    }
+
     this.$apollo
       .query({
         query: STATS_QUERY,

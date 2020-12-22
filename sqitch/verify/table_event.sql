@@ -9,7 +9,9 @@ SELECT id,
        discord_invite_code,
        stream_url,
        common_donation_url,
-       common_donation_is_live
+       common_donation_is_live,
+       common_donation_amount,
+       version_timestamp
 FROM trapparty.event WHERE FALSE;
 
 DO $$
