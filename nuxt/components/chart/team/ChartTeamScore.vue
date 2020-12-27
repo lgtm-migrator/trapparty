@@ -65,7 +65,9 @@ export default {
 
     window.addEventListener(
       'resize',
-      (e) => (this.vertical = e.target.outerWidth >= 1024)
+      (e) =>
+        (this.vertical =
+          e.target.outerWidth >= this.$global.CHART_DIRECTION_BREAKPOINT)
     )
 
     window.dispatchEvent(new Event('resize'))

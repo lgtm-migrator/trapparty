@@ -1,5 +1,6 @@
 import { helpers } from 'vuelidate/lib/validators'
 
+export const CHART_DIRECTION_BREAKPOINT = 768
 export const EVENT_DESCRIPTION_MAXIMUM = 10000
 export const EVENT_NAME_MAXIMUM = 100
 export const EVENT_PLACE_MAXIMUM = 300
@@ -63,6 +64,7 @@ export function sortBy(property) {
 
 export default (_ctx, inject) => {
   const global = {
+    CHART_DIRECTION_BREAKPOINT,
     EVENT_DESCRIPTION_MAXIMUM,
     EVENT_NAME_MAXIMUM,
     EVENT_PLACE_MAXIMUM,
