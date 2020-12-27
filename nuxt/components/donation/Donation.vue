@@ -43,7 +43,10 @@
                 <td />
                 <th
                   v-for="charityOrganization in charityOrganizations"
-                  :key="`header-${charityOrganization.id}`"
+                  :key="`header-${
+                    $global.getNested(charityOrganization, 'id') ||
+                    Math.random()
+                  }`"
                   class="border border-gray-700 p-2"
                 >
                   {{ $global.getNested(charityOrganization, 'name') }}
@@ -72,7 +75,10 @@
                   v-for="(
                     charityOrganization, charityOrganizationIndex
                   ) in charityOrganizations"
-                  :key="`data-${charityOrganization.id}`"
+                  :key="`data-${
+                    $global.getNested(charityOrganization, 'id') ||
+                    Math.random()
+                  }`"
                   class="border border-gray-700 p-2"
                   :class="{
                     'font-bold':
@@ -80,12 +86,16 @@
                         team,
                         'charityOrganizationByCharityOrganizationId',
                         'id'
-                      ) === charityOrganization.id,
+                      ) === $global.getNested(charityOrganization, 'id'),
                   }"
                 >
                   {{
                     numberFormat(
-                      distributionMatrix[teamIndex][charityOrganizationIndex]
+                      $global.getNested(
+                        distributionMatrix,
+                        [teamIndex],
+                        [charityOrganizationIndex]
+                      )
                     )
                   }}
                 </td>
@@ -99,7 +109,10 @@
                   v-for="(
                     charityOrganization, charityOrganizationIndex
                   ) in charityOrganizations"
-                  :key="`total-${charityOrganization.id}`"
+                  :key="`total-${
+                    $global.getNested(charityOrganization, 'id') ||
+                    Math.random()
+                  }`"
                   class="border border-gray-700 font-bold p-2"
                 >
                   {{
@@ -198,7 +211,9 @@ export default {
             team.charityOrganizationByCharityOrganizationId
           )
           donationsPerHead.push(
-            team.donationAmount / teamPlayerCountObject.playerCount
+            typeof teamPlayerCountObject === 'undefined'
+              ? 0
+              : team.donationAmount / teamPlayerCountObject.playerCount
           )
         }
 
@@ -272,16 +287,19 @@ export default {
           for (let j = 0; j < this.charityOrganizations.length; j++) {
             const charityOrganization = this.charityOrganizations[j]
             const teamCharityDonation =
-              team.donationAmount *
-                teamDonationWeighting *
-                this.charityOrganizationWeigths[j] +
-              (this.$global.getNested(
-                team,
-                'charityOrganizationByCharityOrganizationId',
-                'id'
-              ) === charityOrganization.id
-                ? team.donationAmount * this.DONATION_DISTRIBUTION_PERCENTAGE
-                : 0)
+              charityOrganization === null
+                ? 0
+                : team.donationAmount *
+                    teamDonationWeighting *
+                    this.charityOrganizationWeigths[j] +
+                  (this.$global.getNested(
+                    team,
+                    'charityOrganizationByCharityOrganizationId',
+                    'id'
+                  ) === this.$global.getNested(charityOrganization, 'id')
+                    ? team.donationAmount *
+                      this.DONATION_DISTRIBUTION_PERCENTAGE
+                    : 0)
 
             this.distributionMatrix[i].push(teamCharityDonation)
 

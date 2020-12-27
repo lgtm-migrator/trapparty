@@ -100,7 +100,9 @@ export default {
 
           labels.push(`${team.name} ${team.emoji}`)
           donationsPerHead.push(
-            team.donationAmount / teamPlayerCountObject.playerCount
+            typeof teamPlayerCountObject === 'undefined'
+              ? 0
+              : team.donationAmount / teamPlayerCountObject.playerCount
           )
         }
 
