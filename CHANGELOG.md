@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/dargmuesli/trapparty/compare/1.5.2...1.6.0) (2020-12-27)
+
+
+### Features
+
+* responsive switch to horizontal/verical graphs ([666032f](https://github.com/dargmuesli/trapparty/commit/666032f24ceac2dd7214898bab2fb2a1d0e090ca))
+
 ## [1.5.2](https://github.com/dargmuesli/trapparty/compare/1.5.1...1.5.2) (2020-12-22)
 
 
