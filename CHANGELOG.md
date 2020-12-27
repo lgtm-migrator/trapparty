@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/dargmuesli/trapparty/compare/1.6.0...1.7.0) (2020-12-27)
+
+
+### Features
+
+* **charts:** improve scaling ([00b21bc](https://github.com/dargmuesli/trapparty/commit/00b21bc74d12b46a33f6a7a89a15b3a1a63935bf))
+* **stats:** improve empty value acceptance ([f08693e](https://github.com/dargmuesli/trapparty/commit/f08693eda782357f552250c0b701764ab9d0bdb5))
+
 # [1.6.0](https://github.com/dargmuesli/trapparty/compare/1.5.2...1.6.0) (2020-12-27)
 
 
