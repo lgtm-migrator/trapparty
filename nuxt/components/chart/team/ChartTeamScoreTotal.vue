@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="true ? chartBaseBarStacked : chartBaseBarStackedHorizontal"
+    :is="vertical ? chartBaseBarStacked : chartBaseBarStackedHorizontal"
     v-if="data !== null"
     :data="data"
     :options-additional="optionsComputed"
@@ -50,6 +50,7 @@ export default {
           text: this.$props.title,
         },
       },
+      vertical: false,
     }
   },
   computed: {
@@ -61,6 +62,13 @@ export default {
     if (!this.event) {
       return
     }
+
+    window.addEventListener(
+      'resize',
+      (e) => (this.vertical = e.target.outerWidth >= 1024)
+    )
+
+    window.dispatchEvent(new Event('resize'))
 
     this.$apollo
       .query({
