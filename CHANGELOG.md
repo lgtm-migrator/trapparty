@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/dargmuesli/trapparty/compare/1.7.2...1.7.3) (2021-02-01)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([e54ca60](https://github.com/dargmuesli/trapparty/commit/e54ca6054a60f38ca25397b493b6a90db602ff0d))
+
 ## [1.7.2](https://github.com/dargmuesli/trapparty/compare/1.7.1...1.7.2) (2021-01-18)
 
 
