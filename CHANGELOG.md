@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/dargmuesli/trapparty/compare/1.7.3...1.7.4) (2021-02-12)
+
+
+### Bug Fixes
+
+* **ci:** trigger on create ([b4374b8](https://github.com/dargmuesli/trapparty/commit/b4374b8b90c930dc3ebcd793d14a2b82dc0c7873))
+
 ## [1.7.3](https://github.com/dargmuesli/trapparty/compare/1.7.2...1.7.3) (2021-02-01)
 
 
