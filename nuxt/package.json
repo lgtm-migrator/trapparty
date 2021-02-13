@@ -50,7 +50,7 @@
     "nuxt": "2.14.12",
     "nuxt-healthcheck": "1.0.1",
     "nuxt-helmet": "2.0.0",
-    "nuxt-i18n": "6.16.0",
+    "nuxt-i18n": "6.20.0",
     "rainbowvis.js": "1.0.1",
     "shrink-ray-current": "4.1.2",
     "snyk": "1.434.2",
