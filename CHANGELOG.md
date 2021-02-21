@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/dargmuesli/trapparty/compare/1.7.4...1.8.0) (2021-02-21)
+
+
+### Features
+
+* **eslint:** remove unneeded prettier config ([39e0b10](https://github.com/dargmuesli/trapparty/commit/39e0b10eec536178f3db070b2c714f38f2e6f37b))
+
 ## [1.7.4](https://github.com/dargmuesli/trapparty/compare/1.7.3...1.7.4) (2021-02-12)
 
 
