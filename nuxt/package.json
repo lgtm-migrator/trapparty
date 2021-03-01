@@ -2,7 +2,7 @@
   "name": "trapparty",
   "private": true,
   "version": "1.8.0",
-  "scheduleVersion": "1.7.3",
+  "scheduleVersion": "1.8.1",
   "description": "TrapParty's online version.",
   "scripts": {
     "dev": "nuxt-ts",
