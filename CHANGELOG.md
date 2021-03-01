@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/dargmuesli/trapparty/compare/1.8.0...1.8.1) (2021-03-01)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([7c795e5](https://github.com/dargmuesli/trapparty/commit/7c795e5d325eced8f364a3e289d73891c900b5d3))
+
 # [1.8.0](https://github.com/dargmuesli/trapparty/compare/1.7.4...1.8.0) (2021-02-21)
 
 
