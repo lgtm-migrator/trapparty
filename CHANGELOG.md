@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/dargmuesli/trapparty/compare/1.8.1...1.9.0) (2021-03-11)
+
+
+### Features
+
+* **deps:** remove typescript runtime ([a04f27f](https://github.com/dargmuesli/trapparty/commit/a04f27f5cd64711ba4940d9c81d7cbcda6d7e4d6))
+
 ## [1.8.1](https://github.com/dargmuesli/trapparty/compare/1.8.0...1.8.1) (2021-03-01)
 
 
