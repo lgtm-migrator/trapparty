@@ -337,9 +337,4 @@ module.exports = {
       })
     },
   ],
-  purge: {
-    options: {
-      whitelist: [':disabled'],
-    },
-  },
 }
