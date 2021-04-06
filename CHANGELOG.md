@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/dargmuesli/trapparty/compare/1.9.2...1.9.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* **nuxt:** migrate to nuxt 2.15 ([765ebb1](https://github.com/dargmuesli/trapparty/commit/765ebb1159780835eafbdc09f0309492475c5532))
+
 ## [1.9.2](https://github.com/dargmuesli/trapparty/compare/1.9.1...1.9.2) (2021-04-05)
 
 
