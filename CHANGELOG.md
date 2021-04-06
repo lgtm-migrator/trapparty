@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/dargmuesli/trapparty/compare/1.9.3...1.10.0) (2021-04-06)
+
+
+### Features
+
+* **tailwind:** migrate to tailwindcss 4 ([87207d2](https://github.com/dargmuesli/trapparty/commit/87207d23c58420f920455cf813f2a4352e6a1e1b))
+
 ## [1.9.3](https://github.com/dargmuesli/trapparty/compare/1.9.2...1.9.3) (2021-04-06)
 
 
