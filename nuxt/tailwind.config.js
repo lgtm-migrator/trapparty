@@ -5,6 +5,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     standardFontWeights: true,
   },
+  mode: 'jit',
   theme: {
     extend: {
       animation: {
