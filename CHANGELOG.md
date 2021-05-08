@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/dargmuesli/trapparty/compare/1.10.2...1.10.3) (2021-05-08)
+
+
+### Bug Fixes
+
+* **tailwind:** use integrated jit ([673b8ff](https://github.com/dargmuesli/trapparty/commit/673b8ffa066c899b316255d4e7c2f2f701c94409))
+
 ## [1.10.2](https://github.com/dargmuesli/trapparty/compare/1.10.1...1.10.2) (2021-05-03)
 
 
