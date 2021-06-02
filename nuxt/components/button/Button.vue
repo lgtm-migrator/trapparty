@@ -9,7 +9,7 @@
     >
       <FontAwesomeIcon
         v-if="icon"
-        :class="{ 'mr-2': this.$slots.default }"
+        :class="{ 'mr-2': $slots.default }"
         :icon="iconId"
       />
       <slot />
@@ -23,7 +23,7 @@
     >
       <FontAwesomeIcon
         v-if="icon"
-        :class="{ 'mr-2': this.$slots.default }"
+        :class="{ 'mr-2': $slots.default }"
         :icon="iconId"
       />
       <slot />

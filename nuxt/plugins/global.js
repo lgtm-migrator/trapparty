@@ -8,7 +8,8 @@ export const EVENT_SLUG_MAXIMUM = 100
 export const ITEMS_PER_PAGE = 8
 export const PASSWORD_LENGTH_MINIMUM = 8
 export const REGEX_SLUG = /^[-A-Za-z0-9]+$/
-export const REGEX_UUID = /^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/
+export const REGEX_UUID =
+  /^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/
 export const VERIFICATION_FORMAT_SLUG = helpers.regex('slug', REGEX_SLUG)
 export const VERIFICATION_FORMAT_UUID = helpers.regex('uuid', REGEX_UUID)
 

@@ -243,8 +243,8 @@ export default {
           return {
             query: PLAYER_BY_INVITATION_CODE_FN,
             variables: {
-              participationCode: this.$store.state.participationData
-                .participationCode,
+              participationCode:
+                this.$store.state.participationData.participationCode,
             },
             update: (data) =>
               this.$global.getNested(
