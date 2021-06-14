@@ -1,3 +1,10 @@
+## [1.10.6](https://github.com/dargmuesli/trapparty/compare/1.10.5...1.10.6) (2021-06-14)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([9de0889](https://github.com/dargmuesli/trapparty/commit/9de0889cb4577480a3f735dc9790e974b3035476))
+
 ## [1.10.5](https://github.com/dargmuesli/trapparty/compare/1.10.4...1.10.5) (2021-05-31)
 
 

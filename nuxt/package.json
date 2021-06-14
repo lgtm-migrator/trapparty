@@ -1,7 +1,7 @@
 {
   "name": "trapparty",
   "private": true,
-  "version": "1.10.5",
+  "version": "1.10.6",
   "scheduleVersion": "1.10.6",
   "description": "TrapParty's online version.",
   "scripts": {
