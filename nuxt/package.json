@@ -73,7 +73,7 @@
     "eslint-plugin-nuxt": "2.0.0",
     "eslint-plugin-prettier": "3.4.0",
     "graphql-tag": "2.12.5",
-    "lint-staged": "11.0.1",
+    "lint-staged": "11.1.0",
     "postcss": "8.3.6",
     "postcss-import": "14.0.2",
     "postcss-loader": "4.3.0",
