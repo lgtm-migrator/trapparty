@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>
+    <h1 class="text-center">
       {{ $t('title') }}
     </h1>
     <ChartTeamScore :event="event" />

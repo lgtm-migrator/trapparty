@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     <span class="font-black font-family-montserrat text-xl">🥺</span>
     <h1>{{ statusCode }} - {{ statusReason }}</h1>
     <div class="flex flex-wrap justify-center my-2">

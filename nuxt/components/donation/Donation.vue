@@ -1,144 +1,139 @@
 <template>
-  <div>
-    <Loader
-      v-if="event"
-      :graphql-error-message="graphqlErrorMessage"
-      :loading="loading"
-    >
-      <section class="mb-4">
-        <h1>{{ $t('title') }}</h1>
-        <div
-          class="
-            text-white
-            gap-4
-            grid grid-cols-1
-            lg:grid-cols-2
-            place-content-center
-          "
-        >
-          <div class="bg-gray-700 flex-col p-2 rounded">
-            <div class="text-4xl">
-              {{ numberFormat(donationAmountTeamSum) }}
-            </div>
-            <div class="font-bold">{{ $t('donationTeam') }}</div>
+  <Loader
+    v-if="event"
+    :graphql-error-message="graphqlErrorMessage"
+    :loading="loading"
+  >
+    <section class="mb-4 text-center">
+      <h1>{{ $t('title') }}</h1>
+      <div
+        class="
+          text-white
+          gap-4
+          grid grid-cols-1
+          lg:grid-cols-2
+          place-content-center
+        "
+      >
+        <div class="bg-gray-700 flex-col p-2 rounded">
+          <div class="text-4xl">
+            {{ numberFormat(donationAmountTeamSum) }}
           </div>
-          <div class="bg-gray-700 flex-col p-2 rounded">
-            <div class="text-4xl">
-              {{
-                numberFormat(
-                  $global.getNested(event, 'commonDonationAmount') || 0
-                )
-              }}
-            </div>
-            <div class="font-bold">{{ $t('donationCommon') }}</div>
-          </div>
-          <div class="bg-gray-700 lg:col-span-2 flex-col p-4 rounded">
-            <div class="text-6xl">
-              {{ numberFormat(donationAmountSum) }}
-            </div>
-            <div class="font-bold">{{ $t('donationTotal') }}</div>
-          </div>
+          <div class="font-bold">{{ $t('donationTeam') }}</div>
         </div>
-      </section>
-      <section>
-        <h1>{{ $t('titleDistribution') }}</h1>
-        <div class="overflow-auto">
-          <table class="m-auto">
-            <thead>
-              <tr>
-                <td />
-                <th
-                  v-for="charityOrganization in charityOrganizations"
-                  :key="`header-${
-                    $global.getNested(charityOrganization, 'id') ||
-                    Math.random()
-                  }`"
-                  class="border border-gray-700 p-2"
-                >
-                  {{ $global.getNested(charityOrganization, 'name') }}
-                </th>
-                <td />
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(team, teamIndex) in [
-                  ...teams,
-                  {
-                    name: 'Stream',
-                    donationAmount: $global.getNested(
-                      event,
-                      'commonDonationAmount'
-                    ),
-                  },
-                ]"
-                :key="team.id"
+        <div class="bg-gray-700 flex-col p-2 rounded">
+          <div class="text-4xl">
+            {{
+              numberFormat(
+                $global.getNested(event, 'commonDonationAmount') || 0
+              )
+            }}
+          </div>
+          <div class="font-bold">{{ $t('donationCommon') }}</div>
+        </div>
+        <div class="bg-gray-700 lg:col-span-2 flex-col p-4 rounded">
+          <div class="text-6xl">
+            {{ numberFormat(donationAmountSum) }}
+          </div>
+          <div class="font-bold">{{ $t('donationTotal') }}</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1 class="text-center">{{ $t('titleDistribution') }}</h1>
+      <div class="overflow-auto">
+        <table class="m-auto">
+          <thead>
+            <tr>
+              <td />
+              <th
+                v-for="charityOrganization in charityOrganizations"
+                :key="`header-${
+                  $global.getNested(charityOrganization, 'id') || Math.random()
+                }`"
+                class="border border-gray-700 p-2"
               >
-                <th class="border border-gray-700 font-bold p-2">
-                  {{ `${team.name}${team.emoji ? ' ' + team.emoji : ''}` }}
-                </th>
-                <td
-                  v-for="(
-                    charityOrganization, charityOrganizationIndex
-                  ) in charityOrganizations"
-                  :key="`data-${
-                    $global.getNested(charityOrganization, 'id') ||
-                    Math.random()
-                  }`"
-                  class="border border-gray-700 p-2"
-                  :class="{
-                    'font-bold':
-                      $global.getNested(
-                        team,
-                        'charityOrganizationByCharityOrganizationId',
-                        'id'
-                      ) === $global.getNested(charityOrganization, 'id'),
-                  }"
-                >
-                  {{
-                    numberFormat(
-                      $global.getNested(
-                        distributionMatrix,
-                        [teamIndex],
-                        [charityOrganizationIndex]
-                      )
+                {{ $global.getNested(charityOrganization, 'name') }}
+              </th>
+              <td />
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(team, teamIndex) in [
+                ...teams,
+                {
+                  name: 'Stream',
+                  donationAmount: $global.getNested(
+                    event,
+                    'commonDonationAmount'
+                  ),
+                },
+              ]"
+              :key="team.id"
+            >
+              <th class="border border-gray-700 font-bold p-2">
+                {{ `${team.name}${team.emoji ? ' ' + team.emoji : ''}` }}
+              </th>
+              <td
+                v-for="(
+                  charityOrganization, charityOrganizationIndex
+                ) in charityOrganizations"
+                :key="`data-${
+                  $global.getNested(charityOrganization, 'id') || Math.random()
+                }`"
+                class="border border-gray-700 p-2"
+                :class="{
+                  'font-bold':
+                    $global.getNested(
+                      team,
+                      'charityOrganizationByCharityOrganizationId',
+                      'id'
+                    ) === $global.getNested(charityOrganization, 'id'),
+                }"
+              >
+                {{
+                  numberFormat(
+                    $global.getNested(
+                      distributionMatrix,
+                      [teamIndex],
+                      [charityOrganizationIndex]
                     )
-                  }}
-                </td>
-                <td class="border border-gray-700 font-bold p-2">
-                  {{ numberFormat(team.donationAmount) }}
-                </td>
-              </tr>
-              <tr>
-                <td />
-                <td
-                  v-for="(
-                    charityOrganization, charityOrganizationIndex
-                  ) in charityOrganizations"
-                  :key="`total-${
-                    $global.getNested(charityOrganization, 'id') ||
-                    Math.random()
-                  }`"
-                  class="border border-gray-700 font-bold p-2"
-                >
-                  {{
-                    numberFormat(
-                      distributionMatrixTotalsVertical[charityOrganizationIndex]
-                    )
-                  }}
-                </td>
-                <td class="border border-gray-700 font-bold p-2">
-                  {{ numberFormat(donationAmountSum) }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </Loader>
-    <div v-else>
-      {{ $t('datalessEvent') }}
-    </div>
+                  )
+                }}
+              </td>
+              <td class="border border-gray-700 font-bold p-2">
+                {{ numberFormat(team.donationAmount) }}
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td
+                v-for="(
+                  charityOrganization, charityOrganizationIndex
+                ) in charityOrganizations"
+                :key="`total-${
+                  $global.getNested(charityOrganization, 'id') || Math.random()
+                }`"
+                class="border border-gray-700 font-bold p-2"
+              >
+                {{
+                  numberFormat(
+                    distributionMatrixTotalsVertical[charityOrganizationIndex]
+                  )
+                }}
+              </td>
+              <td class="border border-gray-700 font-bold p-2">
+                {{ numberFormat(donationAmountSum) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </Loader>
+  <div v-else>
+    {{ $t('datalessEvent') }}
   </div>
 </template>
 

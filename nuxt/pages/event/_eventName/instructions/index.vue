@@ -5,7 +5,7 @@
     :loading="$apollo.loading"
   >
     <div v-if="participationData">
-      <section class="mt-8">
+      <section class="mt-8 text-center">
         <span
           v-if="
             $store.state.participationData.role === 'player' &&
@@ -21,9 +21,7 @@
         <i18n path="intentionDescription">
           <span class="font-bold">{{ intention }}</span>
         </i18n>
-        <Button :icon-id="['fas', 'home']" :link="localePath('/')">
-          {{ $t('home') }}
-        </Button>
+        <ButtonHome />
       </section>
       <section
         v-if="$store.state.participationData.role === 'player'"
@@ -50,6 +48,7 @@
           </p>
           <p>
             <Button
+              :aria-label="$t('discordInstall')"
               class="mr-4"
               :icon-id="['fas', 'download']"
               link="https://discord.com/download"
@@ -65,9 +64,10 @@
                   'discordInviteCode'
                 )
               "
+              :aria-label="$t('discordJoin')"
               class="ml-4"
               :icon-id="['fas', 'sign-in-alt']"
-              :link="`https://discord.gg/${participationData.teamByTeamId.eventByEventId.discordInviteCode}`"
+              :to="`https://discord.gg/${participationData.teamByTeamId.eventByEventId.discordInviteCode}`"
             >
               {{ $t('discordJoin') }}
             </Button>
@@ -85,6 +85,7 @@
             }}
           </p>
           <Button
+            :aria-label="$t('discordTutorial')"
             class="ml-4"
             :icon-id="['fab', 'youtube']"
             link="https://youtu.be/NJijHNL4yEo"
@@ -150,8 +151,9 @@
           >
             <ButtonShare :url="participationData.teamByTeamId.donationUrl">
               <Button
+                :aria-label="$t('donationButtonTeam')"
                 :icon-id="['fas', 'heart']"
-                :link="participationData.teamByTeamId.donationUrl"
+                :to="participationData.teamByTeamId.donationUrl"
               >
                 {{ $t('donationButtonTeam') }}
               </Button>
@@ -174,8 +176,9 @@
         <p v-if="$global.getNested(participationData, 'commonDonationUrl')">
           <ButtonShare :url="participationData.commonDonationUrl">
             <Button
+              :aria-label="$t('donationButtonCommon')"
               :icon-id="['fas', 'heart']"
-              :link="participationData.commonDonationUrl"
+              :to="participationData.commonDonationUrl"
             >
               {{ $t('donationButtonCommon') }}
             </Button>
@@ -196,9 +199,10 @@
         <p>
           <span v-if="$global.getNested(event, 'streamUrl')">
             <Button
+              :aria-label="$t('streamGoto')"
               class="mr-4"
               :icon-id="['fas', 'tv']"
-              :link="event.streamUrl"
+              :to="event.streamUrl"
             >
               {{ $t('streamGoto') }}
             </Button>
@@ -217,20 +221,29 @@
             {{ $t('dataless', { what: $t('datalessStream') }) }}
           </span>
         </p>
+        <p>
+          <Button
+            append
+            :aria-label="$t('statisticsGoTo')"
+            class="mr-4"
+            :icon-id="['fas', 'chart-bar']"
+            to="../statistics"
+          >
+            {{ $t('statisticsGoTo') }}
+          </Button>
+        </p>
       </section>
     </div>
     <div v-else class="alert">
       {{ $t('participationDataless') }}
-      <Button :icon-id="['fas', 'home']" :link="localePath('/')">
-        {{ $t('home') }}
-      </Button>
+      <ButtonHome />
     </div>
   </Loader>
 </template>
 
 <script>
 import __TYPENAME from '~/gql/query/__typename'
-import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
+import EVENT_BY_NAME from '~/gql/query/event/eventByName'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn'
 
 const consola = require('consola')
@@ -243,6 +256,7 @@ export default {
           return {
             query: PLAYER_BY_INVITATION_CODE_FN,
             variables: {
+              eventName: this.$route.params.eventName,
               participationCode:
                 this.$store.state.participationData.participationCode,
             },
@@ -258,9 +272,11 @@ export default {
           }
         case 'watcher':
           return {
-            query: ALL_EVENTS_NEWEST,
-            update: (data) =>
-              this.$global.getNested(data, 'allEvents', 'nodes')[0],
+            query: EVENT_BY_NAME,
+            variables: {
+              eventName: this.$route.params.eventName,
+            },
+            update: (data) => this.$global.getNested(data, 'eventByName'),
             error(error, _vm, _key, _type, _options) {
               this.graphqlErrorMessage = error.message
             },
@@ -370,6 +386,7 @@ de:
   intentionRoleAnonymous: 'anonym teilzunehmen'
   intentionRolePlayer: 'mitzumachen'
   participationDataless: 'Konnte keine Veranstaltungsdaten laden.'
+  statisticsGoTo: 'Zu den Statistiken'
   streamTitle: 'Zuschauen 📺'
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'
   streamDescriptionPlayer: 'Als Spieler schaust du den Stream während du gleichzeitig mit deinen Teammitgliedern auf Discord bist.'

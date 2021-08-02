@@ -2,12 +2,15 @@
   <a
     v-if="to.match(/^(http(s)?|ftp):\/\//)"
     :href="to"
-    rel="noopener noreferrer"
+    :rel="
+      [...(nofollow ? ['nofollow'] : []), 'noopener', 'noreferrer'].join(' ')
+    "
     target="_blank"
+    @click="$emit('click')"
   >
     <slot />
   </a>
-  <nuxt-link v-else append="append" :to="to">
+  <nuxt-link v-else :append="append" :to="to" @click.native="$emit('click')">
     <slot />
   </nuxt-link>
 </template>
@@ -16,12 +19,16 @@
 export default {
   props: {
     append: {
-      type: Boolean,
       default: false,
+      type: Boolean,
+    },
+    nofollow: {
+      default: false,
+      type: Boolean,
     },
     to: {
-      type: String,
       required: true,
+      type: String,
     },
   },
 }

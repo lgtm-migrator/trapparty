@@ -2,7 +2,11 @@
   <span>
     <span v-if="url">
       <slot />
-      <Button :icon-id="['fas', 'share-alt']" @click="copy(url)" />
+      <Button
+        :aria-label="$t('share')"
+        :icon-id="['fas', 'share-alt']"
+        @click="copy(url)"
+      />
     </span>
     <span v-else class="inline-block unready">
       <slot name="unready" />
@@ -49,4 +53,5 @@ export default {
 de:
   donationUrlCopyError: 'Fehler: Der Spendenlink konnte leider nicht in die Zwischenablage kopiert werden!'
   donationUrlCopySuccess: 'Der Spendenlink wurde in die Zwischenablage kopiert.'
+  share: Teilen
 </i18n>

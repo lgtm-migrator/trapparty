@@ -1,0 +1,13 @@
+fragment eventFields on Event {
+  nodeId
+  id
+  name
+  start
+  end
+  discordInviteCode
+  streamUrl
+  commonDonationUrl
+  commonDonationIsLive
+  commonDonationAmount
+  versionTimestamp
+}

@@ -1,0 +1,13 @@
+#import "../../fragments/eventFields.gql"
+#import "../../fragments/teamFields.gql"
+
+query eventByName($eventName: String!) {
+  eventByName(name: $eventName) {
+    ...eventFields
+    teamsByEventId {
+        nodes {
+          ...teamFields
+        }
+      }
+  }
+}

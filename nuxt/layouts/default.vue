@@ -1,55 +1,41 @@
 <template>
   <div>
-    <div class="container min-h-screen mx-auto p-4 text-center">
+    <div class="container flex flex-col min-h-screen mx-auto p-4">
       <header class="flex items-center justify-between mb-4 relative">
-        <nuxt-link :aria-label="$t('home')" :to="localePath('/')">
+        <AppLink :aria-label="$t('home')" :to="localePath('/')">
           <div id="logo" class="h-16 w-16" />
-        </nuxt-link>
-        <div class="flex justify-center">
-          <a
-            :aria-label="$t('githubLinkTitle')"
-            class="items-center flex"
-            href="https://github.com/dargmuesli/trapparty/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon
-              class="colorInverse mr-2"
-              :icon="['fab', 'github']"
-              size="lg"
-            />
-          </a>
-        </div>
+        </AppLink>
+        <AppLink class="text-gray-900 dark:text-white" :to="localePath('/')">
+          <FontAwesomeIcon :icon="['fas', 'home']" size="lg" />
+        </AppLink>
       </header>
-      <nuxt class="text-lg" />
+      <div class="flex flex-1 flex-col">
+        <nuxt />
+      </div>
     </div>
     <footer>
       <div class="justify-around container flex mx-auto p-4">
-        <!-- <div class="flex flex-col">
-          <FontAwesomeIcon
-            :icon="['fas', 'language']"
-            class="my-2"
-            title="language"
-          />
-          <nuxt-link
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            :to="switchLocalePath(locale.code)"
-            >{{ locale.name }}</nuxt-link
-          >
-        </div> -->
         <div class="flex flex-col">
           <FontAwesomeIcon
             :icon="['fas', 'balance-scale']"
             class="my-2"
             title="scale"
           />
-          <nuxt-link :to="localePath('/imprint')">{{
-            $t('imprint')
-          }}</nuxt-link>
-          <nuxt-link :to="localePath('/privacy-policy')">{{
-            $t('privacyPolicy')
-          }}</nuxt-link>
+          <AppLink :to="localePath('/imprint')">
+            {{ $t('imprint') }}
+          </AppLink>
+          <AppLink :to="localePath('/privacy-policy')">
+            {{ $t('privacyPolicy') }}
+          </AppLink>
+        </div>
+        <div class="flex flex-col">
+          <FontAwesomeIcon :icon="['fas', 'link']" class="my-2" />
+          <AppLink
+            :title="$t('githubLinkTitle')"
+            to="https://github.com/dargmuesli/trapparty/"
+          >
+            {{ $t('sourceCode') }}
+          </AppLink>
         </div>
       </div>
     </footer>
@@ -96,6 +82,7 @@ de:
   privacyPolicy: 'Datenschutzerklärung'
   session: 'Sitzung'
   settings: 'Einstellungen'
+  sourceCode: Quellcode
 en:
   account: 'Account'
   githubLinkTitle: 'TrapParty on GitHub'
@@ -104,4 +91,5 @@ en:
   privacyPolicy: 'Privacy Policy'
   session: 'Session'
   settings: 'Settings'
+  sourceCode: Quellcode
 </i18n>

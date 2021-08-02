@@ -1,0 +1,8 @@
+fragment teamFields on Team {
+  nodeId
+  id
+  charityOrganizationId
+  donationUrl
+  emoji
+  name
+}

@@ -29,13 +29,15 @@ export default {
       '@nuxtjs/fontawesome',
       {
         icons: {
-          brands: ['faGithub', 'faYoutube'],
+          brands: ['faYoutube'],
           solid: [
             'faBalanceScale',
             'faBug',
+            'faChartBar',
             'faDownload',
             'faHeart',
             'faHome',
+            'faLink',
             'faShareAlt',
             'faSignInAlt',
             'faTv',

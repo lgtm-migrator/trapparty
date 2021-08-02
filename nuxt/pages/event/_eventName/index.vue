@@ -1,0 +1,210 @@
+<template>
+  <Loader
+    :graphql-error-message="graphqlErrorMessage"
+    :loading="$apollo.loading"
+  >
+    <div class="text-center">
+      <h1>
+        {{ event ? `Willkommen zur TrapParty ${event.name}!` : title }}
+      </h1>
+      <div v-if="event">
+        <p>
+          {{ $t('greeting') }}
+        </p>
+        <div
+          class="items-center card flex flex-col lg:flex-row lg:flex-wrap my-8"
+        >
+          <Form
+            class="lg:w-8/12"
+            :validation-object="$v.form"
+            @submit="saveCode"
+          >
+            <h2>
+              {{ $t('participate') }}
+            </h2>
+            <p>
+              {{ $t('participateDescription') }}
+            </p>
+            <FormInput
+              :error="$v.form['participation-code'].$error"
+              label-for="input-participation-code-trapparty"
+              :title="$t('participationCode')"
+            >
+              <!--
+                The id's suffix `-trapparty` makes browser suggest inputs just
+                for this service.
+              -->
+              <input
+                id="input-participation-code-trapparty"
+                v-model.trim="participationCodeModel"
+                class="form-input"
+                :disabled="$route.query.ic"
+                type="text"
+                placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+              />
+              <template slot="inputInfo">
+                <div v-if="$route.query.ic">
+                  {{ $t('participationCodeAutomatic') }}
+                  <AppLink :to="localePath('/')">
+                    {{ $t('participationCodeManual') }}
+                  </AppLink>
+                </div>
+              </template>
+              <template slot="inputError">
+                <FormError
+                  :validation-object="$v.form['participation-code']"
+                  validation-property="required"
+                >
+                  {{ $t('globalValidationRequired') }}
+                </FormError>
+                <FormError
+                  :validation-object="$v.form['participation-code']"
+                  validation-property="formatUuid"
+                >
+                  {{ $t('globalValidationFormatIncorrect') }}
+                </FormError>
+              </template>
+            </FormInput>
+            <div class="flex flex-col items-center justify-between">
+              <Button :aria-label="$t('save')" :icon="false" type="submit">
+                {{ $t('save') }}
+              </Button>
+            </div>
+          </Form>
+          <div class="self-stretch lg:w-1/12 px-8 py-8">
+            <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
+          </div>
+          <Form class="lg:w-2/12" @submit="anonymous">
+            <h2>
+              {{ $t('anonymousTitle') }}
+            </h2>
+            <p>
+              {{ $t('anonymousDescription') }}
+            </p>
+            <div class="flex flex-col items-center justify-between">
+              <Button
+                :aria-label="$t('anonymous')"
+                class="m-4"
+                :icon="false"
+                type="submit"
+              >
+                {{ $t('anonymous') }}
+              </Button>
+            </div>
+          </Form>
+          <p class="opacity-50 text-center text-sm w-full">
+            {{ $t('disclaimer') }}
+          </p>
+        </div>
+      </div>
+      <div v-else class="info">
+        {{ $t('datalessEvent') }}
+      </div>
+    </div>
+  </Loader>
+</template>
+
+<script>
+import { required } from 'vuelidate/lib/validators'
+
+import EVENT_BY_NAME from '~/gql/query/event/eventByName'
+
+export default {
+  apollo: {
+    event() {
+      return {
+        query: EVENT_BY_NAME,
+        variables: {
+          eventName: this.$route.params.eventName,
+        },
+        update: (data) => this.$global.getNested(data, 'eventByName'),
+        error(error, _vm, _key, _type, _options) {
+          this.graphqlErrorMessage = error.message
+        },
+      }
+    },
+  },
+  data() {
+    return {
+      form: {
+        'participation-code':
+          this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
+      },
+      graphqlErrorMessage: undefined,
+      title: this.$t('title'),
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+  computed: {
+    participationCodeModel: {
+      get() {
+        return this.$route.query.ic !== undefined
+          ? this.$route.query.ic
+          : this.$v.form['participation-code'].$model
+      },
+      set(value) {
+        this.$v.form['participation-code'].$model = value
+      },
+    },
+  },
+  mounted() {
+    if (this.$route.query.ic !== undefined) {
+      this.$v.form['participation-code'].$touch()
+    }
+  },
+  methods: {
+    anonymous(e) {
+      e.preventDefault()
+      this.$store.commit('setParticipationData', { role: 'watcher' })
+      this.$router.push({
+        append: true,
+        path: 'instructions',
+      })
+    },
+    saveCode(e) {
+      e.preventDefault()
+      this.$v.form.$reset()
+      this.$store.commit('setParticipationData', {
+        role: 'player',
+        participationCode: this.form['participation-code'],
+      })
+      this.$router.push({
+        append: true,
+        path: 'instructions',
+      })
+    },
+  },
+  validations() {
+    return {
+      form: {
+        'participation-code': {
+          required,
+          formatUuid: this.$global.VERIFICATION_FORMAT_UUID,
+        },
+      },
+    }
+  },
+}
+</script>
+
+<i18n lang="yml">
+de:
+  2020: '2020'
+  anonymous: 'Anonym teilnehmen'
+  anonymousDescription: 'Du bist in keinem Team?'
+  anonymousTitle: '👻'
+  datalessEvent: 'Aktuell sind keine Daten für eine kommende TrapParty vorhanden.'
+  greeting: 'Schön, dass du da bist! 😊 Jetzt kann es losgehen.'
+  participationCode: 'Teilnahmecode'
+  participationCodeAutomatic: 'Der Teilnahmecode wurde automatisch für dich eingegeben.'
+  participationCodeManual: 'Code selbst eingeben.'
+  participate: 'Mitmachen'
+  participateDescription: 'Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀'
+  save: 'Zu meiner Übersichtsseite'
+  disclaimer: 'Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.'
+  title: 'Willkommen!'
+</i18n>

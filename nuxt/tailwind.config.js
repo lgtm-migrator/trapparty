@@ -1,10 +1,5 @@
 module.exports = {
-  future: {
-    defaultLineHeights: true,
-    purgeLayersByDefault: true,
-    removeDeprecatedGapUtilities: true,
-    standardFontWeights: true,
-  },
+  darkMode: 'media',
   mode: 'jit',
   theme: {
     extend: {
@@ -67,16 +62,12 @@ module.exports = {
               backgroundColor: theme('colors.gray.900'),
               content: '""',
               display: 'inline-block',
-              mask:
-                'url(https://trapparty.' +
-                (process.env.NUXT_ENV_STACK_DOMAIN || 'jonas-thelemann.test') +
-                '/assets/static/icons/external-link-alt-solid.svg) no-repeat 50% 50%',
+              mask: 'url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJleHRlcm5hbC1saW5rLWFsdCIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWV4dGVybmFsLWxpbmstYWx0IGZhLXctMTYiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDMyLDMyMEg0MDBhMTYsMTYsMCwwLDAtMTYsMTZWNDQ4SDY0VjEyOEgyMDhhMTYsMTYsMCwwLDAsMTYtMTZWODBhMTYsMTYsMCwwLDAtMTYtMTZINDhBNDgsNDgsMCwwLDAsMCwxMTJWNDY0YTQ4LDQ4LDAsMCwwLDQ4LDQ4SDQwMGE0OCw0OCwwLDAsMCw0OC00OFYzMzZBMTYsMTYsMCwwLDAsNDMyLDMyMFpNNDg4LDBoLTEyOGMtMjEuMzcsMC0zMi4wNSwyNS45MS0xNyw0MWwzNS43MywzNS43M0wxMzUsMzIwLjM3YTI0LDI0LDAsMCwwLDAsMzRMMTU3LjY3LDM3N2EyNCwyNCwwLDAsMCwzNCwwTDQzNS4yOCwxMzMuMzIsNDcxLDE2OWMxNSwxNSw0MSw0LjUsNDEtMTdWMjRBMjQsMjQsMCwwLDAsNDg4LDBaIj48L3BhdGg+PC9zdmc+) no-repeat 50% 50%',
               maskSize: 'cover',
               height: theme('fontSize.xs'),
-              marginLeft: '2px',
               width: theme('fontSize.xs'),
               '@screen dark-mode': {
-                backgroundColor: theme('colors.white'),
+                backgroundColor: 'currentColor',
               },
             },
             '&.button': {
@@ -171,6 +162,7 @@ module.exports = {
           borderRadius: theme('borderRadius.default'),
           color: theme('colors.white'),
           padding: theme('padding.3'),
+          textAlign: 'center',
         },
         '.button': {
           backgroundColor: theme('colors.gray.900'),
@@ -281,6 +273,7 @@ module.exports = {
           borderRadius: theme('borderRadius.default'),
           color: theme('colors.white'),
           padding: theme('padding.3'),
+          textAlign: 'center',
         },
         '.pills': {
           display: 'flex',
@@ -310,6 +303,7 @@ module.exports = {
           borderRadius: theme('borderRadius.default'),
           color: theme('colors.white'),
           padding: theme('padding.3'),
+          textAlign: 'center',
         },
       })
       addUtilities({
@@ -332,9 +326,6 @@ module.exports = {
         '.line-clamp-2': {
           '-webkit-line-clamp': '2',
         },
-        // '.font-family-montserrat': {
-        //   fontFamily: 'Montserrat',
-        // },
       })
     },
   ],

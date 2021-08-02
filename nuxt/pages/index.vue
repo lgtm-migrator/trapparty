@@ -3,129 +3,48 @@
     :graphql-error-message="graphqlErrorMessage"
     :loading="$apollo.loading"
   >
-    <h1>
-      {{ eventData ? `Willkommen zur TrapParty ${eventData.name}!` : title }}
-    </h1>
-    <div v-if="eventData">
-      <p>
-        {{ $t('greeting') }}
-      </p>
-      <div
-        class="items-center card flex flex-col lg:flex-row lg:flex-wrap my-8"
-      >
-        <Form class="lg:w-8/12" :validation-object="$v.form" @submit="saveCode">
-          <h2>
-            {{ $t('participate') }}
-          </h2>
-          <p>
-            {{ $t('participateDescription') }}
-          </p>
-          <FormInput
-            :error="$v.form['participation-code'].$error"
-            label-for="input-participation-code-trapparty"
-            :title="$t('participationCode')"
-          >
-            <!--
-              The id's suffix `-trapparty` makes browser suggest inputs just
-              for this service.
-            -->
-            <input
-              id="input-participation-code-trapparty"
-              v-model.trim="participationCodeModel"
-              class="form-input"
-              :disabled="$route.query.ic"
-              type="text"
-              placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-            />
-            <template slot="inputInfo">
-              <div v-if="$route.query.ic">
-                {{ $t('participationCodeAutomatic') }}
-                <AppLink :to="localePath('/')">{{
-                  $t('participationCodeManual')
-                }}</AppLink>
-              </div>
-            </template>
-            <template slot="inputError">
-              <FormError
-                :validation-object="$v.form['participation-code']"
-                validation-property="required"
-              >
-                {{ $t('globalValidationRequired') }}
-              </FormError>
-              <FormError
-                :validation-object="$v.form['participation-code']"
-                validation-property="formatUuid"
-              >
-                {{ $t('globalValidationFormatIncorrect') }}
-              </FormError>
-            </template>
-          </FormInput>
-          <div class="flex flex-col items-center justify-between">
-            <Button
-              :disabled="
-                !(
-                  $v.form['participation-code'].$dirty &&
-                  !$v.form['participation-code'].$error
-                )
-              "
-              :icon="false"
-              :title="
-                !(
-                  $v.form['participation-code'].$dirty &&
-                  !$v.form['participation-code'].$error
-                )
-                  ? $t('formIncomplete')
-                  : undefined
-              "
-              type="submit"
-            >
-              {{ $t('save') }}
-            </Button>
-          </div>
-        </Form>
-        <div class="self-stretch lg:w-1/12 px-8 py-8">
-          <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
-        </div>
-        <Form class="lg:w-2/12" @submit="anonymous">
-          <h2>
-            {{ $t('anonymousTitle') }}
-          </h2>
-          <p>
-            {{ $t('anonymousDescription') }}
-          </p>
-          <div class="flex flex-col items-center justify-between">
-            <Button class="m-4" :icon="false" type="submit">
-              {{ $t('anonymous') }}
-            </Button>
-          </div>
-        </Form>
-        <p class="opacity-50 text-center text-sm w-full">
-          {{ $t('disclaimer') }}
-        </p>
+    <div class="flex flex-1 flex-col font-serif justify-center">
+      <div>
+        <h1 class="inline leading-normal text-6xl">
+          {{ title }}
+        </h1>
+        <span class="text-xl">
+          {{ $t('transcription') }}
+        </span>
       </div>
+      <i18n class="text-2xl prose" path="description" tag="p">
+        <template #author>
+          <AppLink
+            to="https://jonas-thelemann.de"
+            :title="$t('authorLinkTitle')"
+          >
+            Jonas Thelemann
+          </AppLink>
+        </template>
+      </i18n>
     </div>
-    <div v-else class="info">
-      {{ $t('datalessEvent') }}
-    </div>
-    <i18n class="prose" path="description" tag="p">
-      <AppLink to="https://jonas-thelemann.de" :title="$t('titleAuthorLink')">
-        Jonas Thelemann
-      </AppLink>
-    </i18n>
+    <h2>
+      {{ $t('titlePastEvents') }}
+    </h2>
+    <ul>
+      <li v-for="pastEvent in pastEvents" :key="pastEvent.id">
+        <nuxt-link :to="localePath(`/event/${pastEvent.name}`)">
+          {{ `${$t('title')} ${pastEvent.name}` }}
+        </nuxt-link>
+      </li>
+    </ul>
   </Loader>
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
-
-import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
+import ALL_EVENTS from '~/gql/query/event/allEvents'
 
 export default {
   apollo: {
-    eventData() {
+    allEvents() {
       return {
-        query: ALL_EVENTS_NEWEST,
-        update: (data) => this.$global.getNested(data, 'allEvents', 'nodes')[0],
+        query: ALL_EVENTS,
+        update: (data) => this.$global.getNested(data, 'allEvents', 'nodes'),
         error(error, _vm, _key, _type, _options) {
           this.graphqlErrorMessage = error.message
         },
@@ -134,14 +53,6 @@ export default {
   },
   data() {
     return {
-      // eventUpcoming: {
-      //   name: 'Nächste Party',
-      //   start: 'bald',
-      // },
-      form: {
-        'participation-code':
-          this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
-      },
       graphqlErrorMessage: undefined,
       title: this.$t('title'),
     }
@@ -152,72 +63,20 @@ export default {
     }
   },
   computed: {
-    participationCodeModel: {
-      get() {
-        return this.$route.query.ic !== undefined
-          ? this.$route.query.ic
-          : this.$v.form['participation-code'].$model
-      },
-      set(value) {
-        this.$v.form['participation-code'].$model = value
-      },
+    pastEvents() {
+      return this.allEvents?.filter((event) =>
+        this.$moment(event.start).isBefore(this.$moment())
+      )
     },
-  },
-  mounted() {
-    if (this.$route.query.ic !== undefined) {
-      this.$v.form['participation-code'].$touch()
-    }
-  },
-  methods: {
-    anonymous(e) {
-      e.preventDefault()
-      this.$store.commit('setParticipationData', { role: 'watcher' })
-      this.$router.push({
-        path: this.localePath(`/instructions`),
-      })
-    },
-    saveCode(e) {
-      e.preventDefault()
-      this.$v.form.$reset()
-      this.$store.commit('setParticipationData', {
-        role: 'player',
-        participationCode: this.form['participation-code'],
-      })
-      this.$router.push({
-        path: this.localePath(`/instructions`),
-      })
-    },
-  },
-  validations() {
-    return {
-      form: {
-        'participation-code': {
-          required,
-          formatUuid: this.$global.VERIFICATION_FORMAT_UUID,
-        },
-      },
-    }
   },
 }
 </script>
 
 <i18n lang="yml">
 de:
-  2020: '2020'
-  anonymous: 'Anonym teilnehmen'
-  anonymousDescription: 'Du bist in keinem Team?'
-  anonymousTitle: '👻'
-  datalessEvent: 'Aktuell sind keine Daten für eine kommende TrapParty vorhanden.'
-  description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {0} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
-  formIncomplete: 'Formular unvollständig.'
-  greeting: 'Schön, dass du da bist! 😊 Jetzt kann es losgehen.'
-  participationCode: 'Teilnahmecode'
-  participationCodeAutomatic: 'Der Teilnahmecode wurde automatisch für dich eingegeben.'
-  participationCodeManual: 'Code selbst eingeben.'
-  participate: 'Mitmachen'
-  participateDescription: 'Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀'
-  save: 'Zu meiner Übersichtsseite'
-  disclaimer: 'Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.'
-  title: 'Willkommen!'
-  titleAuthorLink: 'Jonas Website'
+  authorLinkTitle: 'Jonas Website'
+  description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {author} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
+  title: TrapParty
+  titlePastEvents: Vergangene TrapParties
+  transcription: '[træp ˈpɑr-ti]'
 </i18n>

@@ -1,0 +1,9 @@
+#import "../../fragments/eventFields.gql"
+
+query allEvents {
+  allEvents(orderBy: START_DESC) {
+    nodes {
+      ...eventFields
+    }
+  }
+}

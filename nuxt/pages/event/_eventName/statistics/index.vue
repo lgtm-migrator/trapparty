@@ -3,17 +3,15 @@
     :graphql-error-message="graphqlErrorMessage"
     :loading="$apollo.loading"
   >
-    <h1>
+    <h1 class="text-center">
       {{ title }}
     </h1>
-    <div v-if="allEventsNewest">
-      <p>
-        {{
-          $t('eventName', { name: $global.getNested(allEventsNewest, 'name') })
-        }}
+    <div v-if="event">
+      <p class="text-center">
+        {{ $t('eventName', { name: $global.getNested(event, 'name') }) }}
       </p>
-      <Donation class="mb-8" :event="allEventsNewest" />
-      <ChartScoring class="mb-8" :event="allEventsNewest" />
+      <Donation class="mb-8" :event="event" />
+      <ChartScoring class="mb-8" :event="event" />
     </div>
     <div v-else class="alert">
       {{ $t('datalessEvent') }}
@@ -22,14 +20,17 @@
 </template>
 
 <script>
-import ALL_EVENTS_NEWEST from '~/gql/query/allEventsNewest'
+import EVENT_BY_NAME from '~/gql/query/event/eventByName'
 
 export default {
   apollo: {
-    allEventsNewest() {
+    event() {
       return {
-        query: ALL_EVENTS_NEWEST,
-        update: (data) => this.$global.getNested(data, 'allEvents', 'nodes')[0],
+        query: EVENT_BY_NAME,
+        variables: {
+          eventName: this.$route.params.eventName,
+        },
+        update: (data) => this.$global.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
           this.graphqlErrorMessage = error.message
         },

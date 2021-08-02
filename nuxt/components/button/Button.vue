@@ -1,14 +1,15 @@
 <template>
-  <span class="inline-block">
+  <span class="text-center">
     <AppLink
-      v-if="link !== undefined"
+      v-if="to"
       :append="append"
+      :aria-label="ariaLabel"
       :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
       :disabled="disabled"
-      :to="link"
+      :to="to"
     >
       <FontAwesomeIcon
-        v-if="icon"
+        v-if="iconId"
         :class="{ 'mr-2': $slots.default }"
         :icon="iconId"
       />
@@ -16,13 +17,14 @@
     </AppLink>
     <button
       v-else
-      :class="`button ${buttonClass}`"
+      :aria-label="ariaLabel"
+      :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
       :disabled="disabled"
       :type="type"
       @click="$emit('click')"
     >
       <FontAwesomeIcon
-        v-if="icon"
+        v-if="iconId"
         :class="{ 'mr-2': $slots.default }"
         :icon="iconId"
       />
@@ -35,36 +37,32 @@
 export default {
   props: {
     append: {
-      type: Boolean,
       default: false,
+      type: Boolean,
+    },
+    ariaLabel: {
+      required: true,
+      type: String,
     },
     buttonClass: {
-      type: String,
       default: undefined,
-      // 'bg-red-600 disabled:bg-red-600 hover:bg-red-700 text-white',
-      // 'bg-white disabled:bg-gray-500 hover:bg-gray-600 text-gray-900',
+      type: String,
     },
     disabled: {
-      type: Boolean,
       default: false,
-    },
-    icon: {
       type: Boolean,
-      default: true,
     },
     iconId: {
-      type: Array,
-      default() {
-        return ['fas', 'bug']
-      },
-    },
-    link: {
-      type: String,
       default: undefined,
+      type: Array,
+    },
+    to: {
+      default: undefined,
+      type: String,
     },
     type: {
-      type: String,
       default: 'button',
+      type: String,
     },
   },
 }

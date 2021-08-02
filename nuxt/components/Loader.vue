@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-1 flex-col">
     <div v-if="loading">{{ $t('globalLoading') }}</div>
     <AlertGraphql
       v-else-if="graphqlErrorMessage !== undefined"
