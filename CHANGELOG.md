@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/dargmuesli/trapparty/compare/1.10.10...1.11.0) (2021-08-02)
+
+
+### Features
+
+* list past events ([9b1ddd3](https://github.com/dargmuesli/trapparty/commit/9b1ddd303e6bcbb27fa9db4b8a946f319c7de98f))
+
 ## [1.10.10](https://github.com/dargmuesli/trapparty/compare/1.10.9...1.10.10) (2021-08-02)
 
 
