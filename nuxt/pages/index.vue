@@ -4,11 +4,11 @@
     :loading="$apollo.loading"
   >
     <div class="flex flex-1 flex-col font-serif justify-center">
-      <div>
-        <h1 class="inline leading-normal text-6xl">
+      <div class="flex flex-col md:flex-row items-baseline">
+        <h1 class="inline leading-normal mb-0 md:mb-4 text-6xl">
           {{ title }}
         </h1>
-        <span class="text-xl">
+        <span class="mb-4 md:mb-0 ml-4 text-xl">
           {{ $t('transcription') }}
         </span>
       </div>
@@ -27,7 +27,7 @@
       {{ $t('titlePastEvents') }}
     </h2>
     <ul>
-      <li v-for="pastEvent in pastEvents" :key="pastEvent.id">
+      <li v-for="pastEvent in pastEvents" :key="pastEvent.id" class="text-xl">
         <nuxt-link :to="localePath(`/event/${pastEvent.name}`)">
           {{ `${$t('title')} ${pastEvent.name}` }}
         </nuxt-link>
