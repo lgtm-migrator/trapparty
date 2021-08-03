@@ -36,7 +36,7 @@
     "cookie": "0.4.1",
     "core-js": "3.16.0",
     "graphql": "15.5.1",
-    "js-cookie": "2.2.1",
+    "js-cookie": "3.0.0",
     "lodash.merge": "4.6.2",
     "node-fetch": "2.6.1",
     "node-zopfli-es": "1.0.7",
