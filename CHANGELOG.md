@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/dargmuesli/trapparty/compare/1.11.0...1.11.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* **design:** improve mobile view ([897dcaa](https://github.com/dargmuesli/trapparty/commit/897dcaafe8241b3dd686437000b01ca3a7b89ff8))
+
 # [1.11.0](https://github.com/dargmuesli/trapparty/compare/1.10.10...1.11.0) (2021-08-02)
 
 
