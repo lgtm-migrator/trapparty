@@ -64,7 +64,7 @@
     "@nuxtjs/stylelint-module": "4.0.0",
     "@nuxtjs/tailwindcss": "4.2.1",
     "@types/jsonwebtoken": "8.5.4",
-    "@types/node": "14.17.8",
+    "@types/node": "14.17.9",
     "@vue/cli-shared-utils": "4.5.13",
     "babel-eslint": "10.1.0",
     "css-loader": "5.2.7",
