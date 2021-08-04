@@ -15,12 +15,14 @@ export default {
           ['@nuxt/babel-preset-app', { loose: true, corejs: { version: 3 } }],
         ]
       },
+      plugins: ['@babel/plugin-proposal-numeric-separator'],
     },
     /*
      ** You can extend webpack config here
      */
     extend(_config, _ctx) {},
     extractCSS: true,
+    transpile: ['color'],
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
