@@ -15,6 +15,7 @@ export default {
           ['@nuxt/babel-preset-app', { loose: true, corejs: { version: 3 } }],
         ]
       },
+      plugins: ['@babel/plugin-proposal-numeric-separator'],
     },
     /*
      ** You can extend webpack config here
