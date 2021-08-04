@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/dargmuesli/trapparty/compare/1.11.1...1.12.0) (2021-08-04)
+
+
+### Bug Fixes
+
+* **color:** transpile numeric separators ([e665124](https://github.com/dargmuesli/trapparty/commit/e665124184ca73e1c111b1b328d5ed5e7d15ec59))
+
+
+### Features
+
+* **build:** transpile color ([9b65863](https://github.com/dargmuesli/trapparty/commit/9b65863f373d8af72123cb9e4c7b574af9c2ea1f))
+
 ## [1.11.1](https://github.com/dargmuesli/trapparty/compare/1.11.0...1.11.1) (2021-08-03)
 
 
