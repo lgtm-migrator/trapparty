@@ -35,7 +35,7 @@
     "consola": "2.15.3",
     "cookie": "0.4.1",
     "core-js": "3.17.2",
-    "graphql": "15.5.2",
+    "graphql": "15.5.3",
     "js-cookie": "3.0.1",
     "lodash.merge": "4.6.2",
     "node-fetch": "3.0.0",
