@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/dargmuesli/trapparty/compare/1.12.3...1.12.4) (2021-09-27)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([dc8e66b](https://github.com/dargmuesli/trapparty/commit/dc8e66bbe6b05a8d8c37314997a43edd328201a8))
+
 ## [1.12.3](https://github.com/dargmuesli/trapparty/compare/1.12.2...1.12.3) (2021-09-13)
 
 
