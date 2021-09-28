@@ -1,3 +1,10 @@
+## [1.12.6](https://github.com/dargmuesli/trapparty/compare/1.12.5...1.12.6) (2021-09-28)
+
+
+### Bug Fixes
+
+* **cookie:** check parameter ([a6a3c26](https://github.com/dargmuesli/trapparty/commit/a6a3c2635fda7b4a531fdcba91f8bca531f0dc07))
+
 ## [1.12.5](https://github.com/dargmuesli/trapparty/compare/1.12.4...1.12.5) (2021-09-28)
 
 
