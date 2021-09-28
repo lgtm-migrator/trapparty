@@ -1,3 +1,10 @@
+## [1.12.5](https://github.com/dargmuesli/trapparty/compare/1.12.4...1.12.5) (2021-09-28)
+
+
+### Bug Fixes
+
+* **babel:** transpile node-fetch ([fe82bd8](https://github.com/dargmuesli/trapparty/commit/fe82bd8d254cd7f59dad9f69ecf6a34836913dc7))
+
 ## [1.12.4](https://github.com/dargmuesli/trapparty/compare/1.12.3...1.12.4) (2021-09-27)
 
 
