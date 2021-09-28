@@ -3,6 +3,8 @@ import * as Cookies from 'js-cookie'
 import cookie from 'cookie'
 
 export default ({ store, req }) => {
+  if (!req.headers.cookie) return
+
   createPersistedState({
     paths: ['participationData'],
     storage: {
