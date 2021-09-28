@@ -22,7 +22,7 @@ export default {
      */
     extend(_config, _ctx) {},
     extractCSS: true,
-    transpile: ['color'],
+    transpile: ['color', 'fetch-blob', 'node-fetch'],
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
