@@ -1,3 +1,11 @@
+## [1.12.7](https://github.com/dargmuesli/trapparty/compare/1.12.6...1.12.7) (2021-09-29)
+
+
+### Bug Fixes
+
+* **csp:** add form action 'self' ([9001dd2](https://github.com/dargmuesli/trapparty/commit/9001dd23637369b1f69b2a84aecc14d5b3ccccda))
+* **persisted-state:** check req before usage ([d4bb340](https://github.com/dargmuesli/trapparty/commit/d4bb340d2875683ff91bde193dc16daef3767c7f))
+
 ## [1.12.6](https://github.com/dargmuesli/trapparty/compare/1.12.5...1.12.6) (2021-09-28)
 
 
