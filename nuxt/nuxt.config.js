@@ -254,7 +254,7 @@ export default {
         'connect-src': [`https://*.${STACK_DOMAIN}`],
         'default-src': ["'none'"],
         'font-src': ["'self'"],
-        'form-action': ["'none'"], // Mozilla Observatory.
+        'form-action': ["'self'"], // Mozilla Observatory.
         'frame-ancestors': ["'none'"], // Mozilla Observatory.
         'img-src': ['data:', `https://*.${STACK_DOMAIN}`, "'self'"],
         'manifest-src': ["'self'"], // Chrome
