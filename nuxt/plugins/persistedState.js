@@ -2,8 +2,10 @@ import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import cookie from 'cookie'
 
+import { getNested } from './global'
+
 export default ({ store, req }) => {
-  if (!req.headers.cookie) return
+  if (!getNested(req, 'headers', 'cookie')) return
 
   createPersistedState({
     paths: ['participationData'],
