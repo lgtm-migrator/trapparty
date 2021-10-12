@@ -359,6 +359,7 @@ export default {
 .section-wrapper > section {
   margin-bottom: 2rem;
 }
+
 .section-wrapper > section > section {
   margin-bottom: 1.5rem;
 }
