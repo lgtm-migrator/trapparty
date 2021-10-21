@@ -1,3 +1,10 @@
+## [1.12.9](https://github.com/dargmuesli/trapparty/compare/1.12.8...1.12.9) (2021-10-21)
+
+
+### Bug Fixes
+
+* adapt stylelint-config-recommended-vue ([f3e456f](https://github.com/dargmuesli/trapparty/commit/f3e456f143cb364a49c8840237300cc51e95dfe0))
+
 ## [1.12.8](https://github.com/dargmuesli/trapparty/compare/1.12.7...1.12.8) (2021-10-11)
 
 
