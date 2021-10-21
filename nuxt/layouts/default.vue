@@ -67,7 +67,7 @@ export default {
 
 <style scoped>
 #logo {
-  background-image: url(/assets/static/logos/trapparty.svg);
+  background-image: url('/assets/static/logos/trapparty.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }
