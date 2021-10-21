@@ -6,9 +6,6 @@ import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
 export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    /*
-     ** https://github.com/nuxt-community/nuxt-property-decorator
-     */
     babel: {
       presets({ _isServer }) {
         return [
