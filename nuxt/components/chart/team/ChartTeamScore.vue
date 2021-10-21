@@ -1,7 +1,7 @@
 <template>
   <component
     :is="vertical ? chartBaseBarStacked : chartBaseBarStackedHorizontal"
-    v-if="data !== null"
+    v-if="data"
     :data="data"
     :options-additional="optionsComputed"
     :height="height"

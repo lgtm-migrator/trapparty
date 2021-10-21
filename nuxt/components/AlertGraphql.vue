@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="
-      graphqlErrorMessage !== null &&
+      graphqlErrorMessage &&
       (validationObject === undefined || !validationObject.$anyDirty)
     "
     class="alert"
