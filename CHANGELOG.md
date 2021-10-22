@@ -1,3 +1,10 @@
+## [1.12.10](https://github.com/dargmuesli/trapparty/compare/1.12.9...1.12.10) (2021-10-22)
+
+
+### Bug Fixes
+
+* **stylelint:** add postcss-html ([29d53c9](https://github.com/dargmuesli/trapparty/commit/29d53c9a1d43fb88972ab8d74596a4a296777dc2))
+
 ## [1.12.9](https://github.com/dargmuesli/trapparty/compare/1.12.8...1.12.9) (2021-10-21)
 
 
