@@ -1,4 +1,3 @@
-import bodyParser from 'body-parser'
 import shrinkRay from 'shrink-ray-current'
 
 import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
@@ -24,6 +23,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/composition-api/module',
     [
       '@nuxtjs/fontawesome',
       {
@@ -34,6 +34,7 @@ export default {
             'faBug',
             'faChartBar',
             'faDownload',
+            'faExclamationCircle',
             'faHeart',
             'faHome',
             'faLink',
@@ -167,13 +168,13 @@ export default {
     'nuxt-helmet', // Should be declared at the start of the array.
     'nuxt-healthcheck',
     [
-      'nuxt-i18n',
+      '@nuxtjs/i18n',
       {
         baseUrl: BASE_URL,
         defaultLocale: 'de', // Must be set for the default prefix_except_default prefix strategy.
         detectBrowserLanguage: {
           cookieSecure: true,
-          onlyOnRoot: true, // Enables better SEO.
+          redirectOn: 'root',
         },
         locales: [
           // {
@@ -187,13 +188,13 @@ export default {
             iso: 'de',
           },
         ],
-        seo: false, // https://i18n.nuxtjs.org/seo/#improving-performance
         vueI18n: {
           messages: {
             de: {
               globalLoading: 'Lade...',
               globalOgImageAlt: 'TrapPartys Logo.',
               globalOgSeoDescription: 'TrapPartys Online-Version.',
+              globalValidationFailed: 'Bitte überprüfe deine Eingaben 🙈',
               globalValidationFormatIncorrect: 'Falsches Format.',
               globalValidationRequired: 'Pflichtfeld.',
             },
@@ -201,6 +202,7 @@ export default {
               globalLoading: 'Loading...',
               globalOgImageAlt: "TrapParty's logo.",
               globalOgSeoDescription: "TrapParty's online version.",
+              globalValidationFailed: 'Please check your input 🙈',
               globalValidationFormatIncorrect: 'Incorrect format.',
               globalValidationRequired: 'Required.',
             },
@@ -214,7 +216,7 @@ export default {
       '@nuxtjs/apollo',
       {
         clientConfigs: {
-          default: '~/plugins/apollo-config.js',
+          default: '~/plugins/apollo-config.ts',
         },
         defaultOptions: {
           $query: {
@@ -231,16 +233,17 @@ export default {
         Sitemap: BASE_URL + '/sitemap.xml',
       },
     ],
+    'vue-sweetalert2/nuxt',
     '@nuxtjs/sitemap', // Should be declared at the end of the array.
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~/plugins/baseUrl.js',
-    '~/plugins/global.js',
-    '~/plugins/i18n.js',
+    '~/plugins/baseUrl.ts',
+    '~/plugins/global.ts',
+    '~/plugins/i18n.ts',
     '~/plugins/persistedState.js',
-    '~/plugins/vuelidate.js',
+    '~/plugins/vuelidate.ts',
   ],
 
   render: {
@@ -266,5 +269,5 @@ export default {
     },
   },
 
-  serverMiddleware: [bodyParser.json(), '~/middleware/server/headers.ts'],
+  serverMiddleware: ['~/middleware/server/headers.ts'],
 }

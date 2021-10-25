@@ -1,28 +1,29 @@
 <template>
-  <component
-    :is="vertical ? chartBaseBarStacked : chartBaseBarStackedHorizontal"
+  <ChartBaseBar
     v-if="data"
     :data="data"
-    :options-additional="optionsComputed"
     :height="height"
+    :horizontal="horizontal"
+    :options-additional="optionsComputed"
   />
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from '@vue/composition-api'
+import { ChartData, ChartOptions } from 'chart.js'
 import merge from 'lodash.merge'
 
-import ChartBaseBarStacked from '~/components/chart/base/ChartBaseBarStacked'
-import ChartBaseBarStackedHorizontal from '~/components/chart/base/ChartBaseBarStackedHorizontal'
-import STATS_QUERY from '~/gql/query/stats'
+import { Event as TrapPartyEvent } from '~/types/event'
+import STATS_QUERY from '~/gql/query/stats.gql'
 
 const Color = require('color')
 const consola = require('consola')
 const Rainbow = require('rainbowvis.js')
 
-export default {
+export default defineComponent({
   props: {
     event: {
-      type: Object,
+      type: Object as PropType<TrapPartyEvent>,
       default: undefined,
     },
     height: {
@@ -30,7 +31,7 @@ export default {
       default: undefined,
     },
     options: {
-      type: Object,
+      type: Object as PropType<ChartOptions<'bar'>>,
       default: undefined,
     },
     title: {
@@ -42,15 +43,15 @@ export default {
   },
   data() {
     return {
-      chartBaseBarStacked: ChartBaseBarStacked,
-      chartBaseBarStackedHorizontal: ChartBaseBarStackedHorizontal,
-      data: null,
+      data: null as ChartData<'bar'> | null,
+      horizontal: true,
       optionsDefault: {
-        title: {
-          text: this.$props.title,
+        plugins: {
+          title: {
+            text: this.$props.title,
+          },
         },
-      },
-      vertical: false,
+      } as ChartOptions<'bar'>,
     }
   },
   computed: {
@@ -63,12 +64,11 @@ export default {
       return
     }
 
-    window.addEventListener(
-      'resize',
-      (e) =>
-        (this.vertical =
-          e.target.outerWidth >= this.$global.CHART_DIRECTION_BREAKPOINT)
-    )
+    window.addEventListener('resize', (e) => {
+      this.horizontal =
+        (e?.target as Window).outerWidth <
+        this.$global.CHART_DIRECTION_BREAKPOINT
+    })
 
     window.dispatchEvent(new Event('resize'))
 
@@ -91,7 +91,7 @@ export default {
         const labels = []
         const datasets = []
         const donationsPerHead = []
-        const scoresTeam = []
+        const scoresTeam: number[] = []
         const scoresTeamTotal = []
 
         for (let i = 0; i < allTeams.nodes.length; i++) {
@@ -137,7 +137,7 @@ export default {
         }
 
         datasets.push({
-          label: this.$t('title'),
+          label: this.$t('title') as string,
           data: scoresTeamTotal,
           backgroundColor: Color(`#${rainbow.colorAt(0)}`)
             .desaturate(0.5)
@@ -151,11 +151,11 @@ export default {
         }
       })
       .catch((error) => {
-        this.graphqlErrorMessage = error.message
+        this.graphqlError = error.message
         consola.error(error)
       })
   },
-}
+})
 </script>
 
 <i18n lang="yml">

@@ -1,8 +1,9 @@
 <template>
   <Loader
-    :graphql-error-message="graphqlErrorMessage"
-    :loading="$apollo.loading"
-  >
+    v-if="($apollo.loading && !event) || graphqlError"
+    :error-message="graphqlError ? String(graphqlError) : undefined"
+  />
+  <div v-else>
     <div class="text-center">
       <h1>
         {{ event ? `Willkommen zur TrapParty ${event.name}!` : title }}
@@ -16,8 +17,10 @@
         >
           <Form
             class="lg:w-8/12"
-            :validation-object="$v.form"
-            @submit="saveCode"
+            :form="$v.form"
+            :form-sent="form.sent"
+            :submit-name="$t('save')"
+            @submit.prevent="saveCode"
           >
             <h2>
               {{ $t('participate') }}
@@ -26,7 +29,7 @@
               {{ $t('participateDescription') }}
             </p>
             <FormInput
-              :error="$v.form['participation-code'].$error"
+              :error="$v.form.participationCode.$error"
               label-for="input-participation-code-trapparty"
               :title="$t('participationCode')"
             >
@@ -51,46 +54,37 @@
                 </div>
               </template>
               <template slot="inputError">
-                <FormError
-                  :validation-object="$v.form['participation-code']"
+                <FormInputError
+                  :form-input="$v.form.participationCode"
                   validation-property="required"
                 >
                   {{ $t('globalValidationRequired') }}
-                </FormError>
-                <FormError
-                  :validation-object="$v.form['participation-code']"
+                </FormInputError>
+                <FormInputError
+                  :form-input="$v.form.participationCode"
                   validation-property="formatUuid"
                 >
                   {{ $t('globalValidationFormatIncorrect') }}
-                </FormError>
+                </FormInputError>
               </template>
             </FormInput>
-            <div class="flex flex-col items-center justify-between">
-              <Button :aria-label="$t('save')" :icon="false" type="submit">
-                {{ $t('save') }}
-              </Button>
-            </div>
           </Form>
           <div class="self-stretch lg:w-1/12 px-8 py-8">
             <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
           </div>
-          <Form class="lg:w-2/12" @submit="anonymous">
+          <Form
+            class="lg:w-2/12"
+            :form="$v.formAnonymous"
+            :form-sent="formAnonymous.sent"
+            :submit-name="$t('anonymous')"
+            @submit.prevent="anonymous"
+          >
             <h2>
               {{ $t('anonymousTitle') }}
             </h2>
             <p>
               {{ $t('anonymousDescription') }}
             </p>
-            <div class="flex flex-col items-center justify-between">
-              <Button
-                :aria-label="$t('anonymous')"
-                class="m-4"
-                :icon="false"
-                type="submit"
-              >
-                {{ $t('anonymous') }}
-              </Button>
-            </div>
           </Form>
           <p class="opacity-50 text-center text-sm w-full">
             {{ $t('disclaimer') }}
@@ -101,7 +95,7 @@
         {{ $t('datalessEvent') }}
       </div>
     </div>
-  </Loader>
+  </div>
 </template>
 
 <script>
@@ -119,7 +113,7 @@ export default {
         },
         update: (data) => this.$global.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
-          this.graphqlErrorMessage = error.message
+          this.graphqlError = error.message
         },
       }
     },
@@ -127,10 +121,14 @@ export default {
   data() {
     return {
       form: {
-        'participation-code':
+        participationCode:
           this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
+        sent: false,
       },
-      graphqlErrorMessage: undefined,
+      formAnonymous: {
+        sent: false,
+      },
+      graphqlError: undefined,
       title: this.$t('title'),
     }
   },
@@ -144,33 +142,37 @@ export default {
       get() {
         return this.$route.query.ic !== undefined
           ? this.$route.query.ic
-          : this.$v.form['participation-code'].$model
+          : this.$v.form.participationCode.$model
       },
       set(value) {
-        this.$v.form['participation-code'].$model = value
+        this.$v.form.participationCode.$model = value
       },
     },
   },
   mounted() {
     if (this.$route.query.ic !== undefined) {
-      this.$v.form['participation-code'].$touch()
+      this.$v.form.participationCode.$touch()
     }
   },
   methods: {
-    anonymous(e) {
-      e.preventDefault()
+    anonymous() {
       this.$store.commit('setParticipationData', { role: 'watcher' })
       this.$router.push({
         append: true,
         path: 'instructions',
       })
     },
-    saveCode(e) {
-      e.preventDefault()
+    async saveCode() {
+      try {
+        await this.$global.formPreSubmit(this)
+      } catch (error) {
+        return
+      }
+
       this.$v.form.$reset()
       this.$store.commit('setParticipationData', {
         role: 'player',
-        participationCode: this.form['participation-code'],
+        participationCode: this.form.participationCode,
       })
       this.$router.push({
         append: true,
@@ -181,11 +183,12 @@ export default {
   validations() {
     return {
       form: {
-        'participation-code': {
+        participationCode: {
           required,
           formatUuid: this.$global.VERIFICATION_FORMAT_UUID,
         },
       },
+      formAnonymous: {},
     }
   },
 }

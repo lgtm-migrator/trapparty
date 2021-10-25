@@ -1,8 +1,9 @@
 <template>
   <Loader
-    :graphql-error-message="graphqlErrorMessage"
-    :loading="$apollo.loading"
-  >
+    v-if="($apollo.loading && !allEvents) || graphqlError"
+    :error-message="graphqlError ? String(graphqlError) : undefined"
+  />
+  <div v-else class="flex flex-1 flex-col">
     <div class="flex flex-1 flex-col font-serif justify-center">
       <div class="flex flex-col md:flex-row items-baseline">
         <h1 class="inline leading-normal mb-0 md:mb-4 text-6xl">
@@ -33,7 +34,7 @@
         </nuxt-link>
       </li>
     </ul>
-  </Loader>
+  </div>
 </template>
 
 <script>
@@ -46,14 +47,14 @@ export default {
         query: ALL_EVENTS,
         update: (data) => this.$global.getNested(data, 'allEvents', 'nodes'),
         error(error, _vm, _key, _type, _options) {
-          this.graphqlErrorMessage = error.message
+          this.graphqlError = error.message
         },
       }
     },
   },
   data() {
     return {
-      graphqlErrorMessage: undefined,
+      graphqlError: undefined,
       title: this.$t('title'),
     }
   },

@@ -1,4 +1,6 @@
-export default (_ctx) => {
+import { Context } from '@nuxt/types'
+
+export default (_ctx: Context) => {
   return {
     httpEndpoint: process.server
       ? 'http://trapparty-postgraphile:5000/graphql'

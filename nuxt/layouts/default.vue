@@ -45,18 +45,11 @@
 <script>
 export default {
   head() {
-    return this.$nuxtI18nSeo()
+    return this.$nuxtI18nHead({ addSeoAttributes: true })
   },
   computed: {
     availableLocales() {
       return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
-    },
-    signedInUsername() {
-      return this.$store.state.jwtDecoded &&
-        this.$store.state.jwtDecoded.role === 'maevsi_account' &&
-        this.$store.state.jwtDecoded.exp > Math.floor(Date.now() / 1000)
-        ? this.$store.state.jwtDecoded.username
-        : undefined
     },
   },
   beforeCreate() {

@@ -1,8 +1,9 @@
 <template>
   <Loader
-    :graphql-error-message="graphqlErrorMessage"
-    :loading="$apollo.loading"
-  >
+    v-if="($apollo.loading && !event) || graphqlError"
+    :error-message="graphqlError ? String(graphqlError) : undefined"
+  />
+  <div v-else>
     <h1 class="text-center">
       {{ title }}
     </h1>
@@ -16,7 +17,7 @@
     <div v-else class="alert">
       {{ $t('datalessEvent') }}
     </div>
-  </Loader>
+  </div>
 </template>
 
 <script>
@@ -32,7 +33,7 @@ export default {
         },
         update: (data) => this.$global.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
-          this.graphqlErrorMessage = error.message
+          this.graphqlError = error.message
         },
       }
     },
@@ -40,7 +41,7 @@ export default {
   data() {
     return {
       allGames: undefined,
-      graphqlErrorMessage: undefined,
+      graphqlError: undefined,
       title: this.$t('title'),
     }
   },
