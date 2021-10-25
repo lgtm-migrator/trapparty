@@ -63,7 +63,7 @@
     "@nuxtjs/tailwindcss": "4.2.1",
     "@types/jsonwebtoken": "8.5.5",
     "@types/lodash.merge": "4.6.6",
-    "@types/node": "14.17.29",
+    "@types/node": "14.17.31",
     "@types/vuelidate": "0.7.15",
     "@vue/cli-shared-utils": "4.5.14",
     "babel-eslint": "10.1.0",
