@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/dargmuesli/trapparty/compare/1.12.10...1.13.0) (2021-10-25)
+
+
+### Features
+
+* adapt new technology ([23ab249](https://github.com/dargmuesli/trapparty/commit/23ab24941ae759d2dd125333244d8cc4785263a5))
+
 ## [1.12.10](https://github.com/dargmuesli/trapparty/compare/1.12.9...1.12.10) (2021-10-22)
 
 
