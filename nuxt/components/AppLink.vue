@@ -1,6 +1,7 @@
 <template>
   <a
-    v-if="to.match(/^(http(s)?|ftp):\/\//)"
+    v-if="to.match(/^((ftp|http(s)?):\/\/|(mailto):)/)"
+    :class="linkClasses"
     :href="to"
     :rel="
       [...(nofollow ? ['nofollow'] : []), 'noopener', 'noreferrer'].join(' ')
@@ -10,16 +11,28 @@
   >
     <slot />
   </a>
-  <nuxt-link v-else :append="append" :to="to" @click.native="$emit('click')">
+  <nuxt-link
+    v-else
+    :append="append"
+    :class="linkClasses"
+    :to="to"
+    @click.native="$emit('click')"
+  >
     <slot />
   </nuxt-link>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     append: {
       default: false,
+      type: Boolean,
+    },
+    isColored: {
+      default: true,
       type: Boolean,
     },
     nofollow: {
@@ -31,5 +44,13 @@ export default {
       type: String,
     },
   },
-}
+  computed: {
+    linkClasses(): string {
+      return [
+        'rounded',
+        ...(this.isColored ? ['text-link-dark dark:text-link-bright'] : []),
+      ].join(' ')
+    },
+  },
+})
 </script>

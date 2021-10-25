@@ -1,9 +1,9 @@
 <template>
   <Loader
-    v-if="event"
-    :graphql-error-message="graphqlErrorMessage"
-    :loading="loading"
-  >
+    v-if="($apollo.loading && !event) || graphqlError"
+    :error-message="graphqlError ? String(graphqlError) : undefined"
+  />
+  <div v-else>
     <section class="mb-4 text-center">
       <h1>{{ $t('title') }}</h1>
       <div
@@ -131,18 +131,19 @@
         </table>
       </div>
     </section>
-  </Loader>
-  <div v-else>
-    {{ $t('datalessEvent') }}
   </div>
 </template>
 
-<script>
-import STATS_QUERY from '~/gql/query/stats'
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+import STATS_QUERY from '~/gql/query/stats.gql'
+import { CharityOrganization } from '~/types/charityOrganization'
+import { Team } from '~/types/team'
 
 const consola = require('consola')
 
-export default {
+export default defineComponent({
   props: {
     event: {
       type: Object,
@@ -152,24 +153,23 @@ export default {
   data() {
     return {
       DONATION_DISTRIBUTION_PERCENTAGE: 0.5,
-      charityOrganizations: [],
-      charityOrganizationWeigths: [],
-      distributionMatrix: [],
-      // distributionMatrixTotalsHorizontal: [],
-      distributionMatrixTotalsVertical: [],
-      graphqlErrorMessage: undefined,
+      charityOrganizations: [] as CharityOrganization[],
+      charityOrganizationWeigths: [] as number[],
+      distributionMatrix: [] as Array<Array<any>>,
+      distributionMatrixTotalsVertical: [] as number[],
+      graphqlError: undefined,
       loading: true,
-      teams: [],
+      teams: [] as Team[],
     }
   },
   computed: {
-    donationAmountSum() {
+    donationAmountSum(): number {
       return (
         (this.$global.getNested(this.event, 'commonDonationAmount') || 0) +
         this.donationAmountTeamSum
       )
     },
-    donationAmountTeamSum() {
+    donationAmountTeamSum(): number {
       return this.teams.length
         ? this.teams.reduce(
             (previous, current) => previous + current.donationAmount,
@@ -200,9 +200,6 @@ export default {
         )
         const donationsPerHead = []
 
-        // this.teams.sort(this.$global.sortBy('name'))
-        // this.charityOrganizations.sort(this.$global.sortBy('name'))
-
         for (let i = 0; i < allTeams.nodes.length; i++) {
           const team = allTeams.nodes[i]
           const teamPlayerCountObject = teamPlayerCount.nodes[i]
@@ -218,7 +215,7 @@ export default {
           )
         }
 
-        const teamScores = []
+        const teamScores: number[] = []
 
         for (let i = 0; i < allGames.nodes.length; i++) {
           const game = allGames.nodes[i]
@@ -242,7 +239,7 @@ export default {
           }
         }
 
-        const teamScoreNormalizeds = []
+        const teamScoreNormalizeds: number[] = []
 
         for (let i = 0; i < teamScores.length; i++) {
           const teamScoreNormalized =
@@ -317,24 +314,23 @@ export default {
         }
       })
       .catch((error) => {
-        this.graphqlErrorMessage = error.message
+        this.graphqlError = error.message
         consola.error(error)
       })
   },
   methods: {
-    numberFormat(n) {
+    numberFormat(n: number) {
       return new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'EUR',
       }).format(n)
     },
   },
-}
+})
 </script>
 
 <i18n lang="yml">
 de:
-  datalessEvent: 'Kein Event angegeben!'
   title: 'Spenden'
   titleDistribution: 'Spendenverteilung auf Organisationen'
   donationCommon: 'Stream-Spenden'

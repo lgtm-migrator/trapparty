@@ -1,40 +1,43 @@
 <template>
-  <span class="text-center">
-    <AppLink
-      v-if="to"
-      :append="append"
-      :aria-label="ariaLabel"
-      :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
-      :disabled="disabled"
-      :to="to"
-    >
-      <FontAwesomeIcon
-        v-if="iconId"
-        :class="{ 'mr-2': $slots.default }"
-        :icon="iconId"
-      />
-      <slot />
-    </AppLink>
-    <button
-      v-else
-      :aria-label="ariaLabel"
-      :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
-      :disabled="disabled"
-      :type="type"
-      @click="$emit('click')"
-    >
-      <FontAwesomeIcon
-        v-if="iconId"
-        :class="{ 'mr-2': $slots.default }"
-        :icon="iconId"
-      />
-      <slot />
-    </button>
-  </span>
+  <AppLink
+    v-if="to"
+    ref="button"
+    :append="append"
+    :aria-label="ariaLabel"
+    :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
+    :disabled="disabled"
+    :is-colored="false"
+    :to="to"
+  >
+    <FontAwesomeIcon
+      v-if="iconId"
+      :class="{ 'mr-2': $slots.default }"
+      :icon="iconId"
+    />
+    <slot />
+  </AppLink>
+  <button
+    v-else
+    ref="button"
+    :aria-label="ariaLabel"
+    :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
+    :disabled="disabled"
+    :type="type"
+    @click="$emit('click')"
+  >
+    <FontAwesomeIcon
+      v-if="iconId"
+      :class="{ 'mr-2': $slots.default }"
+      :icon="iconId"
+    />
+    <slot />
+  </button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     append: {
       default: false,
@@ -46,7 +49,7 @@ export default {
     },
     buttonClass: {
       default: undefined,
-      type: String,
+      type: String as PropType<string | undefined>,
     },
     disabled: {
       default: false,
@@ -54,16 +57,21 @@ export default {
     },
     iconId: {
       default: undefined,
-      type: Array,
+      type: Array as PropType<string[] | undefined>,
     },
     to: {
       default: undefined,
-      type: String,
+      type: String as PropType<string | undefined>,
     },
     type: {
       default: 'button',
       type: String,
     },
   },
-}
+  methods: {
+    click() {
+      ;(this.$refs.button as HTMLButtonElement).click()
+    },
+  },
+})
 </script>

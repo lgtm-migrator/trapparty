@@ -1,44 +1,41 @@
 <template>
-  <span>
-    <span v-if="url">
-      <slot />
-      <Button
-        :aria-label="$t('share')"
-        :icon-id="['fas', 'share-alt']"
-        @click="copy(url)"
-      />
-    </span>
-    <span v-else class="inline-block unready">
-      <slot name="unready" />
-    </span>
-    <Modal v-if="showModalCopySuccess" @close="showModalCopySuccess = false">
-      {{ $t('donationUrlCopySuccess') }}
-    </Modal>
+  <span v-if="url">
+    <slot />
+    <Button
+      :aria-label="$t('share')"
+      :icon-id="['fas', 'share-alt']"
+      @click="copy(url)"
+    />
+  </span>
+  <span v-else class="inline-block unready">
+    <slot name="unready" />
   </span>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
   props: {
     url: {
       type: String,
       default: undefined,
     },
   },
-  data() {
-    return {
-      showModalCopySuccess: false,
-    }
-  },
   methods: {
-    copy(string) {
+    copy(string: string) {
       if (typeof window === 'undefined') {
         return
       }
 
       navigator.clipboard.writeText(string).then(
         () => {
-          this.showModalCopySuccess = true
+          this.$swal({
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+            title: this.$t('donationUrlCopySuccess'),
+          })
         },
         (_err) => {
           alert(this.$t('donationUrlCopyError'))
@@ -46,7 +43,7 @@ export default {
       )
     },
   },
-}
+})
 </script>
 
 <i18n lang="yml">

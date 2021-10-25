@@ -1,46 +1,56 @@
 <template>
-  <div class="text-center">
-    <span class="font-black font-family-montserrat text-xl">🥺</span>
-    <h1>{{ statusCode }} - {{ statusReason }}</h1>
-    <div class="flex flex-wrap justify-center my-2">
-      <ButtonHome class="m-2" />
-    </div>
+  <div>
+    <h1>{{ statusCode ? `${statusCode} - ` : '' }}{{ statusReason }}</h1>
+    <p v-if="statusCode === 403" class="text-center">
+      {{ $t('403description') }}
+      <br />
+      {{ $t('403hint') }}
+    </p>
+    <ButtonHome />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import status from '@http-util/status-i18n'
+import { defineComponent, PropType } from '@nuxtjs/composition-api'
 
-export default {
+export default defineComponent({
   props: {
     statusCode: {
-      type: Number,
       default: undefined,
+      type: Number as PropType<number | undefined>,
     },
   },
   computed: {
-    statusReason() {
+    statusReason(): string {
       // TODO: https://github.com/http-util/status-i18n/issues/27
-      let statusCodeLanugageCode
+      let statusCodeLanguageCode
 
       switch (this.$i18n.locale) {
         case 'de': // Prepared for https://github.com/http-util/status-i18n/pull/26
-          statusCodeLanugageCode = 'de-de'
+          statusCodeLanguageCode = 'de-de'
           break
         // en captured by `default`
         default:
-          statusCodeLanugageCode = 'en-us'
+          statusCodeLanguageCode = 'en-us'
           break
       }
-      return status(this.statusCode, statusCodeLanugageCode) || this.$t('error')
+      return (
+        status(this.statusCode, statusCodeLanguageCode) ||
+        (this.$t('error') as string)
+      )
     },
   },
-}
+})
 </script>
 
 <i18n lang="yml">
 de:
-  'error': 'Fehler'
+  403description: Du bist aktuell nicht berechtigt, auf diese Seite zuzugreifen.
+  403hint: Hast du von diesem Gerät aus schon einen Einladungscode eingegeben oder dich angemeldet?
+  error: Fehler
 en:
-  'error': 'Error'
+  403description: "You're currently missing permissions to view this site."
+  403hint: On this device, did you already enter an invitation code or sign in?
+  error: Error
 </i18n>

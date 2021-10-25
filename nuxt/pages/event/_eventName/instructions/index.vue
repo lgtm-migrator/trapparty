@@ -1,9 +1,10 @@
 <template>
   <Loader
+    v-if="($apollo.loading && !participationData) || graphqlError"
     class="section-wrapper"
-    :graphql-error-message="graphqlErrorMessage"
-    :loading="$apollo.loading"
-  >
+    :error-message="graphqlError ? String(graphqlError) : undefined"
+  />
+  <div v-else>
     <div v-if="participationData">
       <section class="mt-8 text-center">
         <span
@@ -51,7 +52,7 @@
               :aria-label="$t('discordInstall')"
               class="mr-4"
               :icon-id="['fas', 'download']"
-              link="https://discord.com/download"
+              to="https://discord.com/download"
             >
               {{ $t('discordInstall') }}
             </Button>
@@ -88,7 +89,7 @@
             :aria-label="$t('discordTutorial')"
             class="ml-4"
             :icon-id="['fab', 'youtube']"
-            link="https://youtu.be/NJijHNL4yEo"
+            to="https://youtu.be/NJijHNL4yEo"
           >
             {{ $t('discordTutorial') }}
           </Button>
@@ -238,7 +239,7 @@
       {{ $t('participationDataless') }}
       <ButtonHome />
     </div>
-  </Loader>
+  </div>
 </template>
 
 <script>
@@ -267,7 +268,7 @@ export default {
                 'nodes'
               )[0],
             error(error, _vm, _key, _type, _options) {
-              this.graphqlErrorMessage = error.message
+              this.graphqlError = error.message
             },
           }
         case 'watcher':
@@ -278,7 +279,7 @@ export default {
             },
             update: (data) => this.$global.getNested(data, 'eventByName'),
             error(error, _vm, _key, _type, _options) {
-              this.graphqlErrorMessage = error.message
+              this.graphqlError = error.message
             },
           }
         default:
@@ -313,7 +314,7 @@ export default {
       //     donationUrl: 'https://example.com',
       //   },
       // },
-      graphqlErrorMessage: undefined,
+      graphqlError: undefined,
       title: this.$t('title'),
     }
   },

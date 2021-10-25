@@ -1,4 +1,4 @@
--- Verify maevsi:table_leader on pg
+-- Verify trapparty:table_leader on pg
 
 BEGIN;
 
