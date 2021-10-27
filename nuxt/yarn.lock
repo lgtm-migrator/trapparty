@@ -14479,10 +14479,10 @@ vue-apollo@^3.0.5:
     serialize-javascript "^4.0.0"
     throttle-debounce "^2.1.0"
 
-vue-chart-3@0.5.10:
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-0.5.10.tgz#26f0ae48341bd004b9f178d1349e44380eab5867"
-  integrity sha512-KmcFmODo6vL4khp7iulhYQG13UxuVnZOF11s2Eu/ke93rJqYqcQyJ/HZoYp+MabURSIpVkVTc2L/o0aXb0IVaA==
+vue-chart-3@0.5.11:
+  version "0.5.11"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-0.5.11.tgz#f3f2c737889fd420f9293c33939f227092d09348"
+  integrity sha512-sYUBU0N9V9a1Bv9kVIgLkQDWdKxd61Z+5+mvJaXC6lTZvvZ2BShEThD8NkSxtwbpqNLxdKZ+ORlUEEnsNnpkDQ==
   dependencies:
     "@vue/runtime-core" "3.2.20"
     "@vue/runtime-dom" "3.2.20"
