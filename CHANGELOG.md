@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/dargmuesli/trapparty/compare/1.13.0...1.13.1) (2021-11-01)
+
+
+### Bug Fixes
+
+* **deps:** move nuxt types to runtime dependencies ([6128a87](https://github.com/dargmuesli/trapparty/commit/6128a8734220c39e5f27313bfc6d267e923fd169))
+
 # [1.13.0](https://github.com/dargmuesli/trapparty/compare/1.12.10...1.13.0) (2021-10-25)
 
 
