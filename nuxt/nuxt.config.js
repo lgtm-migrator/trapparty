@@ -151,13 +151,6 @@ export default {
     }
   },
 
-  helmet: {
-    hsts: {
-      maxAge: 31536000,
-      preload: true,
-    },
-  },
-
   /*
    ** Customize the progress-bar color
    */
@@ -165,7 +158,15 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    'nuxt-helmet', // Should be declared at the start of the array.
+    [
+      'nuxt-helmet',
+      {
+        hsts: {
+          maxAge: 31536000,
+          preload: true,
+        },
+      },
+    ], // Should be declared at the start of the array.
     'nuxt-healthcheck',
     [
       '@nuxtjs/i18n',
