@@ -7,13 +7,7 @@
     <section class="mb-4 text-center">
       <h1>{{ $t('title') }}</h1>
       <div
-        class="
-          text-white
-          gap-4
-          grid grid-cols-1
-          lg:grid-cols-2
-          place-content-center
-        "
+        class="text-white gap-4 grid grid-cols-1 lg:grid-cols-2 place-content-center"
       >
         <div class="bg-gray-700 flex-col p-2 rounded">
           <div class="text-4xl">
