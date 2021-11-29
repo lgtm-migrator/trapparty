@@ -250,6 +250,7 @@ import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn'
 const consola = require('consola')
 
 export default {
+  name: 'IndexPage',
   apollo: {
     participationData() {
       switch (this.$store.state.participationData.role) {

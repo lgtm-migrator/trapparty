@@ -10,6 +10,7 @@
 import { defineComponent, PropType } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  name: 'MaevsiLoader',
   props: {
     errorMessage: {
       default: undefined,

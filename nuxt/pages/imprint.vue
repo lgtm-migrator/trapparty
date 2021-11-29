@@ -87,6 +87,7 @@
 
 <script>
 export default {
+  name: 'IndexPage',
   data() {
     return {
       title: this.$t('title'),

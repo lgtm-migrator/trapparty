@@ -104,6 +104,7 @@ import { required } from 'vuelidate/lib/validators'
 import EVENT_BY_NAME from '~/gql/query/event/eventByName'
 
 export default {
+  name: 'IndexPage',
   apollo: {
     event() {
       return {
