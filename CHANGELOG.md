@@ -1,3 +1,10 @@
+## [1.13.4](https://github.com/dargmuesli/trapparty/compare/1.13.3...1.13.4) (2021-11-29)
+
+
+### Bug Fixes
+
+* **components:** add name ([976d47c](https://github.com/dargmuesli/trapparty/commit/976d47c042415782a0d82349b56f4ac7b0d91b41))
+
 ## [1.13.3](https://github.com/dargmuesli/trapparty/compare/1.13.2...1.13.3) (2021-11-29)
 
 
