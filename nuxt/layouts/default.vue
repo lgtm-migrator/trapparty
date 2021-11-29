@@ -44,6 +44,7 @@
 
 <script>
 export default {
+  name: 'IndexPage',
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true })
   },

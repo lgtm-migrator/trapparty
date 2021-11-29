@@ -138,6 +138,7 @@ import { Team } from '~/types/team'
 const consola = require('consola')
 
 export default defineComponent({
+  name: 'MaevsiDonation',
   props: {
     event: {
       type: Object,

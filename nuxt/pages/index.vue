@@ -41,6 +41,7 @@
 import ALL_EVENTS from '~/gql/query/event/allEvents'
 
 export default {
+  name: 'IndexPage',
   apollo: {
     allEvents() {
       return {
