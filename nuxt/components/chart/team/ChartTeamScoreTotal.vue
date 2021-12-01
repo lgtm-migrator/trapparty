@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api'
 import { ChartData, ChartOptions } from 'chart.js'
 import merge from 'lodash.merge'
 
+import { defineComponent, PropType } from '#app'
 import { Event as TrapPartyEvent } from '~/types/event'
 import STATS_QUERY from '~/gql/query/stats.gql'
 

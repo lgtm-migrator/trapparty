@@ -1,12 +1,13 @@
+import { defineNuxtConfig } from '@nuxt/bridge'
 import shrinkRay from 'shrink-ray-current'
 
 import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
 
-export default {
+export default defineNuxtConfig({
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     babel: {
-      presets({ _isServer }) {
+      presets() {
         return [
           ['@nuxt/babel-preset-app', { loose: true, corejs: { version: 3 } }],
         ]
@@ -16,14 +17,12 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(_config, _ctx) {},
     extractCSS: true,
     transpile: ['color', 'fetch-blob', 'node-fetch'],
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    '@nuxtjs/composition-api/module',
     [
       '@nuxtjs/fontawesome',
       {
@@ -48,8 +47,6 @@ export default {
       },
     ],
     '@nuxtjs/html-validator',
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/moment-module
     ['@nuxtjs/moment', { locales: ['de'] }],
     // https://go.nuxtjs.dev/stylelint
@@ -145,7 +142,7 @@ export default {
           content: 'website', // https://ogp.me/#types
         },
       ],
-      titleTemplate: (titleChunk) => {
+      titleTemplate: (titleChunk: any) => {
         return titleChunk ? `${titleChunk} · TrapParty` : 'TrapParty'
       },
     }
@@ -271,4 +268,4 @@ export default {
   },
 
   serverMiddleware: ['~/middleware/server/headers.ts'],
-}
+})

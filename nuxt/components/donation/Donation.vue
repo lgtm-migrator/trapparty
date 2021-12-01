@@ -129,7 +129,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '#app'
 
 import STATS_QUERY from '~/gql/query/stats.gql'
 import { CharityOrganization } from '~/types/charityOrganization'

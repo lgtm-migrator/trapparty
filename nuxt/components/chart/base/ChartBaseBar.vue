@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api'
 import {
   BarController,
   BarElement,
@@ -17,6 +16,8 @@ import {
 } from 'chart.js'
 import merge from 'lodash.merge'
 import { BarChart } from 'vue-chart-3'
+
+import { defineComponent, PropType } from '#app'
 
 Chart.register(
   BarController,
