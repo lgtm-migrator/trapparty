@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/dargmuesli/trapparty/compare/1.13.4...1.14.0) (2021-12-01)
+
+
+### Features
+
+* **nuxt:** use nuxt-bridge ([7a59226](https://github.com/dargmuesli/trapparty/commit/7a59226d344dd48cb6fe3ecbace73fe15e2252e4))
+
 ## [1.13.4](https://github.com/dargmuesli/trapparty/compare/1.13.3...1.13.4) (2021-11-29)
 
 
