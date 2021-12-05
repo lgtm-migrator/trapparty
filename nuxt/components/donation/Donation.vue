@@ -129,13 +129,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '#app'
+import consola from 'consola'
 
+import { defineComponent } from '#app'
 import STATS_QUERY from '~/gql/query/stats.gql'
 import { CharityOrganization } from '~/types/charityOrganization'
 import { Team } from '~/types/team'
-
-const consola = require('consola')
 
 export default defineComponent({
   name: 'MaevsiDonation',

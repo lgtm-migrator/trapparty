@@ -4,6 +4,9 @@ import shrinkRay from 'shrink-ray-current'
 import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
 
 export default defineNuxtConfig({
+  alias: {
+    tslib: 'tslib/tslib.es6.js',
+  },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     babel: {
@@ -52,7 +55,12 @@ export default defineNuxtConfig({
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/tailwindcss',
+      {
+        viewer: false,
+      },
+    ],
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -240,7 +248,7 @@ export default defineNuxtConfig({
     '~/plugins/baseUrl.ts',
     '~/plugins/global.ts',
     '~/plugins/i18n.ts',
-    '~/plugins/persistedState.js',
+    '~/plugins/persistedState.ts',
     '~/plugins/vuelidate.ts',
   ],
 

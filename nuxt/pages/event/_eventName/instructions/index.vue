@@ -243,11 +243,11 @@
 </template>
 
 <script>
-import __TYPENAME from '~/gql/query/__typename'
-import EVENT_BY_NAME from '~/gql/query/event/eventByName'
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn'
+import consola from 'consola'
 
-const consola = require('consola')
+import __TYPENAME from '~/gql/query/__typename.gql'
+import EVENT_BY_NAME from '~/gql/query/event/eventByName.gql'
+import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn.gql'
 
 export default {
   name: 'IndexPage',

@@ -1,10 +1,11 @@
+import { Context } from '@nuxt/types'
 import createPersistedState from 'vuex-persistedstate'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import { parse } from 'cookie'
 
 import { getNested } from './global'
 
-export default ({ store, req }) => {
+export default ({ store, req }: Context) => {
   if (!getNested(req, 'headers', 'cookie')) return
 
   createPersistedState({
@@ -13,6 +14,7 @@ export default ({ store, req }) => {
       getItem: (key) => {
         // See https://nuxtjs.org/guide/plugins/#using-process-flags
         if (process.server) {
+          if (!req.headers.cookie) return
           const parsedCookies = parse(req.headers.cookie)
           return parsedCookies[key]
         } else {

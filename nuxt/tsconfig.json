@@ -30,9 +30,6 @@
       "@nuxtjs/moment",
       "vue-apollo/types",
       "vue-sweetalert2"
-    ],
-    "typeRoots": [
-      "types"
     ]
   },
   "exclude": [

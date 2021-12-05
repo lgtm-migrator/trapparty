@@ -10,15 +10,14 @@
 
 <script lang="ts">
 import { ChartData, ChartOptions } from 'chart.js'
+import Color from 'color'
+import consola from 'consola'
 import merge from 'lodash.merge'
+import Rainbow from 'rainbowvis.js'
 
 import { defineComponent, PropType } from '#app'
 import { Event as TrapPartyEvent } from '~/types/event'
 import STATS_QUERY from '~/gql/query/stats.gql'
-
-const Color = require('color')
-const consola = require('consola')
-const Rainbow = require('rainbowvis.js')
 
 export default defineComponent({
   props: {

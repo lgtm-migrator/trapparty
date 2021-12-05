@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ALL_EVENTS from '~/gql/query/event/allEvents'
+import ALL_EVENTS from '~/gql/query/event/allEvents.gql'
 
 export default {
   name: 'IndexPage',

@@ -101,7 +101,7 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 
-import EVENT_BY_NAME from '~/gql/query/event/eventByName'
+import EVENT_BY_NAME from '~/gql/query/event/eventByName.gql'
 
 export default {
   name: 'IndexPage',
