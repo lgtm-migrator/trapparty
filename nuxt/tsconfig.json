@@ -16,6 +16,9 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
+      "#app": [
+        "node_modules/@nuxt/bridge/dist/runtime/index"
+      ],
       "~/*": [
         "./*"
       ],
@@ -24,10 +27,10 @@
       ]
     },
     "types": [
-      "@types/node",
       "@nuxt/types",
       "@nuxtjs/i18n",
       "@nuxtjs/moment",
+      "@types/node",
       "vue-apollo/types",
       "vue-sweetalert2"
     ]
