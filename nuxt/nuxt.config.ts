@@ -21,7 +21,7 @@ export default defineNuxtConfig({
      ** You can extend webpack config here
      */
     extractCSS: true,
-    transpile: ['color', 'fetch-blob', 'node-fetch'],
+    transpile: ['color'],
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
