@@ -21,7 +21,20 @@ export default defineNuxtConfig({
      ** You can extend webpack config here
      */
     extractCSS: true,
-    transpile: ['color'],
+    transpile: [
+      '@http-util/status-i18n',
+      'color',
+      'cross-fetch',
+      'graphql',
+      'hash.js',
+      'iterall',
+      'lodash',
+      'moment',
+      'node-fetch',
+      'subscriptions-transport-ws',
+      'tslib',
+      'universal-cookie',
+    ],
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
@@ -172,7 +185,6 @@ export default defineNuxtConfig({
         },
       },
     ], // Should be declared at the start of the array.
-    'nuxt-healthcheck',
     [
       '@nuxtjs/i18n',
       {
@@ -274,6 +286,4 @@ export default defineNuxtConfig({
       reportOnly: false,
     },
   },
-
-  serverMiddleware: ['~/middleware/server/headers.ts'],
 })
