@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/dargmuesli/trapparty/compare/1.15.0...1.15.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* start ([2f79d0c](https://github.com/dargmuesli/trapparty/commit/2f79d0c53514c365bc878c4f113319515d885853))
+
 # [1.15.0](https://github.com/dargmuesli/trapparty/compare/1.14.0...1.15.0) (2021-12-05)
 
 
