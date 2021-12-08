@@ -277,10 +277,7 @@ export default defineNuxtConfig({
         'img-src': ['data:', `https://*.${STACK_DOMAIN}`, "'self'"],
         'manifest-src': ["'self'"], // Chrome
         'report-uri': 'https://dargmuesli.report-uri.com/r/d/csp/enforce',
-        'script-src': [
-          "'self'",
-          'https://static.cloudflareinsights.com/beacon.min.js',
-        ],
+        'script-src': ["'self'", 'https://static.cloudflareinsights.com'],
         'style-src': ["'self'", "'unsafe-inline'"], // Tailwind, ChartJS (TODO: https://www.chartjs.org/docs/latest/getting-started/integration.html#content-security-policy)
       },
       reportOnly: false,
