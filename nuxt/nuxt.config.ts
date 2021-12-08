@@ -6,6 +6,7 @@ import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
 export default defineNuxtConfig({
   alias: {
     tslib: 'tslib/tslib.es6.js',
+    ws: 'ws/browser.js',
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
