@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/dargmuesli/trapparty/compare/1.15.3...1.15.4) (2021-12-08)
+
+
+### Bug Fixes
+
+* **ci:** correct event name ([d858ce2](https://github.com/dargmuesli/trapparty/commit/d858ce2b054b08fe76b9f05efee092e580433765))
+
 ## [1.15.3](https://github.com/dargmuesli/trapparty/compare/1.15.2...1.15.3) (2021-12-08)
 
 
