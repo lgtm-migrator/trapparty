@@ -51,6 +51,7 @@
     "vuex-persistedstate": "4.1.0"
   },
   "devDependencies": {
+    "@babel/core": "7.16.0",
     "@babel/runtime-corejs3": "7.16.3",
     "@nuxt/babel-preset-app": "2.15.8",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge",
@@ -69,6 +70,7 @@
     "@types/vuelidate": "0.7.15",
     "@vue/cli-shared-utils": "4.5.15",
     "babel-eslint": "10.1.0",
+    "chalk": "4.1.2",
     "eslint": "8.4.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-nuxt": "3.1.0",
