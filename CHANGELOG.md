@@ -1,3 +1,11 @@
+## [1.15.3](https://github.com/dargmuesli/trapparty/compare/1.15.2...1.15.3) (2021-12-08)
+
+
+### Bug Fixes
+
+* **csp:** remove trailing slash ([3b75a18](https://github.com/dargmuesli/trapparty/commit/3b75a18a3926b5cf831fe117cb23aadc30c79079))
+* **nuxt:** add ws alias ([9d0a341](https://github.com/dargmuesli/trapparty/commit/9d0a341b065c30e40eddd5a7b4cf2af2ebf7b2c8))
+
 ## [1.15.2](https://github.com/dargmuesli/trapparty/compare/1.15.1...1.15.2) (2021-12-08)
 
 
