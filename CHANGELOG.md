@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/dargmuesli/trapparty/compare/1.15.1...1.15.2) (2021-12-08)
+
+
+### Bug Fixes
+
+* **plugins:** rename global to util ([f3195c5](https://github.com/dargmuesli/trapparty/commit/f3195c5070d10f67432ddc73bab52a3fb5606e31))
+
 ## [1.15.1](https://github.com/dargmuesli/trapparty/compare/1.15.0...1.15.1) (2021-12-07)
 
 
