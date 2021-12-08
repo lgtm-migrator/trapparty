@@ -65,8 +65,7 @@ export default defineComponent({
 
     window.addEventListener('resize', (e) => {
       this.horizontal =
-        (e?.target as Window).outerWidth <
-        this.$global.CHART_DIRECTION_BREAKPOINT
+        (e?.target as Window).outerWidth < this.$util.CHART_DIRECTION_BREAKPOINT
     })
 
     window.dispatchEvent(new Event('resize'))
@@ -80,8 +79,8 @@ export default defineComponent({
       })
       .then((data) => {
         const rainbow = new Rainbow()
-        const allTeams = this.$global.getNested(data, 'data', 'allTeams')
-        const teamPlayerCount = this.$global.getNested(
+        const allTeams = this.$util.getNested(data, 'data', 'allTeams')
+        const teamPlayerCount = this.$util.getNested(
           data,
           'data',
           'teamPlayerCount'

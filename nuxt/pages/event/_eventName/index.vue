@@ -112,7 +112,7 @@ export default {
         variables: {
           eventName: this.$route.params.eventName,
         },
-        update: (data) => this.$global.getNested(data, 'eventByName'),
+        update: (data) => this.$util.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
           this.graphqlError = error.message
         },
@@ -165,7 +165,7 @@ export default {
     },
     async saveCode() {
       try {
-        await this.$global.formPreSubmit(this)
+        await this.$util.formPreSubmit(this)
       } catch (error) {
         return
       }
@@ -186,7 +186,7 @@ export default {
       form: {
         participationCode: {
           required,
-          formatUuid: this.$global.VERIFICATION_FORMAT_UUID,
+          formatUuid: this.$util.VERIFICATION_FORMAT_UUID,
         },
       },
       formAnonymous: {},

@@ -86,7 +86,7 @@ export function removeTypename<T extends Object & { __typename?: string }>(
   return clonedObject
 }
 
-const global = {
+const util = {
   CHART_DIRECTION_BREAKPOINT,
   EVENT_DESCRIPTION_MAXIMUM,
   EVENT_NAME_MAXIMUM,
@@ -106,20 +106,20 @@ const global = {
 }
 
 export default (_ctx: Context, inject: Inject) => {
-  inject('global', global)
+  inject('util', util)
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $global: typeof global
+    $util: typeof util
   }
 }
 
 declare module '@nuxt/types' {
   interface NuxtAppOptions {
-    $global: typeof global
+    $util: typeof util
   }
   interface Context {
-    $global: typeof global
+    $util: typeof util
   }
 }

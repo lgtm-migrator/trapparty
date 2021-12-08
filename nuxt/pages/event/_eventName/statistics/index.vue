@@ -9,7 +9,7 @@
     </h1>
     <div v-if="event">
       <p class="text-center">
-        {{ $t('eventName', { name: $global.getNested(event, 'name') }) }}
+        {{ $t('eventName', { name: $util.getNested(event, 'name') }) }}
       </p>
       <Donation class="mb-8" :event="event" />
       <ChartScoring class="mb-8" :event="event" />
@@ -32,7 +32,7 @@ export default {
         variables: {
           eventName: this.$route.params.eventName,
         },
-        update: (data) => this.$global.getNested(data, 'eventByName'),
+        update: (data) => this.$util.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
           this.graphqlError = error.message
         },

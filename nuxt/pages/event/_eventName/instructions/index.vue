@@ -10,7 +10,7 @@
         <span
           v-if="
             $store.state.participationData.role === 'player' &&
-            $global.getNested(participationData, 'name')
+            $util.getNested(participationData, 'name')
           "
           class="text-2xl"
         >
@@ -34,9 +34,7 @@
           <p>
             {{ $t('teamCommunicationDescription1') }}
             <i18n
-              v-if="
-                $global.getNested(participationData, 'teamByTeamId', 'name')
-              "
+              v-if="$util.getNested(participationData, 'teamByTeamId', 'name')"
               path="teamDataName"
             >
               <span class="font-bold">{{
@@ -58,7 +56,7 @@
             </Button>
             <Button
               v-if="
-                $global.getNested(
+                $util.getNested(
                   participationData,
                   'teamByTeamId',
                   'eventByEventId',
@@ -102,7 +100,7 @@
           </p>
           <i18n
             v-if="
-              $global.getNested(
+              $util.getNested(
                 participationData,
                 'teamByTeamId',
                 'charityOrganizationByCharityOrganizationId',
@@ -143,11 +141,7 @@
           </p>
           <p
             v-if="
-              $global.getNested(
-                participationData,
-                'teamByTeamId',
-                'donationUrl'
-              )
+              $util.getNested(participationData, 'teamByTeamId', 'donationUrl')
             "
           >
             <ButtonShare :url="participationData.teamByTeamId.donationUrl">
@@ -174,7 +168,7 @@
           {{ $t('donationDescription') }}
           {{ $t('donationDescriptionCommon') }}
         </p>
-        <p v-if="$global.getNested(participationData, 'commonDonationUrl')">
+        <p v-if="$util.getNested(participationData, 'commonDonationUrl')">
           <ButtonShare :url="participationData.commonDonationUrl">
             <Button
               :aria-label="$t('donationButtonCommon')"
@@ -198,7 +192,7 @@
           </span>
         </p>
         <p>
-          <span v-if="$global.getNested(event, 'streamUrl')">
+          <span v-if="$util.getNested(event, 'streamUrl')">
             <Button
               :aria-label="$t('streamGoto')"
               class="mr-4"
@@ -208,7 +202,7 @@
               {{ $t('streamGoto') }}
             </Button>
             <i18n
-              v-if="$global.getNested(event, 'start')"
+              v-if="$util.getNested(event, 'start')"
               path="streamDescriptionStart"
             >
               <span class="font-bold">
@@ -263,7 +257,7 @@ export default {
                 this.$store.state.participationData.participationCode,
             },
             update: (data) =>
-              this.$global.getNested(
+              this.$util.getNested(
                 data,
                 'playerByInvitationCodeFn',
                 'nodes'
@@ -278,7 +272,7 @@ export default {
             variables: {
               eventName: this.$route.params.eventName,
             },
-            update: (data) => this.$global.getNested(data, 'eventByName'),
+            update: (data) => this.$util.getNested(data, 'eventByName'),
             error(error, _vm, _key, _type, _options) {
               this.graphqlError = error.message
             },
@@ -328,7 +322,7 @@ export default {
     event() {
       switch (this.$store.state.participationData.role) {
         case 'player':
-          return this.$global.getNested(
+          return this.$util.getNested(
             this.participationData,
             'teamByTeamId',
             'eventByEventId'

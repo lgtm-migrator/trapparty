@@ -68,7 +68,7 @@ export default defineComponent({
       (e) =>
         (this.horizontal =
           (e?.target as Window).outerWidth <
-          this.$global.CHART_DIRECTION_BREAKPOINT)
+          this.$util.CHART_DIRECTION_BREAKPOINT)
     )
 
     window.dispatchEvent(new Event('resize'))
@@ -82,8 +82,8 @@ export default defineComponent({
       })
       .then((data) => {
         const rainbow = new Rainbow()
-        const allTeams = this.$global.getNested(data, 'data', 'allTeams')
-        const allGames = this.$global.getNested(data, 'data', 'allGames')
+        const allTeams = this.$util.getNested(data, 'data', 'allTeams')
+        const allGames = this.$util.getNested(data, 'data', 'allGames')
         const labels = []
         const datasets = []
 

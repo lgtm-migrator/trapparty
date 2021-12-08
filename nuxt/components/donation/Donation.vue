@@ -18,9 +18,7 @@
         <div class="bg-gray-700 flex-col p-2 rounded">
           <div class="text-4xl">
             {{
-              numberFormat(
-                $global.getNested(event, 'commonDonationAmount') || 0
-              )
+              numberFormat($util.getNested(event, 'commonDonationAmount') || 0)
             }}
           </div>
           <div class="font-bold">{{ $t('donationCommon') }}</div>
@@ -43,11 +41,11 @@
               <th
                 v-for="charityOrganization in charityOrganizations"
                 :key="`header-${
-                  $global.getNested(charityOrganization, 'id') || Math.random()
+                  $util.getNested(charityOrganization, 'id') || Math.random()
                 }`"
                 class="border border-gray-700 p-2"
               >
-                {{ $global.getNested(charityOrganization, 'name') }}
+                {{ $util.getNested(charityOrganization, 'name') }}
               </th>
               <td />
             </tr>
@@ -58,7 +56,7 @@
                 ...teams,
                 {
                   name: 'Stream',
-                  donationAmount: $global.getNested(
+                  donationAmount: $util.getNested(
                     event,
                     'commonDonationAmount'
                   ),
@@ -74,21 +72,21 @@
                   charityOrganization, charityOrganizationIndex
                 ) in charityOrganizations"
                 :key="`data-${
-                  $global.getNested(charityOrganization, 'id') || Math.random()
+                  $util.getNested(charityOrganization, 'id') || Math.random()
                 }`"
                 class="border border-gray-700 p-2"
                 :class="{
                   'font-bold':
-                    $global.getNested(
+                    $util.getNested(
                       team,
                       'charityOrganizationByCharityOrganizationId',
                       'id'
-                    ) === $global.getNested(charityOrganization, 'id'),
+                    ) === $util.getNested(charityOrganization, 'id'),
                 }"
               >
                 {{
                   numberFormat(
-                    $global.getNested(
+                    $util.getNested(
                       distributionMatrix,
                       [teamIndex],
                       [charityOrganizationIndex]
@@ -107,7 +105,7 @@
                   charityOrganization, charityOrganizationIndex
                 ) in charityOrganizations"
                 :key="`total-${
-                  $global.getNested(charityOrganization, 'id') || Math.random()
+                  $util.getNested(charityOrganization, 'id') || Math.random()
                 }`"
                 class="border border-gray-700 font-bold p-2"
               >
@@ -159,7 +157,7 @@ export default defineComponent({
   computed: {
     donationAmountSum(): number {
       return (
-        (this.$global.getNested(this.event, 'commonDonationAmount') || 0) +
+        (this.$util.getNested(this.event, 'commonDonationAmount') || 0) +
         this.donationAmountTeamSum
       )
     },
@@ -185,9 +183,9 @@ export default defineComponent({
         },
       })
       .then((data) => {
-        const allTeams = this.$global.getNested(data, 'data', 'allTeams')
-        const allGames = this.$global.getNested(data, 'data', 'allGames')
-        const teamPlayerCount = this.$global.getNested(
+        const allTeams = this.$util.getNested(data, 'data', 'allTeams')
+        const allGames = this.$util.getNested(data, 'data', 'allGames')
+        const teamPlayerCount = this.$util.getNested(
           data,
           'data',
           'teamPlayerCount'
@@ -260,7 +258,7 @@ export default defineComponent({
           ...this.teams,
           {
             name: 'Stream',
-            donationAmount: this.$global.getNested(
+            donationAmount: this.$util.getNested(
               this.event,
               'commonDonationAmount'
             ),
@@ -284,11 +282,11 @@ export default defineComponent({
                 : team.donationAmount *
                     teamDonationWeighting *
                     this.charityOrganizationWeigths[j] +
-                  (this.$global.getNested(
+                  (this.$util.getNested(
                     team,
                     'charityOrganizationByCharityOrganizationId',
                     'id'
-                  ) === this.$global.getNested(charityOrganization, 'id')
+                  ) === this.$util.getNested(charityOrganization, 'id')
                     ? team.donationAmount *
                       this.DONATION_DISTRIBUTION_PERCENTAGE
                     : 0)

@@ -3,7 +3,7 @@ import createPersistedState from 'vuex-persistedstate'
 import Cookies from 'js-cookie'
 import { parse } from 'cookie'
 
-import { getNested } from './global'
+import { getNested } from './util'
 
 export default ({ store, req }: Context) => {
   if (!getNested(req, 'headers', 'cookie')) return

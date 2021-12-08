@@ -46,7 +46,7 @@ export default {
     allEvents() {
       return {
         query: ALL_EVENTS,
-        update: (data) => this.$global.getNested(data, 'allEvents', 'nodes'),
+        update: (data) => this.$util.getNested(data, 'allEvents', 'nodes'),
         error(error, _vm, _key, _type, _options) {
           this.graphqlError = error.message
         },
