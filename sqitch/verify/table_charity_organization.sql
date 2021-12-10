@@ -4,7 +4,8 @@ BEGIN;
 
 SELECT id,
        name,
-       url
+       url,
+       department
 FROM trapparty.charity_organization WHERE FALSE;
 
 DO $$
