@@ -9,7 +9,7 @@ CREATE TABLE trapparty.game_random_facts_round (
   id              BIGSERIAL PRIMARY KEY,
   answer_correct  INT CHECK (answer_correct >= 0),
   game_id         BIGINT NOT NULL REFERENCES trapparty.game(id),
-  is_active       BOOLEAN NOT NULL,
+  is_active       BOOLEAN NOT NULL DEFAULT FALSE,
   questioner_name TEXT NOT NULL UNIQUE CHECK (char_length(questioner_name) < 100)
 );
 
