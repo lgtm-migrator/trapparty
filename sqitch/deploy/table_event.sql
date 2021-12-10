@@ -6,7 +6,7 @@ BEGIN;
 
 CREATE TABLE trapparty.event (
   id                         BIGSERIAL PRIMARY KEY,
-  "name"                     TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
+  "name"                     TEXT NOT NULL UNIQUE CHECK (char_length("name") > 0 AND char_length("name") < 100),
   "start"                    TIMESTAMP WITH TIME ZONE NOT NULL,
   "end"                      TIMESTAMP WITH TIME ZONE,
   discord_invite_code        TEXT CHECK (discord_invite_code ~ '^[a-zA-Z0-9]{10}$'),
