@@ -9,5 +9,4 @@ fragment eventFields on Event {
   commonDonationUrl
   commonDonationIsLive
   commonDonationAmount
-  versionTimestamp
 }

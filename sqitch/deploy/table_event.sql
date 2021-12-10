@@ -5,7 +5,7 @@
 BEGIN;
 
 CREATE TABLE trapparty.event (
-  id                         BIGSERIAL PRIMARY KEY,
+  id                         SERIAL PRIMARY KEY,
   "name"                     TEXT NOT NULL UNIQUE CHECK (char_length("name") > 0 AND char_length("name") < 100),
   "start"                    TIMESTAMP WITH TIME ZONE NOT NULL,
   "end"                      TIMESTAMP WITH TIME ZONE,
@@ -13,9 +13,7 @@ CREATE TABLE trapparty.event (
   stream_url                 TEXT CHECK (char_length(stream_url) < 100 AND stream_url ~ '^https://.+$'),
   common_donation_url        TEXT CHECK (char_length(common_donation_url) < 100 AND common_donation_url ~ '^https://.+$'),
   common_donation_is_live    BOOLEAN,
-  common_donation_amount     MONEY CHECK (common_donation_amount >= 0::MONEY),
-  version_timestamp          TIMESTAMP NOT NULL DEFAULT NOW(),
-  UNIQUE (name, version_timestamp)
+  common_donation_amount     MONEY CHECK (common_donation_amount >= 0::MONEY)
 );
 
 COMMENT ON TABLE trapparty.event IS 'Events.';

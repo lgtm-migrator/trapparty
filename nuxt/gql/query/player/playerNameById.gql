@@ -1,0 +1,3 @@
+query playerNameById($id: Int!) {
+  playerNameById(id: $id)
+}

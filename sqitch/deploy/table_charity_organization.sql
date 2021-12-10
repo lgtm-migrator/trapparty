@@ -5,7 +5,7 @@
 BEGIN;
 
 CREATE TABLE trapparty.charity_organization (
-  id          BIGSERIAL PRIMARY KEY,
+  id          SERIAL PRIMARY KEY,
   name        TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
   url         TEXT NOT NULL UNIQUE CHECK (char_length(url) < 100 AND url ~ '^https://.+$')
 );

@@ -6,11 +6,11 @@
 BEGIN;
 
 CREATE TABLE trapparty.player (
-  id                 BIGSERIAL PRIMARY KEY,
-  team_id            BIGINT NOT NULL REFERENCES trapparty.team(id),
+  id                 SERIAL PRIMARY KEY,
+  team_id            INT REFERENCES trapparty.team(id),
   name               TEXT NOT NULL CHECK (char_length(name) < 100),
   invitation_code    UUID NOT NULL UNIQUE DEFAULT trapparty.uuid_generate_v1mc(),
-  UNIQUE (team_id, name)
+  UNIQUE (team_id, invitation_code)
 );
 
 COMMENT ON TABLE trapparty.player IS 'Players.';

@@ -7,16 +7,16 @@
 
 BEGIN;
 
-CREATE FUNCTION trapparty.team_player_count(event_id BIGINT)
-RETURNS TABLE(team_id BIGINT, player_count BIGINT) AS $$
+CREATE FUNCTION trapparty.team_player_count(event_id INT)
+RETURNS TABLE(team_id INT, player_count INT) AS $$
 BEGIN
   RETURN QUERY
     WITH data AS (SELECT player.id AS player_id, team.id AS team_id FROM trapparty.team, trapparty.player WHERE team.id = player.team_id AND team.event_id = 1) SELECT data.team_id, SUM(1) AS player_count FROM data GROUP BY data.team_id ORDER BY data.team_id ASC;
 END;
 $$ LANGUAGE PLPGSQL STABLE STRICT SECURITY DEFINER;
 
-COMMENT ON FUNCTION trapparty.team_player_count(BIGINT) IS E'Retrieves the player count of each team.';
+COMMENT ON FUNCTION trapparty.team_player_count(INT) IS E'Retrieves the player count of each team.';
 
-GRANT EXECUTE ON FUNCTION trapparty.team_player_count(BIGINT) TO trapparty_anonymous;
+GRANT EXECUTE ON FUNCTION trapparty.team_player_count(INT) TO trapparty_anonymous;
 
 COMMIT;

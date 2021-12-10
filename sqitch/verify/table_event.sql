@@ -10,8 +10,7 @@ SELECT id,
        stream_url,
        common_donation_url,
        common_donation_is_live,
-       common_donation_amount,
-       version_timestamp
+       common_donation_amount
 FROM trapparty.event WHERE FALSE;
 
 DO $$

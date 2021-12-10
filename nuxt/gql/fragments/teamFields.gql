@@ -1,8 +1,10 @@
 fragment teamFields on Team {
   nodeId
   id
+  eventId
+  name
+  emoji
   charityOrganizationId
   donationUrl
-  emoji
-  name
+  donationAmount
 }

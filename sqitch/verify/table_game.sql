@@ -4,7 +4,9 @@ BEGIN;
 
 SELECT id,
        event_id,
-       "name"
+       "type",
+       "name",
+       is_active
 FROM trapparty.game WHERE FALSE;
 
 DO $$

@@ -96,8 +96,8 @@ export default defineComponent({
           const game = allGames.nodes[i]
           const scores = []
 
-          for (let j = 0; j < game.gameScoresByGameId.nodes.length; j++) {
-            const teamScoreObject = game.gameScoresByGameId.nodes[j]
+          for (let j = 0; j < game.gameTeamScoresByGameId.nodes.length; j++) {
+            const teamScoreObject = game.gameTeamScoresByGameId.nodes[j]
             scores.push(teamScoreObject.score)
           }
 
