@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/dargmuesli/trapparty/compare/2.0.0...2.0.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* **ci:** correct publish token usage ([650cc1f](https://github.com/dargmuesli/trapparty/commit/650cc1f327d0bf1ed2640e3fb32c9d59c964a1be))
+* **sqitch:** use production table definition ([4496242](https://github.com/dargmuesli/trapparty/commit/44962421d2ab2740fb10bb9246c751c9b0bdab15))
+
 # [2.0.0](https://github.com/dargmuesli/trapparty/compare/1.16.0...2.0.0) (2021-12-10)
 
 
