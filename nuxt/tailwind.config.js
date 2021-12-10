@@ -1,6 +1,4 @@
 module.exports = {
-  darkMode: 'media',
-  mode: 'jit',
   theme: {
     extend: {
       animation: {
