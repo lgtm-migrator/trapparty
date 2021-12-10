@@ -7,9 +7,9 @@
 BEGIN;
 
 CREATE TABLE trapparty.team_leader (
-  id                 BIGSERIAL PRIMARY KEY,
-  team_id            BIGINT NOT NULL REFERENCES trapparty.team(id),
-  player_id          BIGINT NOT NULL REFERENCES trapparty.player(id)
+  id                 SERIAL PRIMARY KEY,
+  team_id            INT NOT NULL REFERENCES trapparty.team(id),
+  player_id          INT NOT NULL REFERENCES trapparty.player(id)
 );
 
 COMMENT ON TABLE trapparty.team_leader IS 'Leaders.';

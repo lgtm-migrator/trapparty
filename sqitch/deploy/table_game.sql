@@ -7,8 +7,8 @@
 BEGIN;
 
 CREATE TABLE trapparty.game (
-  id        BIGSERIAL PRIMARY KEY,
-  event_id  BIGINT NOT NULL REFERENCES trapparty.event(id),
+  id        SERIAL PRIMARY KEY,
+  event_id  INT NOT NULL REFERENCES trapparty.event(id),
   "type"    trapparty.game_type, --NOT NULL
   "name"    TEXT NOT NULL UNIQUE CHECK (char_length(name) < 100),
   is_active BOOLEAN NOT NULL DEFAULT FALSE,

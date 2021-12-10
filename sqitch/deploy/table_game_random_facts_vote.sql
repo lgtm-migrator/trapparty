@@ -7,10 +7,11 @@
 BEGIN;
 
 CREATE TABLE trapparty.game_random_facts_vote (
-  id              BIGSERIAL PRIMARY KEY,
+  id              SERIAL PRIMARY KEY,
   answer          INT NOT NULL CHECK (answer >= 0),
   player_id       INT NOT NULL REFERENCES trapparty.player(id),
-  round_id        INT NOT NULL REFERENCES trapparty.game_random_facts_round(id)
+  round_id        INT NOT NULL REFERENCES trapparty.game_random_facts_round(id),
+  UNIQUE (player_id, round_id)
 );
 
 COMMENT ON TABLE trapparty.game_random_facts_vote IS 'A vote of a random facts game round.';

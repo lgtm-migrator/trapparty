@@ -1,4 +1,4 @@
-query ($eventId: BigInt!) {
+query ($eventId: Int!) {
   teamPlayerCount(eventId: $eventId) {
     nodes {
       teamId

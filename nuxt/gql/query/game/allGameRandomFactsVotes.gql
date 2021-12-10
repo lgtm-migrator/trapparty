@@ -1,0 +1,9 @@
+#import "../../fragments/gameRandomFactsVoteFields.gql"
+
+query gameRandomFactsVotes($roundId: Int!) {
+  allGameRandomFactsVotes(condition: {roundId: $roundId}) {
+    nodes {
+      ...gameRandomFactsVoteFields
+    }
+  }
+}

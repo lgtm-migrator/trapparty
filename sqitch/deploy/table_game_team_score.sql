@@ -7,9 +7,9 @@
 BEGIN;
 
 CREATE TABLE trapparty.game_team_score (
-  id         BIGSERIAL PRIMARY KEY,
-  game_id    BIGINT NOT NULL REFERENCES trapparty.game(id),
-  team_id    BIGINT NOT NULL REFERENCES trapparty.team(id),
+  id         SERIAL PRIMARY KEY,
+  game_id    INT NOT NULL REFERENCES trapparty.game(id),
+  team_id    INT NOT NULL REFERENCES trapparty.team(id),
   score      INT NOT NULL
 );
 

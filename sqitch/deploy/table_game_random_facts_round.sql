@@ -6,11 +6,11 @@
 BEGIN;
 
 CREATE TABLE trapparty.game_random_facts_round (
-  id              BIGSERIAL PRIMARY KEY,
+  id              SERIAL PRIMARY KEY,
   answer_correct  INT CHECK (answer_correct >= 0),
-  game_id         BIGINT NOT NULL REFERENCES trapparty.game(id),
+  game_id         INT NOT NULL REFERENCES trapparty.game(id),
   is_active       BOOLEAN NOT NULL DEFAULT FALSE,
-  questioner_name TEXT NOT NULL UNIQUE CHECK (char_length(questioner_name) < 100)
+  questioner_name TEXT NOT NULL CHECK (char_length(questioner_name) < 100)
 );
 
 COMMENT ON TABLE trapparty.game_random_facts_round IS 'A round of a random facts game.';

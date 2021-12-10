@@ -1,0 +1,7 @@
+fragment gameRandomFactsRoundFields on GameRandomFactsRound {
+    id
+    answerCorrect
+    gameId
+    isActive
+    questionerName
+}

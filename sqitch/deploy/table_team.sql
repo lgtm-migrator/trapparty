@@ -7,11 +7,11 @@
 BEGIN;
 
 CREATE TABLE trapparty.team (
-  id                         BIGSERIAL PRIMARY KEY,
-  event_id                   BIGINT NOT NULL REFERENCES trapparty.event(id),
+  id                         SERIAL PRIMARY KEY,
+  event_id                   INT NOT NULL REFERENCES trapparty.event(id),
   "name"                     TEXT NOT NULL CHECK (char_length(name) < 100),
   emoji                      TEXT NOT NULL CHECK (char_length(emoji) = 1),
-  charity_organization_id    BIGINT REFERENCES trapparty.charity_organization(id),
+  charity_organization_id    INT REFERENCES trapparty.charity_organization(id),
   donation_url               TEXT CHECK (char_length(donation_url) < 100 AND donation_url ~ '^https://.+$'),
   donation_amount            MONEY CHECK (donation_amount >= 0::MONEY)
 );

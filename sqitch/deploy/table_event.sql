@@ -5,7 +5,7 @@
 BEGIN;
 
 CREATE TABLE trapparty.event (
-  id                         BIGSERIAL PRIMARY KEY,
+  id                         SERIAL PRIMARY KEY,
   "name"                     TEXT NOT NULL UNIQUE CHECK (char_length("name") > 0 AND char_length("name") < 100),
   "start"                    TIMESTAMP WITH TIME ZONE NOT NULL,
   "end"                      TIMESTAMP WITH TIME ZONE,
