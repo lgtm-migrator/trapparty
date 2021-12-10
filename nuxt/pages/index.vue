@@ -4,6 +4,22 @@
     :error-message="graphqlError ? String(graphqlError) : undefined"
   />
   <div v-else class="flex flex-1 flex-col">
+    <section v-if="eventsUpcoming && eventsUpcoming.length > 0">
+      <h2>
+        {{ $t('titleEventsUpcoming') }}
+      </h2>
+      <ul>
+        <li
+          v-for="eventUpcoming in eventsUpcoming"
+          :key="eventUpcoming.id"
+          class="text-xl"
+        >
+          <nuxt-link :to="localePath(`/event/${eventUpcoming.name}`)">
+            {{ `${$t('title')} ${eventUpcoming.name}` }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </section>
     <div class="flex flex-1 flex-col font-serif justify-center">
       <div class="flex flex-col md:flex-row items-baseline">
         <h1 class="inline leading-normal mb-0 md:mb-4 text-6xl">
@@ -24,14 +40,14 @@
         </template>
       </i18n>
     </div>
-    <section v-if="pastEvents && pastEvents.length > 0">
+    <section v-if="eventsPast && eventsPast.length > 0">
       <h2>
-        {{ $t('titlePastEvents') }}
+        {{ $t('titleEventsPast') }}
       </h2>
       <ul>
-        <li v-for="pastEvent in pastEvents" :key="pastEvent.id" class="text-xl">
-          <nuxt-link :to="localePath(`/event/${pastEvent.name}`)">
-            {{ `${$t('title')} ${pastEvent.name}` }}
+        <li v-for="eventPast in eventsPast" :key="eventPast.id" class="text-xl">
+          <nuxt-link :to="localePath(`/event/${eventPast.name}`)">
+            {{ `${$t('title')} ${eventPast.name}` }}
           </nuxt-link>
         </li>
       </ul>
@@ -67,9 +83,14 @@ export default {
     }
   },
   computed: {
-    pastEvents() {
+    eventsPast() {
       return this.allEvents?.filter((event) =>
         this.$moment(event.start).isBefore(this.$moment())
+      )
+    },
+    eventsUpcoming() {
+      return this.allEvents?.filter((event) =>
+        this.$moment(event.start).isAfter(this.$moment())
       )
     },
   },
@@ -81,6 +102,7 @@ de:
   authorLinkTitle: 'Jonas Website'
   description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {author} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
   title: TrapParty
-  titlePastEvents: Vergangene TrapParties
+  titleEventsPast: Vergangene TrapParties
+  titleEventsUpcoming: Zukünftige TrapParties
   transcription: '[træp ˈpɑr-ti]'
 </i18n>

@@ -110,7 +110,7 @@ export default {
       return {
         query: EVENT_BY_NAME,
         variables: {
-          eventName: this.$route.params.eventName,
+          eventName: '2020',
         },
         update: (data) => this.$util.getNested(data, 'eventByName'),
         error(error, _vm, _key, _type, _options) {
@@ -197,7 +197,6 @@ export default {
 
 <i18n lang="yml">
 de:
-  2020: '2020'
   anonymous: 'Anonym teilnehmen'
   anonymousDescription: 'Du bist in keinem Team?'
   anonymousTitle: '👻'
