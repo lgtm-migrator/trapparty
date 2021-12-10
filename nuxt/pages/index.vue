@@ -24,16 +24,18 @@
         </template>
       </i18n>
     </div>
-    <h2>
-      {{ $t('titlePastEvents') }}
-    </h2>
-    <ul>
-      <li v-for="pastEvent in pastEvents" :key="pastEvent.id" class="text-xl">
-        <nuxt-link :to="localePath(`/event/${pastEvent.name}`)">
-          {{ `${$t('title')} ${pastEvent.name}` }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <section v-if="pastEvents && pastEvents.length > 0">
+      <h2>
+        {{ $t('titlePastEvents') }}
+      </h2>
+      <ul>
+        <li v-for="pastEvent in pastEvents" :key="pastEvent.id" class="text-xl">
+          <nuxt-link :to="localePath(`/event/${pastEvent.name}`)">
+            {{ `${$t('title')} ${pastEvent.name}` }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
