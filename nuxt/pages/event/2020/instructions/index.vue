@@ -74,7 +74,7 @@
               {{ $t('dataless', { what: $t('datalessDiscordCode') }) }}
             </span>
           </p>
-          <p>
+          <p v-if="$util.getNested(participationData, 'teamByTeamId', 'emoji')">
             {{
               $t('teamCommunicationDescription2', {
                 emojiPrefix: participationData.teamByTeamId.emoji
@@ -382,7 +382,7 @@ de:
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
   intentionRoleAnonymous: 'anonym teilzunehmen'
   intentionRolePlayer: 'mitzumachen'
-  participationDataless: 'Konnte keine Veranstaltungsdaten laden.'
+  participationDataless: 'Konnte keine Teilnahmedaten laden.'
   statisticsGoTo: 'Zu den Statistiken'
   streamTitle: 'Zuschauen 📺'
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'

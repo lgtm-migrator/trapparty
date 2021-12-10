@@ -24,7 +24,7 @@ query ($eventId: BigInt!) {
     nodes {
       id
       name
-      gameScoresByGameId(orderBy: TEAM_ID_ASC) {
+      gameTeamScoresByGameId(orderBy: TEAM_ID_ASC) {
         nodes {
           score
         }
