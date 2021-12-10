@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/dargmuesli/trapparty/compare/1.16.0...2.0.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* adapt new database layout ([9521e36](https://github.com/dargmuesli/trapparty/commit/9521e36c31ec601b25a1352dde2dbfe3a3837d17))
+
+
+### Features
+
+* **admin:** add rough nfc reading ([cbc9f2c](https://github.com/dargmuesli/trapparty/commit/cbc9f2c77a80e108ed66412e5a4b738b0b0cd478))
+* **game-random-facts:** add statistics ([1e5c388](https://github.com/dargmuesli/trapparty/commit/1e5c388315f5678697ed0e347c815c4c92580a55))
+* **sqitch:** add game mode random facts ([1eb5300](https://github.com/dargmuesli/trapparty/commit/1eb530085ea5426f0deb762fd2711ee0830086ba))
+
+
+### BREAKING CHANGES
+
+* **sqitch:** add game mode random facts
+
 # [1.16.0](https://github.com/dargmuesli/trapparty/compare/1.15.4...1.16.0) (2021-12-10)
 
 
