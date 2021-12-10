@@ -13,9 +13,7 @@ CREATE TABLE trapparty.event (
   stream_url                 TEXT CHECK (char_length(stream_url) < 100 AND stream_url ~ '^https://.+$'),
   common_donation_url        TEXT CHECK (char_length(common_donation_url) < 100 AND common_donation_url ~ '^https://.+$'),
   common_donation_is_live    BOOLEAN,
-  common_donation_amount     MONEY CHECK (common_donation_amount >= 0::MONEY),
-  version_timestamp          TIMESTAMP NOT NULL DEFAULT NOW(),
-  UNIQUE (name, version_timestamp)
+  common_donation_amount     MONEY CHECK (common_donation_amount >= 0::MONEY)
 );
 
 COMMENT ON TABLE trapparty.event IS 'Events.';

@@ -1,5 +1,6 @@
 -- Deploy trapparty:table_kv to pg
 -- requires: schema_public
+-- requires: role_anonymous
 
 BEGIN;
 
