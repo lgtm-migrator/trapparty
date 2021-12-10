@@ -1,3 +1,16 @@
+# [1.16.0](https://github.com/dargmuesli/trapparty/compare/1.15.4...1.16.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **event:** disallow empty event names ([ee4d8cf](https://github.com/dargmuesli/trapparty/commit/ee4d8cfbba6bd1a5dcb09d8ea1a3fa9092d9b0ec))
+* show past events only if existing ([a08bbd9](https://github.com/dargmuesli/trapparty/commit/a08bbd97102c3ad7ff9c20d3c430ae4cb0a12441))
+
+
+### Features
+
+* allow upcoming events ([3977fc5](https://github.com/dargmuesli/trapparty/commit/3977fc5429c0092914f94be80cbd16d56b011684))
+
 ## [1.15.4](https://github.com/dargmuesli/trapparty/compare/1.15.3...1.15.4) (2021-12-08)
 
 
