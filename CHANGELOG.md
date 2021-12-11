@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/dargmuesli/trapparty/compare/2.0.1...2.1.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **function-team-player-count:** correct returned table ([e57f38e](https://github.com/dargmuesli/trapparty/commit/e57f38ea2000a83f97706ae39eb8c83a0844943e))
+
+
+### Features
+
+* start game, load user ([d1e4184](https://github.com/dargmuesli/trapparty/commit/d1e41844a3ecb7682594f972f0da535d5a8a1c7c))
+
 ## [2.0.1](https://github.com/dargmuesli/trapparty/compare/2.0.0...2.0.1) (2021-12-10)
 
 
