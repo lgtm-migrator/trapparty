@@ -253,8 +253,8 @@ export default {
             query: PLAYER_BY_INVITATION_CODE_FN,
             variables: {
               eventName: '2020',
-              participationCode:
-                this.$store.state.participationData.participationCode,
+              invitationCode:
+                this.$store.state.participationData.invitationCode,
             },
             update: (data) =>
               this.$util.getNested(

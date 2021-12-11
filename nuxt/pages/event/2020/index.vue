@@ -29,9 +29,9 @@
               {{ $t('participateDescription') }}
             </p>
             <FormInput
-              :error="$v.form.participationCode.$error"
+              :error="$v.form.invitationCode.$error"
               label-for="input-participation-code-trapparty"
-              :title="$t('participationCode')"
+              :title="$t('invitationCode')"
             >
               <!--
                 The id's suffix `-trapparty` makes browser suggest inputs just
@@ -39,7 +39,7 @@
               -->
               <input
                 id="input-participation-code-trapparty"
-                v-model.trim="participationCodeModel"
+                v-model.trim="invitationCodeModel"
                 class="form-input"
                 :disabled="$route.query.ic"
                 type="text"
@@ -47,21 +47,21 @@
               />
               <template slot="inputInfo">
                 <div v-if="$route.query.ic">
-                  {{ $t('participationCodeAutomatic') }}
+                  {{ $t('invitationCodeAutomatic') }}
                   <AppLink :to="localePath('/')">
-                    {{ $t('participationCodeManual') }}
+                    {{ $t('invitationCodeManual') }}
                   </AppLink>
                 </div>
               </template>
               <template slot="inputError">
                 <FormInputError
-                  :form-input="$v.form.participationCode"
+                  :form-input="$v.form.invitationCode"
                   validation-property="required"
                 >
                   {{ $t('globalValidationRequired') }}
                 </FormInputError>
                 <FormInputError
-                  :form-input="$v.form.participationCode"
+                  :form-input="$v.form.invitationCode"
                   validation-property="formatUuid"
                 >
                   {{ $t('globalValidationFormatIncorrect') }}
@@ -122,7 +122,7 @@ export default {
   data() {
     return {
       form: {
-        participationCode:
+        invitationCode:
           this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
         sent: false,
       },
@@ -139,20 +139,20 @@ export default {
     }
   },
   computed: {
-    participationCodeModel: {
+    invitationCodeModel: {
       get() {
         return this.$route.query.ic !== undefined
           ? this.$route.query.ic
-          : this.$v.form.participationCode.$model
+          : this.$v.form.invitationCode.$model
       },
       set(value) {
-        this.$v.form.participationCode.$model = value
+        this.$v.form.invitationCode.$model = value
       },
     },
   },
   mounted() {
     if (this.$route.query.ic !== undefined) {
-      this.$v.form.participationCode.$touch()
+      this.$v.form.invitationCode.$touch()
     }
   },
   methods: {
@@ -173,7 +173,7 @@ export default {
       this.$v.form.$reset()
       this.$store.commit('setParticipationData', {
         role: 'player',
-        participationCode: this.form.participationCode,
+        invitationCode: this.form.invitationCode,
       })
       this.$router.push({
         append: true,
@@ -184,7 +184,7 @@ export default {
   validations() {
     return {
       form: {
-        participationCode: {
+        invitationCode: {
           required,
           formatUuid: this.$util.VERIFICATION_FORMAT_UUID,
         },
@@ -202,9 +202,9 @@ de:
   anonymousTitle: '👻'
   datalessEvent: 'Aktuell sind keine Daten für eine kommende TrapParty vorhanden.'
   greeting: 'Schön, dass du da bist! 😊 Jetzt kann es losgehen.'
-  participationCode: 'Teilnahmecode'
-  participationCodeAutomatic: 'Der Teilnahmecode wurde automatisch für dich eingegeben.'
-  participationCodeManual: 'Code selbst eingeben.'
+  invitationCode: 'Teilnahmecode'
+  invitationCodeAutomatic: 'Der Teilnahmecode wurde automatisch für dich eingegeben.'
+  invitationCodeManual: 'Code selbst eingeben.'
   participate: 'Mitmachen'
   participateDescription: 'Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀'
   save: 'Zu meiner Übersichtsseite'

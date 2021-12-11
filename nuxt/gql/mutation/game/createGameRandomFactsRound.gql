@@ -1,0 +1,9 @@
+#import "../../fragments/gameRandomFactsRoundFields.gql"
+
+mutation createGameRandomFactsRound($gameRandomFactsRoundInput: GameRandomFactsRoundInput!) {
+  createGameRandomFactsRound(input: { gameRandomFactsRound: $gameRandomFactsRoundInput }) {
+    gameRandomFactsRound {
+      ...gameRandomFactsRoundFields
+    }
+  }
+}

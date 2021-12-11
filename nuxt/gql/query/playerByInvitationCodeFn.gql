@@ -1,5 +1,5 @@
-query ($participationCode: UUID!) {
-  playerByInvitationCodeFn(invitationCode: $participationCode) {
+query ($invitationCode: UUID!) {
+  playerByInvitationCodeFn(invitationCode: $invitationCode) {
     nodes {
       teamByTeamId {
         name

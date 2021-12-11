@@ -12,7 +12,7 @@ FROM trapparty.game_random_facts_round WHERE FALSE;
 DO $$
 BEGIN
   ASSERT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.game_random_facts_round', 'SELECT'));
-  ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.game_random_facts_round', 'INSERT'));
+  ASSERT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.game_random_facts_round', 'INSERT'));
   ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.game_random_facts_round', 'UPDATE'));
   ASSERT NOT (SELECT pg_catalog.has_table_privilege('trapparty_anonymous', 'trapparty.game_random_facts_round', 'DELETE'));
 END $$;
