@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/dargmuesli/trapparty/compare/2.1.0...2.2.0) (2021-12-11)
+
+
+### Features
+
+* **game:** basic random fact implementation ([a6fb48c](https://github.com/dargmuesli/trapparty/commit/a6fb48cc3cd257077c98f5da205e4f5aec2b061c))
+
 # [2.1.0](https://github.com/dargmuesli/trapparty/compare/2.0.1...2.1.0) (2021-12-11)
 
 
