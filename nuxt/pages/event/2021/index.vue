@@ -48,7 +48,13 @@
               <template slot="inputInfo">
                 <div v-if="$route.query.ic">
                   {{ $t('invitationCodeAutomatic') }}
-                  <AppLink :to="localePath('/')">
+                  <AppLink
+                    :to="
+                      localePath({
+                        query: null,
+                      })
+                    "
+                  >
                     {{ $t('invitationCodeManual') }}
                   </AppLink>
                 </div>
@@ -74,16 +80,16 @@
           </div>
           <Form
             class="lg:w-2/12"
-            :form="$v.formStatistics"
-            :form-sent="formStatistics.sent"
-            :submit-name="$t('statistics')"
-            @submit.prevent="statistics"
+            :form="$v.formAnonymous"
+            :form-sent="formAnonymous.sent"
+            :submit-name="$t('anonymous')"
+            @submit.prevent="anonymous"
           >
             <h2>
-              {{ $t('statisticsTitle') }}
+              {{ $t('anonymousTitle') }}
             </h2>
             <p>
-              {{ $t('statisticsDescription') }}
+              {{ $t('anonymousDescription') }}
             </p>
           </Form>
           <p class="opacity-50 text-center text-sm w-full">
@@ -126,7 +132,7 @@ export default {
           this.$route.query.ic === undefined ? undefined : this.$route.query.ic,
         sent: false,
       },
-      formStatistics: {
+      formAnonymous: {
         sent: false,
       },
       graphqlError: undefined,
@@ -156,11 +162,11 @@ export default {
     }
   },
   methods: {
-    statistics() {
+    anonymous() {
       this.$store.commit('setParticipationData', { role: 'watcher' })
       this.$router.push({
         append: true,
-        path: 'statistics',
+        path: 'dashboard',
       })
     },
     async saveCode() {
@@ -177,7 +183,7 @@ export default {
       })
       this.$router.push({
         append: true,
-        path: 'game',
+        path: 'dashboard',
       })
     },
   },
@@ -189,7 +195,7 @@ export default {
           formatUuid: this.$util.VERIFICATION_FORMAT_UUID,
         },
       },
-      formStatistics: {},
+      formAnonymous: {},
     }
   },
 }
@@ -197,6 +203,9 @@ export default {
 
 <i18n lang="yml">
 de:
+  anonymous: 'Anonym teilnehmen'
+  anonymousDescription: 'Du möchtest nur zuschauen?'
+  anonymousTitle: '👻'
   datalessEvent: 'Aktuell sind keine Daten für eine kommende TrapParty vorhanden.'
   greeting: 'Schön, dass du da bist! 😊 Jetzt kann es losgehen.'
   invitationCode: 'Teilnahmecode'
@@ -205,9 +214,6 @@ de:
   participate: 'Mitmachen'
   participateDescription: 'Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀'
   save: 'Zu meiner Übersichtsseite'
-  statistics: 'Zur Statistik'
-  statisticsDescription: 'Du möchtest nur die Statistik sehen?'
-  statisticsTitle: '📊'
   disclaimer: 'Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.'
   title: 'Willkommen!'
 </i18n>

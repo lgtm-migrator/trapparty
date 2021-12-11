@@ -1,0 +1,7 @@
+#import "../../fragments/gameFields.gql"
+
+query gameById($gameId: Int!) {
+  gameById(id: $gameId) {
+    ...gameFields
+  }
+}

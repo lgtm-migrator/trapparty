@@ -32,6 +32,8 @@ import consola from 'consola'
 import { required } from 'vuelidate/lib/validators'
 
 import GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsRound.gql'
+import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
+import { Player } from '~/types/trapparty'
 
 import { defineComponent } from '#app'
 
@@ -81,7 +83,35 @@ export default defineComponent({
 
       await (this.readTag as Function)()
     },
-    async gameRandomFactsRoundCreate(gameRandomFactsRoundInput: Object) {
+    async getPlayerByInvitationCode(invitationCode: string): Player {
+      const playerByInvitationCodeResult = await this.$apollo
+        .query({
+          query: PLAYER_BY_INVITATION_CODE_FN,
+          variables: {
+            invitationCode,
+          },
+        })
+        .catch((error) => {
+          this.graphqlError = error.message
+          consola.error(error)
+        })
+
+      if (!playerByInvitationCodeResult) return
+      return this.$util.getNested(
+        playerByInvitationCodeResult,
+        'data',
+        'playerByInvitationCodeFn',
+        'nodes'
+      )[0] as Player
+    },
+    async gameRandomFactsRoundCreate(gameRandomFactsRoundInput: any) {
+      const player = await this.getPlayerByInvitationCode(
+        gameRandomFactsRoundInput.invitationCode
+      )
+
+      delete gameRandomFactsRoundInput.invitationCode
+      gameRandomFactsRoundInput.questionerName = player.name
+
       await this.$apollo
         .mutate({
           mutation: GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION,
@@ -117,7 +147,7 @@ export default defineComponent({
             for (const record of event.message.records) {
               await this.gameRandomFactsRoundCreate({
                 gameId: this.form.gameId,
-                questionerName: decoder.decode(record.data),
+                invitationCode: decoder.decode(record.data),
                 isActive: true,
               })
             }
@@ -125,7 +155,7 @@ export default defineComponent({
         } else {
           await this.gameRandomFactsRoundCreate({
             gameId: Number(this.form.gameId),
-            questionerName: 'Jon Doe',
+            invitationCode: 'f10ea826-3c0d-11eb-805b-af16ca5c3a48',
             isActive: true,
           })
         }

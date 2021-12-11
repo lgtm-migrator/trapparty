@@ -1,6 +1,6 @@
 <template>
   <li
-    class="bg-gray-700 p-2 rounded-sm"
+    class="bg-gray-700 p-2 rounded-md"
     :class="{
       'border border-yellow-500':
         highscores[0] !== undefined && value === highscores[0],

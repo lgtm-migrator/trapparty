@@ -241,7 +241,7 @@ import consola from 'consola'
 
 import __TYPENAME from '~/gql/query/__typename.gql'
 import EVENT_BY_NAME from '~/gql/query/event/eventByName.gql'
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/playerByInvitationCodeFn.gql'
+import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
 
 export default {
   name: 'IndexPage',

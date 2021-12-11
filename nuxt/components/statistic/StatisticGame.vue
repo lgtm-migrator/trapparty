@@ -1,11 +1,6 @@
 <template>
   <div v-if="game">
-    <div class="flex gap-2 items-center">
-      <h2 class="m-0">{{ game.name }}</h2>
-      <span class="bg-white px-2 py-1 rounded-full text-gray-900">
-        {{ game.isActive ? $t('isActiveTrue') : $t('isActiveFalse') }}
-      </span>
-    </div>
+    <GameTitle :game="game" />
     <StatisticGameRandomFact
       v-if="game.type === 'RANDOM_FACTS'"
       :game-id="+game.id"
@@ -26,9 +21,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<i18n lang="yml">
-de:
-  isActiveTrue: Aktiv
-  isActiveFalse: Inaktiv
-</i18n>

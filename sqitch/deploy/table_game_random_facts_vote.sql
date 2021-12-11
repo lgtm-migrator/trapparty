@@ -20,6 +20,7 @@ COMMENT ON COLUMN trapparty.game_random_facts_vote.answer IS 'The vote''s answer
 COMMENT ON COLUMN trapparty.game_random_facts_vote.player_id IS 'The vote''s internal player id';
 COMMENT ON COLUMN trapparty.game_random_facts_vote.round_id IS 'The vote''s internal round id.';
 
-GRANT SELECT ON TABLE trapparty.game_random_facts_vote TO trapparty_anonymous;
+GRANT SELECT, INSERT ON TABLE trapparty.game_random_facts_vote TO trapparty_anonymous;
+GRANT USAGE ON SEQUENCE trapparty.game_random_facts_vote_id_seq TO trapparty_anonymous;
 
 COMMIT;

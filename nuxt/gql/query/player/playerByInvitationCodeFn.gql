@@ -1,6 +1,8 @@
 query ($invitationCode: UUID!) {
   playerByInvitationCodeFn(invitationCode: $invitationCode) {
     nodes {
+      id
+      name
       teamByTeamId {
         name
         emoji
@@ -18,7 +20,6 @@ query ($invitationCode: UUID!) {
           commonDonationUrl
         }
       }
-      name
     }
   }
 }

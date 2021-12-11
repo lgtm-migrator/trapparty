@@ -4,8 +4,8 @@
   </div>
   <div v-else-if="games">
     <h1 class="m-0">{{ $t('games') }}</h1>
-    <ol v-for="game in games" :key="game.id">
-      <StatisticGame :game="game" />
+    <ol class="list-decimal">
+      <StatisticGame v-for="game in games" :key="game.id" :game="game" />
     </ol>
   </div>
   <div v-else>

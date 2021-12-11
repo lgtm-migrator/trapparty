@@ -44,6 +44,13 @@ export interface GameRandomFactsVote {
   roundId: number
 }
 
+export interface Player {
+  id: number
+  invitationCode: string
+  name: string
+  teamId: number
+}
+
 export interface Team {
   id: number
   donationAmount: number

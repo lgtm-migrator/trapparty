@@ -1,7 +1,7 @@
 #import "../../fragments/gameRandomFactsRoundFields.gql"
 
 query allGameRandomFactsRounds($gameId: Int!) {
-  allGameRandomFactsRounds(condition: {gameId: $gameId}) {
+  allGameRandomFactsRounds(condition: {gameId: $gameId}, orderBy: ID_DESC) {
     nodes {
       ...gameRandomFactsRoundFields
     }
