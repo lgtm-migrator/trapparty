@@ -3521,7 +3521,7 @@
   optionalDependencies:
     prettier "^1.18.2 || ^2.0.0"
 
-"@vue/composition-api@^1.4.0", "@vue/composition-api@^1.4.1":
+"@vue/composition-api@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.4.1.tgz#2b4a6bfabc5e8277c4b890e0c9ca55d1252ca5b8"
   integrity sha512-ZTat9ru/rwecveRnFzlO2mduOBpGfnBdXn+WtBcFLV9UsL/D+6nX47RWuLiVdNxNDX0qphGZRC+JDjwt+YTnRA==
@@ -6924,10 +6924,10 @@ csso@^4.0.2:
   dependencies:
     css-tree "^1.1.2"
 
-csstype@3.0.9:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.9.tgz#6410af31b26bd0520933d02cbc64fce9ce3fbf0b"
-  integrity sha512-rpw6JPxK6Rfg1zLOYCSwle2GFOOsnjmDYDaBwEcwoOg4qlsIVCN789VkBZDJAGi4T07gI4YSutR43t9Zz4Lzuw==
+csstype@3.0.10:
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
+  integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
 cuint@^0.2.2:
   version "0.2.2"
@@ -16735,13 +16735,13 @@ vue-bundle-renderer@^0.3.4:
   dependencies:
     bundle-runner "^0.0.1"
 
-vue-chart-3@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-2.0.2.tgz#fcf4444a82f5c49640c9a688dcc287e84fd296ec"
-  integrity sha512-78ZsjLHIeY7G/gmr666RM+eDTR65LYncxuqJfobevOoa0Zc9C0QYfnJVvALmjqo20O9Q0NI0/lme4jOSUaBLuA==
+vue-chart-3@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-2.0.3.tgz#2223e18c4217cecd2964227ea0e52c1296910ea2"
+  integrity sha512-Lg+xyi5l3QPG8vAq9VQOEZBXIeS4Ul9hmVogbI9iD0BJgq6gLt7y9/iDScN51tZMMX0p7A0Qqbc3C0DgcIg2vQ==
   dependencies:
-    "@vue/composition-api" "^1.4.0"
-    csstype "3.0.9"
+    "@vue/composition-api" "^1.4.1"
+    csstype "3.0.10"
     lodash latest
     nanoid "3.1.30"
 
