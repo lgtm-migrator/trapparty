@@ -1,6 +1,6 @@
 <template>
   <div v-if="gameId">
-    <ul v-if="leaderboard" class="flex gap-2">
+    <ul v-if="leaderboard && leaderboard.length > 0" class="flex gap-2">
       <StatisticGameRandomFactEntry
         v-for="(array, index) in leaderboard"
         :key="index"
@@ -9,10 +9,9 @@
         :value="array[1]"
       />
     </ul>
-    <!-- <div v-else>
-      {{ $t('gameRandomFactsVoteNone') }}
-      {{ $t('gameRandomFactsRoundNone') }}
-    </div> -->
+    <div v-else>
+      {{ $t('statisticNone') }}
+    </div>
   </div>
 </template>
 
@@ -119,6 +118,5 @@ export default defineComponent({
 
 <i18n lang="yml">
 de:
-  gameRandomFactsRoundNone: Keine Spielrunde vorhanden.
-  gameRandomFactsVoteNone: Keine Abstimmungen vorhanden.
+  statisticNone: Keine Statistik vorhanden.
 </i18n>

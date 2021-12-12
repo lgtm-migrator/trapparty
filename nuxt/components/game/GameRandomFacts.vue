@@ -111,12 +111,13 @@ export default defineComponent({
     },
   },
   watch: {
-    round(newRound, oldRound) {
+    async round(newRound, oldRound) {
       if (oldRound !== undefined && newRound && newRound.isActive) {
         this.$swal({
           icon: 'warning',
           title: this.$t('roundNew'),
         })
+        await this.voteFetch()
       }
     },
   },
@@ -170,6 +171,7 @@ export default defineComponent({
             icon: 'success',
             showConfirmButton: false,
             timer: 1500,
+            text: this.$t('saved') as string,
           })
           await this.voteFetch()
         })
@@ -184,9 +186,7 @@ export default defineComponent({
         })
     },
     refresh() {
-      this.$apollo.queries.allGameRandomFactsRounds.refetch().then(async () => {
-        await this.voteFetch()
-      })
+      this.$apollo.queries.allGameRandomFactsRounds.refetch()
     },
     async voteFetch() {
       if (!this.player || !this.round) return
@@ -224,4 +224,5 @@ de:
   factB: Fakt B
   nobody: niemand
   roundNew: Neue Runde!
+  saved: Gespeichert.
 </i18n>

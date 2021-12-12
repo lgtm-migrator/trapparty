@@ -2,7 +2,7 @@
   <div v-if="!isLoaded">
     <LoaderIndicatorSpinner class="h-16 w-16" />
   </div>
-  <div v-else-if="games">
+  <div v-else-if="games && games.length > 0">
     <h1 class="m-0">{{ $t('games') }}</h1>
     <ol class="list-decimal">
       <StatisticGame v-for="game in games" :key="game.id" :game="game" />

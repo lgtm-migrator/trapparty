@@ -3,7 +3,7 @@
     v-if="($apollo.loading && !event) || graphqlError"
     :error-message="graphqlError ? String(graphqlError) : undefined"
   />
-  <div v-else-if="games">
+  <div v-else-if="games && games.length > 0">
     <h1>
       {{ title }}
     </h1>
@@ -105,7 +105,7 @@ export default defineComponent({
 <i18n lang="yml">
 de:
   games: Spiele
-  gamesNone: Keine Spiele vorhanden
+  gamesNone: Keine Spiele vorhanden.
   gameLink: Zum Spiel
   gameLinkStatistic: Zur Statistik
   title: 'TrapParty 2021'
