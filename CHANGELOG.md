@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/dargmuesli/trapparty/compare/2.2.0...2.2.1) (2021-12-12)
+
+
+### Bug Fixes
+
+* **game:** correct mistakes, improve ux ([6207df1](https://github.com/dargmuesli/trapparty/commit/6207df135c4e58eaca8d88010b7e6b3545fbd24a))
+
 # [2.2.0](https://github.com/dargmuesli/trapparty/compare/2.1.0...2.2.0) (2021-12-11)
 
 
