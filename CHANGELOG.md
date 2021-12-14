@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/dargmuesli/trapparty/compare/2.2.1...2.2.2) (2021-12-14)
+
+
+### Bug Fixes
+
+* **babel:** remove loose configuration ([144d0a2](https://github.com/dargmuesli/trapparty/commit/144d0a28ee24b18cf76dc068cdbe21d2662f5127))
+
 ## [2.2.1](https://github.com/dargmuesli/trapparty/compare/2.2.0...2.2.1) (2021-12-12)
 
 
