@@ -51,9 +51,9 @@
     "vuex-persistedstate": "4.1.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.0",
+    "@babel/core": "7.16.5",
     "@babel/plugin-proposal-numeric-separator": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.3",
+    "@babel/runtime-corejs3": "7.16.5",
     "@nuxt/babel-preset-app": "2.15.8",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge",
     "@nuxtjs/eslint-config-typescript": "8.0.0",
