@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/dargmuesli/trapparty/compare/2.2.2...2.2.3) (2021-12-15)
+
+
+### Bug Fixes
+
+* **admin:** use numbers for variables ([42e1848](https://github.com/dargmuesli/trapparty/commit/42e1848e68249684fc983eb9e69e58365e0c5984))
+
 ## [2.2.2](https://github.com/dargmuesli/trapparty/compare/2.2.1...2.2.2) (2021-12-14)
 
 
