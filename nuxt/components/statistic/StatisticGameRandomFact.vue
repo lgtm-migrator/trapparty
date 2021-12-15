@@ -1,6 +1,9 @@
 <template>
   <div v-if="gameId">
-    <ul v-if="leaderboard && leaderboard.length > 0" class="flex gap-2">
+    <ul
+      v-if="leaderboard && leaderboard.length > 0"
+      class="flex gap-2 flex-wrap"
+    >
       <StatisticGameRandomFactEntry
         v-for="(array, index) in leaderboard"
         :key="index"
@@ -48,6 +51,7 @@ export default defineComponent({
         variables: {
           gameId: this.gameId,
         },
+        fetchPolicy: 'network-only',
       })
       .catch((error) => {
         this.graphqlError = error.message
@@ -71,6 +75,7 @@ export default defineComponent({
           variables: {
             roundId: +round.id,
           },
+          fetchPolicy: 'network-only',
         })
         .catch((error) => {
           this.graphqlError = error.message

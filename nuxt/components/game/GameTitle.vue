@@ -1,5 +1,7 @@
 <template>
-  <section class="flex gap-2 items-center">
+  <section
+    class="flex flex-col-reverse md:flex-row md:gap-2 items-start md:items-center"
+  >
     <h1 class="m-0">{{ game.name }}</h1>
     <span
       class="px-2 py-1 rounded-full text-gray-900"

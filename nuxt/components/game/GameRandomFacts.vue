@@ -5,7 +5,6 @@
   />
   <div v-else class="text-3xl lg:text-8xl text-justify">
     <div v-if="round && player">
-      <span class="text-gray-500">Du bist</span> {{ player.name }}.
       <span class="text-gray-500">Vor dir steht</span>
       {{ round.questionerName || $t('nobody')
       }}<span class="text-gray-500">. Welcher</span>
@@ -17,7 +16,11 @@
         <Button
           :aria-label="$t('factA')"
           class="px-4 lg:px-16 py-8"
-          :class="voteAnswer === 0 ? 'ring-8 ring-yellow-500' : ''"
+          :class="{
+            'ring-8 ring-yellow-500': voteAnswer === 0,
+            'bg-green-500':
+              voteAnswer !== undefined && round.answerCorrect === 0,
+          }"
           :disabled="voteAnswer !== undefined"
           @click="choose(0)"
         >
@@ -26,7 +29,11 @@
         <Button
           :aria-label="$t('factB')"
           class="px-4 lg:px-16 py-8"
-          :class="voteAnswer === 1 ? 'ring-8 ring-yellow-500' : ''"
+          :class="{
+            'ring-8 ring-yellow-500': voteAnswer === 1,
+            'bg-green-500':
+              voteAnswer !== undefined && round.answerCorrect === 1,
+          }"
           :disabled="voteAnswer !== undefined"
           @click="choose(1)"
         >
@@ -40,11 +47,6 @@
         >.</span
       >
     </div>
-    <div class="text-center">
-      <Button :aria-label="$t('check')" class="text-4xl" @click="refresh">
-        {{ $t('check') }}
-      </Button>
-    </div>
   </div>
 </template>
 
@@ -52,6 +54,7 @@
 import consola from 'consola'
 
 import GAME_RANDOM_FACTS_VOTE_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsVote.gql'
+import GAME_RANDOM_FACTS_ROUND_UPDATE_MUTATION from '~/gql/mutation/game/updateGameRandomFactsRoundById.gql'
 import ALL_GAME_RANDOM_FACTS_ROUNDS_QUERY from '~/gql/query/game/allGameRandomFactsRounds.gql'
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
@@ -100,7 +103,7 @@ export default defineComponent({
       const roundsActive = (
         this.allGameRandomFactsRounds as GameRandomFactsRound[]
       ).filter(
-        (x: GameRandomFactsRound) => x.isActive
+        (x: GameRandomFactsRound) => x.answerCorrect === null
       ) as GameRandomFactsRound[]
 
       if (roundsActive.length > 1) {
@@ -108,17 +111,6 @@ export default defineComponent({
       }
 
       return roundsActive[0]
-    },
-  },
-  watch: {
-    async round(newRound, oldRound) {
-      if (oldRound !== undefined && newRound && newRound.isActive) {
-        this.$swal({
-          icon: 'warning',
-          title: this.$t('roundNew'),
-        })
-        await this.voteFetch()
-      }
     },
   },
   async mounted() {
@@ -153,7 +145,10 @@ export default defineComponent({
   },
   methods: {
     async choose(answer: number) {
-      if (!this.player || !this.round) return
+      await this.refresh()
+
+      if (!this.player || !this.round || this.round.answerCorrect !== null)
+        return
 
       await this.$apollo
         .mutate({
@@ -167,13 +162,17 @@ export default defineComponent({
           },
         })
         .then(async () => {
-          this.$swal({
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500,
-            text: this.$t('saved') as string,
-          })
-          await this.voteFetch()
+          if (!this.player || !this.round) return
+
+          if (this.player.name !== this.round.questionerName) {
+            this.$swal({
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+              text: this.$t('saved') as string,
+            })
+            await this.voteFetch()
+          }
         })
         .catch((reason) => {
           this.$swal({
@@ -184,9 +183,40 @@ export default defineComponent({
           this.graphqlError = reason
           consola.error(reason)
         })
+
+      if (this.player.name === this.round.questionerName) {
+        await this.$apollo
+          .mutate({
+            mutation: GAME_RANDOM_FACTS_ROUND_UPDATE_MUTATION,
+            variables: {
+              gameRandomFactsRoundPatch: {
+                answerCorrect: answer,
+              },
+              id: +this.round.id,
+            },
+          })
+          .then(async () => {
+            this.$swal({
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+              text: this.$t('saved') as string,
+            })
+            await this.voteFetch()
+          })
+          .catch((reason) => {
+            this.$swal({
+              icon: 'error',
+              title: this.$t('error'),
+              text: reason,
+            })
+            this.graphqlError = reason
+            consola.error(reason)
+          })
+      }
     },
-    refresh() {
-      this.$apollo.queries.allGameRandomFactsRounds.refetch()
+    async refresh() {
+      await this.$apollo.queries.allGameRandomFactsRounds.refetch()
     },
     async voteFetch() {
       if (!this.player || !this.round) return

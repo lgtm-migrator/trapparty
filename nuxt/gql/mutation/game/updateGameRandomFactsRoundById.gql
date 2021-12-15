@@ -1,0 +1,9 @@
+#import "../../fragments/gameRandomFactsRoundFields.gql"
+
+mutation updateGameRandomFactsRoundById($gameRandomFactsRoundPatch: GameRandomFactsRoundPatch!, $id: Int!) {
+  updateGameRandomFactsRoundById(input: {gameRandomFactsRoundPatch: $gameRandomFactsRoundPatch, id: $id }) {
+    gameRandomFactsRound {
+      ...gameRandomFactsRoundFields
+    }
+  }
+}

@@ -1,35 +1,11 @@
 <template>
-  <div>
-    <Form
-      :form="$v.form"
-      :form-sent="form.sent"
-      :graphql-error="graphqlError"
-      :submit-name="$t('nfcRead')"
-      @submit.prevent="submit"
-    >
-      <FormInput
-        type="number"
-        :error="$v.form.gameId.$error"
-        is-required
-        label-for="input-game-id"
-        :form-input="$v.form.gameId"
-        :title="$t('gameId')"
-      >
-        <input
-          id="input-game-id"
-          v-model.trim="$v.form.gameId.$model"
-          class="form-input"
-          type="number"
-          placeholder="game id"
-        />
-      </FormInput>
-    </Form>
-  </div>
+  <Button :aria-label="$t('readTag')" @click="nfcScan">
+    {{ $t('nfcRead') }}
+  </Button>
 </template>
 
 <script lang="ts">
 import consola from 'consola'
-import { required } from 'vuelidate/lib/validators'
 
 import GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsRound.gql'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
@@ -41,10 +17,6 @@ export default defineComponent({
   name: 'IndexPage',
   data() {
     return {
-      form: {
-        gameId: undefined as number | undefined,
-        sent: false,
-      },
       graphqlError: undefined as any,
       isNfcWritableErrorMessage: undefined as string | undefined,
     }
@@ -73,15 +45,6 @@ export default defineComponent({
           return Promise.reject(Error(nfcPermissionStatus.state))
         }
       }
-    },
-    async submit() {
-      try {
-        await this.$util.formPreSubmit(this)
-      } catch (error) {
-        return
-      }
-
-      await (this.readTag as Function)()
     },
     async getPlayerByInvitationCode(invitationCode: string): Promise<Player> {
       const playerByInvitationCodeResult = await this.$apollo
@@ -138,21 +101,17 @@ export default defineComponent({
         })
     },
     async readTag() {
-      if (!this.form.gameId) return
-
       try {
         if (process.env.NODE_ENV === 'production') {
           const ndefReader = new NDEFReader()
           await ndefReader.scan()
 
           ndefReader.onreading = async (event: any) => {
-            if (!this.form.gameId) return
-
             const decoder = new TextDecoder()
 
             for (const record of event.message.records) {
               await this.gameRandomFactsRoundCreate({
-                gameId: +this.form.gameId,
+                gameId: +this.$route.params.gameId,
                 invitationCode: decoder.decode(record.data),
                 isActive: true,
               })
@@ -160,7 +119,7 @@ export default defineComponent({
           }
         } else {
           await this.gameRandomFactsRoundCreate({
-            gameId: Number(+this.form.gameId),
+            gameId: +this.$route.params.gameId,
             invitationCode: 'f10ea826-3c0d-11eb-805b-af16ca5c3a48',
             isActive: true,
           })
@@ -181,20 +140,10 @@ export default defineComponent({
       }
     },
   },
-  validations() {
-    return {
-      form: {
-        gameId: {
-          required,
-        },
-      },
-    }
-  },
 })
 </script>
 
 <i18n lang="yml">
 de:
-  gameId: Spiel-ID
   nfcRead: NFC scannen
 </i18n>

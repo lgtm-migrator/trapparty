@@ -10,11 +10,13 @@
   <div v-else-if="!game.isActive">
     {{ $t('gameActiveNone') }}
   </div>
-  <div v-else>
+  <div v-else class="flex flex-col gap-4">
     <!-- <span class="text-gray-500">
       {{ $t('gameType', { type: gameTypeReadable }) }}
     </span> -->
-    <div class="flex items-center justify-between">
+    <div
+      class="flex flex-col md:flex-row items-start md:items-center justify-between"
+    >
       <GameTitle :game="game" />
       <Button
         :aria-label="$t('gameLinkStatistic')"

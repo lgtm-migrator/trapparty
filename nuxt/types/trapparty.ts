@@ -33,7 +33,6 @@ export interface GameRandomFactsRound {
   id: number
   answerCorrect: number
   gameId: number
-  isActive: boolean
   questionerName: string
 }
 
