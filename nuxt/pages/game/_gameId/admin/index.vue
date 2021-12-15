@@ -83,7 +83,7 @@ export default defineComponent({
 
       await (this.readTag as Function)()
     },
-    async getPlayerByInvitationCode(invitationCode: string): Player {
+    async getPlayerByInvitationCode(invitationCode: string): Promise<Player> {
       const playerByInvitationCodeResult = await this.$apollo
         .query({
           query: PLAYER_BY_INVITATION_CODE_FN,
@@ -96,7 +96,8 @@ export default defineComponent({
           consola.error(error)
         })
 
-      if (!playerByInvitationCodeResult) return
+      if (!playerByInvitationCodeResult)
+        return Promise.reject(Error('No result for player by invitation code!'))
       return this.$util.getNested(
         playerByInvitationCodeResult,
         'data',
@@ -137,16 +138,21 @@ export default defineComponent({
         })
     },
     async readTag() {
+      if (!this.form.gameId) return
+
       try {
         if (process.env.NODE_ENV === 'production') {
           const ndefReader = new NDEFReader()
           await ndefReader.scan()
 
           ndefReader.onreading = async (event: any) => {
+            if (!this.form.gameId) return
+
             const decoder = new TextDecoder()
+
             for (const record of event.message.records) {
               await this.gameRandomFactsRoundCreate({
-                gameId: this.form.gameId,
+                gameId: +this.form.gameId,
                 invitationCode: decoder.decode(record.data),
                 isActive: true,
               })
@@ -154,7 +160,7 @@ export default defineComponent({
           }
         } else {
           await this.gameRandomFactsRoundCreate({
-            gameId: Number(this.form.gameId),
+            gameId: Number(+this.form.gameId),
             invitationCode: 'f10ea826-3c0d-11eb-805b-af16ca5c3a48',
             isActive: true,
           })
