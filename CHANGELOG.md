@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/dargmuesli/trapparty/compare/2.2.3...2.2.4) (2021-12-15)
+
+
+### Bug Fixes
+
+* implement feedback ([c1807e2](https://github.com/dargmuesli/trapparty/commit/c1807e26ef20671bcf37f5da40f3b70391893240))
+
 ## [2.2.3](https://github.com/dargmuesli/trapparty/compare/2.2.2...2.2.3) (2021-12-15)
 
 
