@@ -113,7 +113,6 @@ export default defineComponent({
               await this.gameRandomFactsRoundCreate({
                 gameId: +this.$route.params.gameId,
                 invitationCode: decoder.decode(record.data),
-                isActive: true,
               })
             }
           }
@@ -121,7 +120,6 @@ export default defineComponent({
           await this.gameRandomFactsRoundCreate({
             gameId: +this.$route.params.gameId,
             invitationCode: 'f10ea826-3c0d-11eb-805b-af16ca5c3a48',
-            isActive: true,
           })
         }
       } catch (error) {
