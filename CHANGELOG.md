@@ -1,3 +1,10 @@
+## [2.2.6](https://github.com/dargmuesli/trapparty/compare/2.2.5...2.2.6) (2021-12-18)
+
+
+### Bug Fixes
+
+* **admin:** remove activeness setter ([61fe4db](https://github.com/dargmuesli/trapparty/commit/61fe4dbadf22db5d6e74ac5b6e1d93140a9c2e46))
+
 ## [2.2.5](https://github.com/dargmuesli/trapparty/compare/2.2.4...2.2.5) (2021-12-18)
 
 
