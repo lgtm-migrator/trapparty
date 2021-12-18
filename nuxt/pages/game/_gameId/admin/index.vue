@@ -100,7 +100,7 @@ export default defineComponent({
           consola.error(reason)
         })
     },
-    async readTag() {
+    async nfcScan() {
       try {
         if (process.env.NODE_ENV === 'production') {
           const ndefReader = new NDEFReader()
