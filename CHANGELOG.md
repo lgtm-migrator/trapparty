@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/dargmuesli/trapparty/compare/2.2.4...2.2.5) (2021-12-18)
+
+
+### Bug Fixes
+
+* **admin:** correct function name ([4a00faa](https://github.com/dargmuesli/trapparty/commit/4a00faaf462f2fbbae6d6dd2b4c21563f08d45b8))
+
 ## [2.2.4](https://github.com/dargmuesli/trapparty/compare/2.2.3...2.2.4) (2021-12-15)
 
 
