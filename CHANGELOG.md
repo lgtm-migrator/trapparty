@@ -1,3 +1,11 @@
+# [2.3.0](https://github.com/dargmuesli/trapparty/compare/2.2.6...2.3.0) (2021-12-22)
+
+
+### Features
+
+* drop tailwindcss plugin ([45f91ca](https://github.com/dargmuesli/trapparty/commit/45f91cae9cadeadeb96aa531004ecec7c4b09738))
+* **tailwindcss:** migrate to v3 ([04d6490](https://github.com/dargmuesli/trapparty/commit/04d6490e48dd3e8d4590df7f63a393f5ea000454))
+
 ## [2.2.6](https://github.com/dargmuesli/trapparty/compare/2.2.5...2.2.6) (2021-12-18)
 
 
