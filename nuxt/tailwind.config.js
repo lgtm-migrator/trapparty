@@ -1,44 +1,12 @@
 module.exports = {
-  darkMode: 'media',
-  mode: 'jit',
-  theme: {
-    extend: {
-      animation: {
-        shake: 'shake 0.6s ease-in-out 0s 1 normal forwards running',
-      },
-      keyframes: {
-        shake: {
-          '0%': {
-            transform: 'translateX(0)',
-          },
-          '15%': {
-            transform: 'translateX(0.375rem)',
-          },
-          '30%': {
-            transform: 'translateX(-0.375rem)',
-          },
-          '45%': {
-            transform: 'translateX(0.375rem)',
-          },
-          '60%': {
-            transform: 'translateX(-0.375rem)',
-          },
-          '75%': {
-            transform: 'translateX(0.375rem)',
-          },
-          '90%': {
-            transform: 'translateX(-0.375rem)',
-          },
-          '100%': {
-            transform: 'translateX(0)',
-          },
-        },
-      },
-      screens: {
-        'dark-mode': { raw: '(prefers-color-scheme: dark)' },
-      },
-    },
-  },
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.js',
+    './nuxt.config.ts',
+  ],
   plugins: [
     function ({ addBase, addComponents, addUtilities, theme }) {
       addBase({
@@ -329,4 +297,42 @@ module.exports = {
       })
     },
   ],
+  theme: {
+    extend: {
+      animation: {
+        shake: 'shake 0.6s ease-in-out 0s 1 normal forwards running',
+      },
+      keyframes: {
+        shake: {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '15%': {
+            transform: 'translateX(0.375rem)',
+          },
+          '30%': {
+            transform: 'translateX(-0.375rem)',
+          },
+          '45%': {
+            transform: 'translateX(0.375rem)',
+          },
+          '60%': {
+            transform: 'translateX(-0.375rem)',
+          },
+          '75%': {
+            transform: 'translateX(0.375rem)',
+          },
+          '90%': {
+            transform: 'translateX(-0.375rem)',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+          },
+        },
+      },
+      screens: {
+        'dark-mode': { raw: '(prefers-color-scheme: dark)' },
+      },
+    },
+  },
 }
