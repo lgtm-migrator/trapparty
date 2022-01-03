@@ -53,14 +53,13 @@
 <script lang="ts">
 import consola from 'consola'
 
+import { defineComponent } from '#app'
 import GAME_RANDOM_FACTS_VOTE_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsVote.gql'
 import GAME_RANDOM_FACTS_ROUND_UPDATE_MUTATION from '~/gql/mutation/game/updateGameRandomFactsRoundById.gql'
 import ALL_GAME_RANDOM_FACTS_ROUNDS_QUERY from '~/gql/query/game/allGameRandomFactsRounds.gql'
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
 import { GameRandomFactsRound, Player } from '~/types/trapparty'
-
-import { defineComponent } from '#app'
 
 export default defineComponent({
   name: 'IndexPage',

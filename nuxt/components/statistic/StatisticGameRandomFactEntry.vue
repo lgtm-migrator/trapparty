@@ -17,9 +17,8 @@
 <script lang="ts">
 import consola from 'consola'
 
-import PLAYER_NAME_BY_ID_QUERY from '~/gql/query/player/playerNameById.gql'
-
 import { defineComponent, PropType } from '#app'
+import PLAYER_NAME_BY_ID_QUERY from '~/gql/query/player/playerNameById.gql'
 
 export default defineComponent({
   apollo: {
