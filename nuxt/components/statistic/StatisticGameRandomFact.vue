@@ -21,10 +21,10 @@
 <script lang="ts">
 import consola from 'consola'
 
+import { defineComponent } from '#app'
 import GAME_RANDOM_FACTS_ROUNDS_ALL_QUERY from '~/gql/query/game/allGameRandomFactsRounds.gql'
 import GAME_RANDOM_FACTS_VOTES_ALL_QUERY from '~/gql/query/game/allGameRandomFactsVotes.gql'
 
-import { defineComponent } from '#app'
 import { GameRandomFactsRound, GameRandomFactsVote } from '~/types/trapparty'
 
 export default defineComponent({

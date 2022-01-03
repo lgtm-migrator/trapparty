@@ -16,6 +16,7 @@
 <script lang="ts">
 import consola from 'consola'
 
+import { defineComponent } from '#app'
 import EVENT_BY_NAME_QUERY from '~/gql/query/event/eventByName.gql'
 import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
 import {
@@ -24,8 +25,6 @@ import {
   Event as TrappartyEvent,
   Game,
 } from '~/types/trapparty'
-
-import { defineComponent } from '#app'
 
 export default defineComponent({
   name: 'IndexPage',

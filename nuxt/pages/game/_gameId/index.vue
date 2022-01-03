@@ -35,10 +35,9 @@
 <script lang="ts">
 import consola from 'consola'
 
+import { defineComponent } from '#app'
 import GAME_BY_ID_QUERY from '~/gql/query/game/gameById.gql'
 import { Game, GameType } from '~/types/trapparty'
-
-import { defineComponent } from '#app'
 
 export default defineComponent({
   name: 'IndexPage',

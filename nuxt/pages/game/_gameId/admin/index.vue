@@ -7,11 +7,10 @@
 <script lang="ts">
 import consola from 'consola'
 
+import { defineComponent } from '#app'
 import GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsRound.gql'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
 import { Player } from '~/types/trapparty'
-
-import { defineComponent } from '#app'
 
 export default defineComponent({
   name: 'IndexPage',
