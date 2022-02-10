@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/dargmuesli/trapparty/compare/2.3.3...2.3.4) (2022-02-10)
+
+
+### Bug Fixes
+
+* **tailwind:** reorder classes ([11ac10a](https://github.com/dargmuesli/trapparty/commit/11ac10a86daf4f9f57ddcdb8350ae0054192fd41))
+
 ## [2.3.3](https://github.com/dargmuesli/trapparty/compare/2.3.2...2.3.3) (2022-01-31)
 
 
