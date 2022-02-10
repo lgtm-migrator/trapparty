@@ -20,16 +20,16 @@
         </li>
       </ul>
     </section>
-    <div class="flex flex-1 flex-col font-serif justify-center">
-      <div class="flex flex-col md:flex-row items-baseline">
-        <h1 class="inline leading-normal mb-0 md:mb-4 text-6xl">
+    <div class="flex flex-1 flex-col justify-center font-serif">
+      <div class="flex flex-col items-baseline md:flex-row">
+        <h1 class="mb-0 inline text-6xl leading-normal md:mb-4">
           {{ title }}
         </h1>
-        <span class="mb-4 md:mb-0 ml-4 text-xl">
+        <span class="mb-4 ml-4 text-xl md:mb-0">
           {{ $t('transcription') }}
         </span>
       </div>
-      <i18n class="text-2xl prose" path="description" tag="p">
+      <i18n class="prose text-2xl" path="description" tag="p">
         <template #author>
           <AppLink
             to="https://jonas-thelemann.de"

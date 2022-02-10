@@ -2,7 +2,7 @@
   <div v-if="gameId">
     <ul
       v-if="leaderboard && leaderboard.length > 0"
-      class="flex gap-2 flex-wrap"
+      class="flex flex-wrap gap-2"
     >
       <StatisticGameRandomFactEntry
         v-for="(array, index) in leaderboard"

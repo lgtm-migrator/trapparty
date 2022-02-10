@@ -7,7 +7,7 @@
       @click="copy(url)"
     />
   </span>
-  <span v-else class="inline-block unready">
+  <span v-else class="unready inline-block">
     <slot name="unready" />
   </span>
 </template>
