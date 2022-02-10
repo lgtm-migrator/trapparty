@@ -13,7 +13,7 @@
           {{ $t('greeting') }}
         </p>
         <div
-          class="items-center card flex flex-col lg:flex-row lg:flex-wrap my-8"
+          class="card my-8 flex flex-col items-center lg:flex-row lg:flex-wrap"
         >
           <Form
             class="lg:w-8/12"
@@ -69,8 +69,8 @@
               </template>
             </FormInput>
           </Form>
-          <div class="self-stretch lg:w-1/12 px-8 py-8">
-            <div class="border border-gray-300 h-0 lg:h-full w-full lg:w-0" />
+          <div class="self-stretch px-8 py-8 lg:w-1/12">
+            <div class="h-0 w-full border border-gray-300 lg:h-full lg:w-0" />
           </div>
           <Form
             class="lg:w-2/12"
@@ -86,7 +86,7 @@
               {{ $t('anonymousDescription') }}
             </p>
           </Form>
-          <p class="opacity-50 text-center text-sm w-full">
+          <p class="w-full text-center text-sm opacity-50">
             {{ $t('disclaimer') }}
           </p>
         </div>

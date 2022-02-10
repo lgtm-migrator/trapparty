@@ -41,7 +41,7 @@
                 participationData.teamByTeamId.name
               }}</span>
             </i18n>
-            <span v-else class="inline-block unready">
+            <span v-else class="unready inline-block">
               {{ $t('teamDataNameDataless') }}
             </span>
           </p>
@@ -70,7 +70,7 @@
             >
               {{ $t('discordJoin') }}
             </Button>
-            <span v-else class="inline-block unready">
+            <span v-else class="unready inline-block">
               {{ $t('dataless', { what: $t('datalessDiscordCode') }) }}
             </span>
           </p>
@@ -135,7 +135,7 @@
             </span>
           </i18n>
           <p v-else>
-            <span class="inline-block unready">
+            <span class="unready inline-block">
               {{ $t('teamDataCharityOrganisationDataless') }}
             </span>
           </p>
@@ -212,7 +212,7 @@
               </span>
             </i18n>
           </span>
-          <span v-else class="inline-block unready">
+          <span v-else class="unready inline-block">
             {{ $t('dataless', { what: $t('datalessStream') }) }}
           </span>
         </p>

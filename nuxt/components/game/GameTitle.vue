@@ -1,10 +1,10 @@
 <template>
   <section
-    class="flex flex-col-reverse md:flex-row md:gap-2 items-start md:items-center"
+    class="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2"
   >
     <h1 class="m-0">{{ game.name }}</h1>
     <span
-      class="px-2 py-1 rounded-full text-gray-900"
+      class="rounded-full px-2 py-1 text-gray-900"
       :class="game.isActive ? 'bg-green-400' : 'bg-white'"
     >
       {{ game.isActive ? $t('isActiveTrue') : $t('isActiveFalse') }}

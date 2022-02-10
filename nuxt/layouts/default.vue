@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container flex flex-col min-h-screen mx-auto p-4">
-      <header class="flex items-center justify-between mb-4 relative">
+    <div class="container mx-auto flex min-h-screen flex-col p-4">
+      <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="$t('home')" :to="localePath('/')">
           <div id="logo" class="h-16 w-16" />
         </AppLink>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <footer>
-      <div class="justify-around container flex mx-auto p-4">
+      <div class="container mx-auto flex justify-around p-4">
         <div class="flex flex-col">
           <FontAwesomeIcon
             :icon="['fas', 'balance-scale']"

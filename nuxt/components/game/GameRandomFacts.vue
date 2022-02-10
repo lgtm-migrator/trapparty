@@ -3,7 +3,7 @@
     v-if="$apollo.loading || graphqlError"
     :error-message="graphqlError ? String(graphqlError) : undefined"
   />
-  <div v-else class="text-3xl lg:text-8xl text-justify">
+  <div v-else class="text-justify text-3xl lg:text-8xl">
     <div v-if="round && player">
       <span class="text-gray-500">Vor dir steht</span>
       {{ round.questionerName || $t('nobody')
@@ -11,11 +11,11 @@
       random fact
       <span class="text-gray-500">ist wahr? 🤔</span>
       <div
-        class="flex flex-col lg:flex-row gap-4 lg:gap-16 justify-evenly m-4 lg:m-16"
+        class="m-4 flex flex-col justify-evenly gap-4 lg:m-16 lg:flex-row lg:gap-16"
       >
         <Button
           :aria-label="$t('factA')"
-          class="px-4 lg:px-16 py-8"
+          class="px-4 py-8 lg:px-16"
           :class="{
             'ring-8 ring-yellow-500': voteAnswer === 0,
             'bg-green-500':
@@ -28,7 +28,7 @@
         </Button>
         <Button
           :aria-label="$t('factB')"
-          class="px-4 lg:px-16 py-8"
+          class="px-4 py-8 lg:px-16"
           :class="{
             'ring-8 ring-yellow-500': voteAnswer === 1,
             'bg-green-500':

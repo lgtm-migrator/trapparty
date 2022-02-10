@@ -15,7 +15,7 @@
       {{ $t('gameType', { type: gameTypeReadable }) }}
     </span> -->
     <div
-      class="flex flex-col md:flex-row items-start md:items-center justify-between"
+      class="flex flex-col items-start justify-between md:flex-row md:items-center"
     >
       <GameTitle :game="game" />
       <Button
