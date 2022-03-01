@@ -4,7 +4,7 @@
 # Should be the specific version of node:buster.
 # `node-zopfli-es` and `sqitch` require at least buster.
 # `node-zopfli-es` requires non-slim.
-FROM node:16.14.0-buster@sha256:a451f7a620ec7699a48238c535d47d13432d514797b38f659655a62244e4399e AS development
+FROM node:16.14.0-buster@sha256:4c1e36b70fc464b74fb6824f15416f851982d2708412d0076786434b075d9a49 AS development
 
 # Update and install dependencies.
 # - `git` is required by the `yarn` command
@@ -44,7 +44,7 @@ HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/api/healthcheck || 
 # Should be the specific version of node:buster.
 # `node-zopfli-es` and `sqitch` require at least buster.
 # `node-zopfli-es` requires non-slim.
-FROM node:16.14.0-buster@sha256:a451f7a620ec7699a48238c535d47d13432d514797b38f659655a62244e4399e AS build
+FROM node:16.14.0-buster@sha256:4c1e36b70fc464b74fb6824f15416f851982d2708412d0076786434b075d9a49 AS build
 
 ARG NUXT_ENV_STACK_DOMAIN=jonas-thelemann.de
 ENV NUXT_ENV_STACK_DOMAIN=${NUXT_ENV_STACK_DOMAIN}
@@ -75,7 +75,7 @@ RUN yarn install
 
 # Should be the specific version of node:buster-slim.
 # sqitch requires at least buster.
-FROM node:16.14.0-buster-slim@sha256:a34cdb50b58a87cb9419e1ffbd49c39bbc1e7cadb651c51f768745dfe545b22c AS production
+FROM node:16.14.0-buster-slim@sha256:69681d2d4a8bd29a956f10fae4403d4736dab91240245311fe3093adcf6412a2 AS production
 
 ENV NODE_ENV=production
 
