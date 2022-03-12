@@ -38,7 +38,7 @@
     "graphql": "16.3.0",
     "js-cookie": "3.0.1",
     "lodash.merge": "4.6.2",
-    "node-fetch": "3.2.2",
+    "node-fetch": "3.2.3",
     "node-zopfli-es": "1.0.7",
     "nuxt-edge": "latest",
     "nuxt-helmet": "3.0.0",
