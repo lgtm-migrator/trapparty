@@ -4,7 +4,7 @@
 # Should be the specific version of node:buster.
 # `node-zopfli-es` and `sqitch` require at least buster.
 # `node-zopfli-es` requires non-slim.
-FROM node:16.14.2-buster@sha256:3afa49c0e36da219d62460bc30fe3da87792392fa969665fe807e49412695895 AS development
+FROM node:16.14.2-buster@sha256:68e34cfcd8276ad531b12b3454af5c24cd028752dfccacce4e19efef6f7cdbe0 AS development
 
 # Update and install dependencies.
 # - `git` is required by the `yarn` command
@@ -44,7 +44,7 @@ HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/api/healthcheck || 
 # Should be the specific version of node:buster.
 # `node-zopfli-es` and `sqitch` require at least buster.
 # `node-zopfli-es` requires non-slim.
-FROM node:16.14.2-buster@sha256:3afa49c0e36da219d62460bc30fe3da87792392fa969665fe807e49412695895 AS build
+FROM node:16.14.2-buster@sha256:68e34cfcd8276ad531b12b3454af5c24cd028752dfccacce4e19efef6f7cdbe0 AS build
 
 ARG NUXT_ENV_STACK_DOMAIN=jonas-thelemann.de
 ENV NUXT_ENV_STACK_DOMAIN=${NUXT_ENV_STACK_DOMAIN}
