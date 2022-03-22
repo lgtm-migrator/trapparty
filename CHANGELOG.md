@@ -1,3 +1,11 @@
+# [2.4.0](https://github.com/dargmuesli/trapparty/compare/2.3.7...2.4.0) (2022-03-22)
+
+
+### Features
+
+* **docker:** use node-slim ([ffb92e1](https://github.com/dargmuesli/trapparty/commit/ffb92e1b08159fb5d52ba4057d86749219f8b43d))
+* **zopfli:** switch to node-zopfli ([e0974a6](https://github.com/dargmuesli/trapparty/commit/e0974a6e1204fc3507e2e3e65560bf6e2d7feb62))
+
 ## [2.3.7](https://github.com/dargmuesli/trapparty/compare/2.3.6...2.3.7) (2022-03-21)
 
 
