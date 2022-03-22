@@ -1,10 +1,8 @@
 #############
 # Serve Nuxt in development mode.
 
-# Should be the specific version of node:buster.
-# `node-zopfli-es` and `sqitch` require at least buster.
-# `node-zopfli-es` requires non-slim.
-FROM node:16.14.2-buster@sha256:68e34cfcd8276ad531b12b3454af5c24cd028752dfccacce4e19efef6f7cdbe0 AS development
+# Should be the specific version of node:slim.
+FROM node:16.14.2-slim@sha256:cb455c6303566eb280d1f89c523b984924e7cd5b85153e06746a66619181b32a AS development
 
 # Update and install dependencies.
 # - `git` is required by the `yarn` command
@@ -41,10 +39,8 @@ HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/api/healthcheck || 
 ########################
 # Build Nuxt.
 
-# Should be the specific version of node:buster.
-# `node-zopfli-es` and `sqitch` require at least buster.
-# `node-zopfli-es` requires non-slim.
-FROM node:16.14.2-buster@sha256:68e34cfcd8276ad531b12b3454af5c24cd028752dfccacce4e19efef6f7cdbe0 AS build
+# Should be the specific version of node:slim.
+FROM node:16.14.2-slim@sha256:cb455c6303566eb280d1f89c523b984924e7cd5b85153e06746a66619181b32a AS build
 
 ARG NUXT_ENV_STACK_DOMAIN=jonas-thelemann.de
 ENV NUXT_ENV_STACK_DOMAIN=${NUXT_ENV_STACK_DOMAIN}
@@ -73,9 +69,8 @@ RUN yarn install
 # Provide a web server.
 # Requires node (cannot be static) as the server acts as backend too.
 
-# Should be the specific version of node:buster-slim.
-# sqitch requires at least buster.
-FROM node:16.14.2-buster-slim@sha256:c51416d582339a0f9f5f8da347a2dd8b585e1f5893a627e9b3a208351493b2b4 AS production
+# Should be the specific version of node:slim.
+FROM node:16.14.2-slim@sha256:cb455c6303566eb280d1f89c523b984924e7cd5b85153e06746a66619181b32a AS production
 
 ENV NODE_ENV=production
 

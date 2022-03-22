@@ -39,7 +39,7 @@
     "js-cookie": "3.0.1",
     "lodash.merge": "4.6.2",
     "node-fetch": "3.2.3",
-    "node-zopfli-es": "1.0.7",
+    "node-zopfli": "2.1.4",
     "nuxt-edge": "latest",
     "nuxt-helmet": "3.0.0",
     "rainbowvis.js": "1.0.1",
