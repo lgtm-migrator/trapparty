@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/dargmuesli/trapparty/compare/2.4.0...2.4.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* **nuxt:** transpile [@fontawesome](https://github.com/fontawesome) ([1126b1d](https://github.com/dargmuesli/trapparty/commit/1126b1d51aae56f84cd89896726bf4ff0a9fbb8a))
+
 # [2.4.0](https://github.com/dargmuesli/trapparty/compare/2.3.7...2.4.0) (2022-03-22)
 
 
