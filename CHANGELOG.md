@@ -1,3 +1,11 @@
+## [2.4.3](https://github.com/dargmuesli/trapparty/compare/2.4.2...2.4.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* **compression:** use another brotli implementation ([c0d50f5](https://github.com/dargmuesli/trapparty/commit/c0d50f59bbd2ffa4fbcf5bf9e8c392b03ab61d8c))
+* **nuxt:** transpile vue-chart-3 ([92b391b](https://github.com/dargmuesli/trapparty/commit/92b391b5f6f04321d3257bce2d7a77e1fb70e8ce))
+
 ## [2.4.2](https://github.com/dargmuesli/trapparty/compare/2.4.1...2.4.2) (2022-04-04)
 
 
