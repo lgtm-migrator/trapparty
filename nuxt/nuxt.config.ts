@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
-import shrinkRay from 'shrink-ray-current'
+import compressionWithBrotli from 'compression-with-brotli'
 
 import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
 
@@ -263,7 +263,7 @@ export default defineNuxtConfig({
   ],
 
   render: {
-    compressor: shrinkRay(),
+    compressor: compressionWithBrotli(),
     csp: {
       policies: {
         'base-uri': ["'none'"], // Mozilla Observatory.
