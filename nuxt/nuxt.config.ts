@@ -37,6 +37,7 @@ export default defineNuxtConfig({
       'subscriptions-transport-ws',
       'tslib',
       'universal-cookie',
+      'vue-chart-3',
     ],
   },
 
