@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/dargmuesli/trapparty/compare/2.4.3...2.5.0) (2022-04-16)
+
+
+### Features
+
+* **error:** upgrade status-i18n ([2bfe38c](https://github.com/dargmuesli/trapparty/commit/2bfe38caa27a5dc6e08d02ed2f4efeec1fe5d17e))
+
 ## [2.4.3](https://github.com/dargmuesli/trapparty/compare/2.4.2...2.4.3) (2022-04-12)
 
 
