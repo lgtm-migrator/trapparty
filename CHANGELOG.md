@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/dargmuesli/trapparty/compare/2.5.0...2.5.1) (2022-04-16)
+
+
+### Bug Fixes
+
+* **static:** work around nitro issue ([5e7d087](https://github.com/dargmuesli/trapparty/commit/5e7d087f2fc19443fa9e7a7e0938f4db2c602901))
+
 # [2.5.0](https://github.com/dargmuesli/trapparty/compare/2.4.3...2.5.0) (2022-04-16)
 
 
