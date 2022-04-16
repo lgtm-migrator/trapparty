@@ -1,5 +1,5 @@
 <template>
-  <BarChart :chart-data="data" :options="options" />
+  <Bar :chart-data="data" :chart-options="options" :height="height" />
 </template>
 
 <script lang="ts">
@@ -15,7 +15,7 @@ import {
   Tooltip,
 } from 'chart.js'
 import merge from 'lodash.merge'
-import { BarChart } from 'vue-chart-3'
+import { Bar } from 'vue-chartjs/legacy'
 
 import { defineComponent, PropType } from '#app'
 
@@ -30,7 +30,7 @@ Chart.register(
 
 export default defineComponent({
   components: {
-    BarChart,
+    Bar,
   },
   props: {
     data: {
@@ -47,10 +47,6 @@ export default defineComponent({
     },
     optionsAdditional: {
       type: Object as PropType<ChartOptions<'bar'>>,
-      default: undefined,
-    },
-    title: {
-      type: String,
       default: undefined,
     },
   },

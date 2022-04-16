@@ -16,7 +16,7 @@ import merge from 'lodash.merge'
 import Rainbow from 'rainbowvis.js'
 
 import { defineComponent, PropType } from '#app'
-import { Event as TrapPartyEvent } from '~/types/event'
+import { Event as TrapPartyEvent } from '~/types/trapparty'
 import STATS_QUERY from '~/gql/query/stats.gql'
 
 export default defineComponent({

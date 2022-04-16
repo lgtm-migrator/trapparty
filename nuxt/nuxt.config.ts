@@ -37,7 +37,7 @@ export default defineNuxtConfig({
       'subscriptions-transport-ws',
       'tslib',
       'universal-cookie',
-      'vue-chart-3',
+      'vue-chartjs',
     ],
   },
 
@@ -281,7 +281,7 @@ export default defineNuxtConfig({
         'manifest-src': ["'self'"], // Chrome
         'report-uri': 'https://dargmuesli.report-uri.com/r/d/csp/enforce',
         'script-src': ["'self'", 'https://static.cloudflareinsights.com'],
-        'style-src': ["'self'", "'unsafe-inline'"], // Tailwind, ChartJS (TODO: https://www.chartjs.org/docs/latest/getting-started/integration.html#content-security-policy)
+        'style-src': ["'self'", "'unsafe-inline'"], // Tailwind
       },
       reportOnly: false,
     },
