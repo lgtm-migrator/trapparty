@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/dargmuesli/trapparty/compare/2.5.1...2.6.0) (2022-04-16)
+
+
+### Features
+
+* **chart:** migrate to vue-chartjs ([c8f1b9a](https://github.com/dargmuesli/trapparty/commit/c8f1b9a596d26863c72ed84a59d7ae957fc741b1))
+
 ## [2.5.1](https://github.com/dargmuesli/trapparty/compare/2.5.0...2.5.1) (2022-04-16)
 
 
