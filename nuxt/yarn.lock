@@ -2002,11 +2002,11 @@
     ufo "^0.7.9"
 
 "@nuxt/kit@npm:@nuxt/kit-edge@latest":
-  version "3.0.0-27500677.83d27bd"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27500677.83d27bd.tgz#89046805933a47a2a148be930e932e01a3e63e97"
-  integrity sha512-Hk0yK/86x05deZJKcKYmvaxy+LIhE4W4inqtuIXvLzOTCO7o87sg+CWddtQU8sm7qkgG61Q+y4wkpgkF0EdaXA==
+  version "3.0.0-27501460.04a72f8"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27501460.04a72f8.tgz#091a590c52a064d737da58b5e9e9c23d0271e1df"
+  integrity sha512-B7jujSfjPVnnkqGtkiZfCeGJsnDBn5yIjkz+Rw1fuT0ZzUVI4u+yYlYuRXp9chv+QodPt4dOQgljMlc0YuzHEw==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-27500677.83d27bd"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-27501460.04a72f8"
     c12 "^0.2.5"
     consola "^2.15.3"
     defu "^6.0.0"
@@ -2059,10 +2059,10 @@
     postcss-url "^10.1.1"
     semver "^7.3.4"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-27500677.83d27bd", "@nuxt/schema@npm:@nuxt/schema-edge@latest":
-  version "3.0.0-27500677.83d27bd"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27500677.83d27bd.tgz#d0701f9677d9a2530e1cb80224ea10905a15f6e1"
-  integrity sha512-B5WdbIg6PZqGu2eWQSHteoB1DRiiW+hUTM85tmyN34QXDGQjYa7ETwDISCuha7WtkX+/RrrvTr7DKwHNX/XxpQ==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-27501460.04a72f8", "@nuxt/schema@npm:@nuxt/schema-edge@latest":
+  version "3.0.0-27501460.04a72f8"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27501460.04a72f8.tgz#515bb0d4ed9d2ee92d182710f0295216aaf1f283"
+  integrity sha512-9jK5mLo2KRh4K8NSz6/bptSav63kAI57B9mZsB1qug4O4dSHTJDeP5T6eHzM9K5gKUsUDlmvniW+RSvbY2dsDg==
   dependencies:
     c12 "^0.2.5"
     create-require "^1.1.1"
@@ -2071,7 +2071,7 @@
     pathe "^0.2.0"
     postcss-import-resolver "^2.0.0"
     scule "^0.2.1"
-    std-env "^3.0.1"
+    std-env "^3.1.1"
     ufo "^0.8.3"
     unimport "^0.1.5"
 
@@ -8020,9 +8020,9 @@ fs-constants@^1.0.0:
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
 
 fs-extra@^10.0.0, fs-extra@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.1.tgz#27de43b4320e833f6867cc044bfce29fdf0ef3b8"
-  integrity sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
+  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
@@ -10006,9 +10006,9 @@ lint-staged@12.3.8:
     yaml "^1.10.2"
 
 listhen@^0.2.4, listhen@^0.2.8:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/listhen/-/listhen-0.2.9.tgz#21ce8396307dbc181063bc49b24462d11ccdf406"
-  integrity sha512-eQHoNxeYimBk/H7QowPyrFGyI727j7IeF3XAQLWeWOLTvgA7ggE0ZvxC8L/16e1pGQafxHrQXqa8bWFMiQP+wQ==
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/listhen/-/listhen-0.2.10.tgz#0656be446b7729547143210a870d3f443196bc9c"
+  integrity sha512-A2JclV3okrZ/do9ICqdoFGWJHIHrFl71CdwyCWIFJyQAc+QjIKaMks2FKTbXRsa9i0OOSUMHZK2vWHmMfVp00A==
   dependencies:
     clipboardy "^3.0.0"
     colorette "^2.0.16"
@@ -10790,9 +10790,9 @@ moment@2.29.1:
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
 "moment@>= 2.9.0", moment@^2.22.1, moment@^2.25.3:
-  version "2.29.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
-  integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
+  integrity sha512-c6YRvhEo//6T2Jz/vVtYzqBzwvPT95JBQ+smCytzf7c50oMZRsR/a4w88aD34I+/QVSfnoAnSBFPJHItlOMJVw==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -11298,9 +11298,9 @@ number-is-nan@^1.0.0:
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
 nuxi-edge@latest:
-  version "3.0.0-27500677.83d27bd"
-  resolved "https://registry.yarnpkg.com/nuxi-edge/-/nuxi-edge-3.0.0-27500677.83d27bd.tgz#6725a0b9abd8e857fe8d07b290f78f986ab4bcc6"
-  integrity sha512-4PmSKHeTGVQTYXzeE6Q8Aa7t8UI1jjV0pW+U29LNaev5S2qx11DCC7nqR7kcc/G+Nlth6xx1ryWmkAN5qxTytw==
+  version "3.0.0-27501460.04a72f8"
+  resolved "https://registry.yarnpkg.com/nuxi-edge/-/nuxi-edge-3.0.0-27501460.04a72f8.tgz#23e8a15bf6c44a50f8353c45b3f23bf20c7cea39"
+  integrity sha512-osPlNxaCnXgxtoCyRHrTn2Y+hxf+mFTVG3q/6n5PRD4Nc8L4vHMTfF6FpgMkKVmghuFKuTuxVmFIzsWh82N/UA==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -14386,7 +14386,7 @@ std-env@^2.3.0:
   dependencies:
     ci-info "^3.1.1"
 
-std-env@^3.0.1:
+std-env@^3.0.1, std-env@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.1.1.tgz#1f19c4d3f6278c52efd08a94574a2a8d32b7d092"
   integrity sha512-/c645XdExBypL01TpFKiG/3RAa/Qmu+zRi0MwAmrdEkwHNuN0ebo8ccAXBBDa5Z0QOJgBskUIbuCK91x0sCVEw==
