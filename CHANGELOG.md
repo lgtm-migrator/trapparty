@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/dargmuesli/trapparty/compare/2.6.1...2.6.2) (2022-04-19)
+
+
+### Bug Fixes
+
+* **docker:** switch to wget for healthcheck ([ef0593c](https://github.com/dargmuesli/trapparty/commit/ef0593c9fcec03d74b8347038cf49a0f617fabe0))
+
 ## [2.6.1](https://github.com/dargmuesli/trapparty/compare/2.6.0...2.6.1) (2022-04-18)
 
 
