@@ -1,3 +1,10 @@
+## [2.6.3](https://github.com/dargmuesli/trapparty/compare/2.6.2...2.6.3) (2022-04-20)
+
+
+### Bug Fixes
+
+* **package:** update status-i18n to v0.6.2 ([b6ca844](https://github.com/dargmuesli/trapparty/commit/b6ca844b89a23392408bdd8201769f8db31cfa81))
+
 ## [2.6.2](https://github.com/dargmuesli/trapparty/compare/2.6.1...2.6.2) (2022-04-19)
 
 
