@@ -1,4 +1,4 @@
-import { Context } from '@nuxt/types'
+import { Context } from '@nuxt/types-edge'
 import createPersistedState from 'vuex-persistedstate'
 import Cookies from 'js-cookie'
 import { useCookie } from 'h3'

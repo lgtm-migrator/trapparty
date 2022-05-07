@@ -1,4 +1,4 @@
-import { Context } from '@nuxt/types'
+import { Context } from '@nuxt/types-edge'
 
 export default (_ctx: Context) => {
   return {

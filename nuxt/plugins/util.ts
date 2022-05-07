@@ -1,5 +1,5 @@
-import { Context } from '@nuxt/types'
-import { Inject } from '@nuxt/types/app'
+import { Context } from '@nuxt/types-edge'
+import { Inject } from '@nuxt/types-edge/app'
 import { helpers } from 'vuelidate/lib/validators'
 
 export const CHART_DIRECTION_BREAKPOINT = 768
@@ -115,7 +115,7 @@ declare module 'vue/types/vue' {
   }
 }
 
-declare module '@nuxt/types' {
+declare module '@nuxt/types-edge' {
   interface NuxtAppOptions {
     $util: typeof util
   }
