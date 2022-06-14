@@ -1,3 +1,10 @@
+## [2.6.11](https://github.com/dargmuesli/trapparty/compare/2.6.10...2.6.11) (2022-06-14)
+
+
+### Bug Fixes
+
+* **deps:** pin ufo ([2ae462b](https://github.com/dargmuesli/trapparty/commit/2ae462b1c50ec025967b7edf292dd5f82e47ebce))
+
 ## [2.6.10](https://github.com/dargmuesli/trapparty/compare/2.6.9...2.6.10) (2022-06-13)
 
 
