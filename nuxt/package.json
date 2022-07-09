@@ -43,7 +43,7 @@
     "nuxt-edge": "2.16.0-27616340.013f051b",
     "nuxt-helmet": "3.0.0",
     "rainbowvis.js": "1.0.1",
-    "vue": "2.7.3",
+    "vue": "2.7.4",
     "vue-chartjs": "4.1.1",
     "vue-sweetalert2": "5.0.5",
     "vuelidate": "0.7.7",
