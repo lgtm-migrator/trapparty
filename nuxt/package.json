@@ -17,9 +17,9 @@
     "*.{css,vue}": "stylelint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.1.1",
-    "@fortawesome/free-brands-svg-icons": "6.1.1",
-    "@fortawesome/free-solid-svg-icons": "6.1.1",
+    "@fortawesome/fontawesome-svg-core": "6.1.2",
+    "@fortawesome/free-brands-svg-icons": "6.1.2",
+    "@fortawesome/free-solid-svg-icons": "6.1.2",
     "@fortawesome/vue-fontawesome": "2.0.8",
     "@http-util/status-i18n": "0.6.2",
     "@nuxt/types-edge": "2.16.0-27616340.013f051b",
