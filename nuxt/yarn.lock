@@ -13015,10 +13015,10 @@ radix3@^0.1.2:
   resolved "https://registry.yarnpkg.com/radix3/-/radix3-0.1.2.tgz#5f7351af7fc5e4b1d9a1b14a7266b6a4a8cac0ba"
   integrity sha512-Mpfd/OuX0zoJ6ojLD/RTOHvJPg6e6PjINtmYzV87kIXc5iUtDz34i7gg4SV4XjqRJTmSiYO/g9i/mKWGf4z8wg==
 
-rainbowvis.js@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/rainbowvis.js/-/rainbowvis.js-1.0.1.tgz#e8998fb97161b02557748c7da097962b0d6e3e00"
-  integrity sha512-Z6IHCGGT7eFPXT/zQpxbIUWjfFhPlQcsxuQ5BeVtSeQdJkJrPMff4HXAkoRk7DCsPI5QI9ruVkRz9dJUn/wd4Q==
+rainbowvis.js@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/rainbowvis.js/-/rainbowvis.js-1.1.1.tgz#ccb6e6e681d7f6be728e1b57d9889ecc0611cc0f"
+  integrity sha512-/sFEGIfTRsGnVhNSVRWytNMSXadyqcDWW6LLoQs2EWg3R0IZylHp05/XjkqeG4gn0kSp3UE2M8uCPseahcHtuA==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
