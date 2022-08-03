@@ -30,7 +30,7 @@
     "apollo-cache-inmemory": "1.6.6",
     "apollo-client": "2.6.10",
     "apollo-link": "1.2.14",
-    "chart.js": "3.9.0",
+    "chart.js": "3.9.1",
     "color": "4.2.3",
     "compression-with-brotli": "1.7.5",
     "consola": "2.15.3",
