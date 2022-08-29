@@ -1,3 +1,10 @@
+## [2.6.17](https://github.com/dargmuesli/trapparty/compare/2.6.16...2.6.17) (2022-08-29)
+
+
+### Bug Fixes
+
+* **release:** schedule release ([d7adfd5](https://github.com/dargmuesli/trapparty/commit/d7adfd5d6993c2cdb504b453ad7754c322f363e3))
+
 ## [2.6.16](https://github.com/dargmuesli/trapparty/compare/2.6.15...2.6.16) (2022-08-15)
 
 
