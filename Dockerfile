@@ -58,8 +58,9 @@ WORKDIR /srv/app/
 
 COPY --from=development /srv/app/ ./
 
-RUN yarn run lint
-RUN yarn run build
+RUN yarn run nuxi prepare \
+    && yarn run lint \
+    && yarn run build
 
 # Discard devDependencies.
 RUN yarn install
