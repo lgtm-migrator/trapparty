@@ -35,7 +35,7 @@
     "compression-with-brotli": "1.7.5",
     "consola": "2.15.3",
     "cookie": "0.5.0",
-    "core-js": "3.25.0",
+    "core-js": "3.25.1",
     "graphql": "16.6.0",
     "js-cookie": "3.0.1",
     "lodash.merge": "4.6.2",
