@@ -2,7 +2,7 @@
   "name": "trapparty",
   "private": true,
   "version": "2.6.17",
-  "scheduleVersion": "2.6.17",
+  "scheduleVersion": "2.6.18",
   "description": "TrapParty's online version.",
   "scripts": {
     "dev": "nuxi dev",
