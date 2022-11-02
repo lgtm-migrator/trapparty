@@ -2172,7 +2172,7 @@
     unimport "^0.6.7"
     untyped "^0.5.0"
 
-"@nuxt/kit@^3.0.0-rc.10":
+"@nuxt/kit@^3.0.0-rc.12":
   version "3.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.12.tgz#637ab3e63d4213b886ab3cda19632bd08bc5ccb6"
   integrity sha512-d/6SeNVL1OPdru5aKjjUIWIwqIjbYN/VYGCrZs5gddkzJ5202DsMxyn2rs/ZyT8+oBbbVTYcCK6M+G0945mQdA==
@@ -2495,14 +2495,14 @@
     "@fortawesome/fontawesome-svg-core" "^1.2.27"
     "@fortawesome/vue-fontawesome" "^0.1.9"
 
-"@nuxtjs/html-validator@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/html-validator/-/html-validator-1.1.0.tgz#8cc6718cc529d2425d8eefcb3e23e8933b2148f4"
-  integrity sha512-g4SvV0JtbX6RMYV+aLpfQoPKr1s3ODfDILkvn42Xn4B9Bnsz7/DrhWxKMaYIeTT607iiv3PA3lgfmOf7Dw1WaQ==
+"@nuxtjs/html-validator@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/html-validator/-/html-validator-1.1.1.tgz#959fd2a7ee75629ee6a029341d25417ff4dda2f3"
+  integrity sha512-QdIsCE99J4lWkaQNjrfDPdoL0J2ocWFmjo4RJLsrMWJ/0hm0nMIRn15kCxeFVIYycBX0ZHo3hzyzkmy1sJsrag==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.10"
+    "@nuxt/kit" "^3.0.0-rc.12"
     chalk "^5.1.2"
-    html-validate "7.6.0"
+    html-validate "7.7.1"
     prettier "^2.7.1"
 
 "@nuxtjs/i18n@7.3.0":
@@ -9039,10 +9039,10 @@ html-tags@^3.2.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.2.0.tgz#dbb3518d20b726524e4dd43de397eb0a95726961"
   integrity sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==
 
-html-validate@7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/html-validate/-/html-validate-7.6.0.tgz#c07838b6f767d426218c3d9e67f2fd5f0fbca2dc"
-  integrity sha512-6Ib433N0/ou2/0oLjfUmFjaAVFW8KKU/fOBBhrZXNuPcYCUsZExAD3xOqKl1bp5ANHb4PItXEK9vcKL/L7Da0Q==
+html-validate@7.7.1:
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/html-validate/-/html-validate-7.7.1.tgz#fd32547380a0af1685c0b4263dccd0cf88368caf"
+  integrity sha512-pCPbFHygd8YCKcQcyQnEwIWKVtA37f0snQP65EsS9ap4JrnG0HdIevJl90p8ZAhGjLsex5P0nI+n6v4pSov97Q==
   dependencies:
     "@babel/code-frame" "^7.10.0"
     "@html-validate/stylish" "^3.0.0"
